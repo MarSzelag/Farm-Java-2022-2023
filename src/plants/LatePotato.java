@@ -1,7 +1,7 @@
 package plants;
 
 public class LatePotato extends Plant{
-    public LatePotato(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHaKg, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeFromWeek, Integer harvestTimeToWeek, Double sellPricePerKg, Double buyPricePerKg) {
-        super(plantName, neededToSowOneHaInKg, harvestsFromHaKg, sowingTimeFromWeek, sowingTimeToWeek, harvestTimeFromWeek, harvestTimeToWeek, sellPricePerKg, buyPricePerKg);
+    public LatePotato() {
+        super("Ziemniak późny", 2200, 20000, 15, 17, 33, 41, 0.65, 0.95);
     }
 }

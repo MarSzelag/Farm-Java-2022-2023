@@ -1,7 +1,7 @@
 package plants;
 
 public class WinterWheat extends Plant{
-    public WinterWheat(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHaKg, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeFromWeek, Integer harvestTimeToWeek, Double sellPricePerKg, Double buyPricePerKg) {
-        super(plantName, neededToSowOneHaInKg, harvestsFromHaKg, sowingTimeFromWeek, sowingTimeToWeek, harvestTimeFromWeek, harvestTimeToWeek, sellPricePerKg, buyPricePerKg);
+    public WinterWheat() {
+        super("Pszenica ozima", 240, 5000, 37, 42, 28, 31, 0.65, 0.95);
     }
 }

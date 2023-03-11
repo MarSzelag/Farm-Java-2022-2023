@@ -1,26 +1,43 @@
 package farm;
 
+import land.Land;
 import plants.*;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
+import java.util.*;
 
 public class Farm {
+
+    Random rand = new Random();
     private String owner;
     private Double cash = 1000000.00;
-    private Integer landOwned; // W ha
+
     private Integer turnCounter = 0; // Około 52 tury to rok
     //Plants
+    private Land land = new Land();
+    public Corn corn = new Corn();
+    private LatePotato latePotato  = new LatePotato();
+    private LateRape lateRape = new LateRape();
+    private LateRye laterye = new LateRye();
+    private SpringBarley springBarley= new SpringBarley();
+    private WhiteBeet whiteBeet= new WhiteBeet();
+    private WinterWheat winterWheat = new WinterWheat();
 
-    private Corn corn = new Corn("Kukurydza", 100, 1200, 16, 18, 38, 41, 0.80, 1.50);
-    private LatePotato latePotato  = new LatePotato("Ziemniak późny", 2200, 20000, 15, 17, 33, 41, 0.65, 0.95);
-    private LateRape LateRape = new LateRape("Rzepak ozimy", 3, 3400, 31, 36, 29, 33, 2.17, 3.20);
-    private LateRye Laterye = new LateRye("Żyto ozime", 250, 3600, 36, 39, 28, 33, 0.55, 0.77);
-    private SpringBarley springBarley= new SpringBarley("Jęczmień jary", 270, 3300, 9, 15, 29, 31, 0.45, 1.12);
-    private WhiteBeet whiteBeet= new WhiteBeet("Burak cukrowy", 700, 4000, 16, 19, 40, 44, 0.86, 1.32);
-    private WinterWheat winterWheat = new WinterWheat("Pszenica ozima", 240, 5000, 37, 42, 28, 31, 0.65, 0.95);
-    //Animals
+
+
+    /*
+    public List<Plant> sownPlantsList = new LinkedList<>(); // Plus przy losowanich, minus przy wyszukiwaniu konkretnej rośliny
+
+    public void setSownPlantsList() {
+        this.sownPlantsList.add(corn);
+        this.sownPlantsList.add(latePotato);
+
+        this.sownPlantsList.get(1).setPlantName("Dziobu");
+
+        for(int i = 0; i < this.sownPlantsList.size(); i++){
+            System.out.println(this.sownPlantsList.get(i).getPlantName());
+        }
+    }*/
+//Animals
     //Buildings
 
 
@@ -41,7 +58,7 @@ public class Farm {
     public void setCash(Double cash) {
         this.cash = cash;
     }
-
+/*
     public Integer getLandOwned() {
         return landOwned;
     }
@@ -49,6 +66,8 @@ public class Farm {
     public void setLandOwned(Integer landOwned) {
         this.landOwned = landOwned;
     }
+
+ */
 /*
     public Integer getTurnCounter() {
         return turnCounter;
@@ -67,7 +86,45 @@ public class Farm {
     public Farm generateFarm() {
         Farm farm = new Farm();
         farm.calendar.set(2020, 0, 1);
+        randomStartingValues();
         return farm;
+    }
+
+    public void randomStartingValues(){
+        Integer flag = 0;
+
+        this.land.setSizeInHa(rand.nextInt(5) + 3);
+        while(flag < 3) {
+            if (rand.nextBoolean() && flag < 3) {
+                this.corn.setStoredInKg(this.corn.getStoredInKg() + rand.nextInt(20) + 100); //100
+                flag++;
+            }
+            if (rand.nextBoolean() && flag < 3) {
+                this.latePotato.setStoredInKg(this.latePotato.getStoredInKg() + rand.nextInt(20) + 100); //100
+                flag++;
+            }
+            if (rand.nextBoolean() && flag < 3) {
+                this.lateRape.setStoredInKg(this.lateRape.getStoredInKg() + rand.nextInt(20) + 100); //100
+                flag++;
+            }
+            if (rand.nextBoolean() && flag < 3) {
+                this.laterye.setStoredInKg(this.laterye.getStoredInKg() + rand.nextInt(20) + 100); //100
+                flag++;
+            }
+            if (rand.nextBoolean() && flag < 3) {
+                this.springBarley.setStoredInKg(this.springBarley.getStoredInKg() + rand.nextInt(20) + 100); //100
+                flag++;
+            }
+            if (rand.nextBoolean() && flag < 3) {
+                this.whiteBeet.setStoredInKg(this.whiteBeet.getStoredInKg() + rand.nextInt(20) + 100); //100
+                flag++;
+            }
+            if (rand.nextBoolean() && flag < 3) {
+                this.winterWheat.setStoredInKg(this.winterWheat.getStoredInKg() + rand.nextInt(20) + 100); //100
+                flag++;
+            }
+        }
+
     }
 
     public void buy() {

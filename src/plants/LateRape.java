@@ -1,7 +1,7 @@
 package plants;
 
 public class LateRape extends Plant{
-    public LateRape(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHaKg, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeFromWeek, Integer harvestTimeToWeek, Double sellPricePerKg, Double buyPricePerKg) {
-        super(plantName, neededToSowOneHaInKg, harvestsFromHaKg, sowingTimeFromWeek, sowingTimeToWeek, harvestTimeFromWeek, harvestTimeToWeek, sellPricePerKg, buyPricePerKg);
+    public LateRape() {
+        super("Rzepak ozimy", 3, 3400, 31, 36, 29, 33, 2.17, 3.20);
     }
 }

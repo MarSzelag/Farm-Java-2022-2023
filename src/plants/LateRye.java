@@ -1,7 +1,11 @@
 package plants;
 
 public class LateRye extends Plant{
-    public LateRye(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHaKg, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeFromWeek, Integer harvestTimeToWeek, Double sellPricePerKg, Double buyPricePerKg) {
-        super(plantName, neededToSowOneHaInKg, harvestsFromHaKg, sowingTimeFromWeek, sowingTimeToWeek, harvestTimeFromWeek, harvestTimeToWeek, sellPricePerKg, buyPricePerKg);
+
+
+    public LateRye() {
+        super("Żyto ozime", 250, 3600, 36, 39, 28, 33, 0.55, 0.77);
     }
+
+
 }
