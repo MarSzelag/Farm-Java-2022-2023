@@ -88,10 +88,10 @@ public class Menu {
         }
     }
 
-    public void possesionsMenu() {
+    public void possesionsMenu(Farm farm) { //TODO Farmfarm???
         Byte possesionMenuCounter = 0;
+        farm.possesions();
 
-        System.out.println("Stan posiadania w farmie: ");
         System.out.println("7. Powrót do menu głównego farmy.");
 
         switch (possesionMenuCounter) {

@@ -17,7 +17,7 @@ public class Farm {
     public Corn corn = new Corn();
     private LatePotato latePotato  = new LatePotato();
     private LateRape lateRape = new LateRape();
-    private LateRye laterye = new LateRye();
+    private LateRye lateRye = new LateRye();
     private SpringBarley springBarley= new SpringBarley();
     private WhiteBeet whiteBeet= new WhiteBeet();
     private WinterWheat winterWheat = new WinterWheat();
@@ -80,7 +80,19 @@ public class Farm {
 
 
     public void possesions() {
+        // TODO data, tydzień roku??? tura
+        System.out.println(this.owner + " aktualnie jesteś w posiadaniu: ");
+        System.out.println(this.land.getSizeInHa() + " ha ziemi, w tym " + this.land.getSownLandInHa() + " ha ziemi obsianej i " + this.land.getFreeLand() + " ha ziemi nieobsianej.");
+        System.out.println(this.corn.getStoredInKg() + " kg kukurydzy.");
+        System.out.println(this.latePotato.getStoredInKg() + " kg ziemniaka późnego.");
+        System.out.println(this.lateRape.getStoredInKg() + " kg rzepaka ozimego.");
+        System.out.println(this.lateRye.getStoredInKg() + " kg żyta ozimego.");
+        System.out.println(this.springBarley.getStoredInKg() + " kg jęczmienia jarego.");
+        System.out.println(this.whiteBeet.getStoredInKg() + " kg buraka cukrowego.");
+        System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej.");
 
+        // TODO Animals
+        // TODO Building
     }
 
     public Farm generateFarm() {
@@ -93,8 +105,8 @@ public class Farm {
     public void randomStartingValues(){
         Integer flag = 0;
 
-        this.land.setSizeInHa(rand.nextInt(5) + 3);
-        while(flag < 3) {
+        this.land.setSizeInHa(rand.nextInt(2) + 2);
+        while(flag < 2) {
             if (rand.nextBoolean() && flag < 3) {
                 this.corn.setStoredInKg(this.corn.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
@@ -108,7 +120,7 @@ public class Farm {
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
-                this.laterye.setStoredInKg(this.laterye.getStoredInKg() + rand.nextInt(20) + 100); //100
+                this.lateRye.setStoredInKg(this.lateRye.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
