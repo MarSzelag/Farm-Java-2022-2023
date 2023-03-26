@@ -8,11 +8,12 @@ public class Main {
         Menu menu = new Menu();
         Scanner scan = new Scanner(System.in);
 
-
-
             Farm farm = new Farm();
             farm.generateFarm();
-            System.out.println(farm.corn.getStoredInKg());
+            System.out.println(farm.getCorn().getStoredInKg()); // Test losowania ilości roślin
+
+            farm.shop.buyPlant(farm.getCorn(), farm);
+
 
 
         //Random rand = new Random();

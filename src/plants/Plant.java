@@ -8,11 +8,16 @@ public class Plant {
 
     private Integer sowingTimeFromWeek; // Czas obsiewu od. 4 pory roku, 12 miesięcy, czy 52 tygodnie?
     private Integer sowingTimeToWeek; // Czas obsiewu do.
-    private Integer harvestTimeFromWeek;
-    private Integer harvestTimeToWeek;
+    private Integer harvestTimeAfterNoWeeks;
+    private Integer noOfWeeksLeftToHavest;
 
-    private Double SellPricePerKg; // Cena sprzedaży kilograma
-    private Double BuyPricePerKg;
+    private Double sellPricePerKg; // Cena sprzedaży kilograma
+    private Double buyPricePerKg;
+
+    private Double landPreparationCostPerHa;
+    private Double protectionAgainstPests;
+
+    private boolean isSownAlready;
 
     private Integer storedInKg = 0;
 
@@ -22,16 +27,17 @@ public class Plant {
     public Plant(){
 
     }
-    public Plant(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHa, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeFromWeek, Integer harvestTimeToWeek, Double sellPricePerKg, Double buyPricePerKg) {
+    public Plant(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHa, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeAfterNoWeeks, Double sellPricePerKg, Double buyPricePerKg, Double landPreparationCostPerHa, Double protectionAgainstPests) {
         this.plantName = plantName;
         this.neededToSowOneHaInKg = neededToSowOneHaInKg;
         this.harvestsFromHaKg = harvestsFromHa;
         this.sowingTimeFromWeek = sowingTimeFromWeek;
         this.sowingTimeToWeek = sowingTimeToWeek;
-        this.harvestTimeFromWeek = harvestTimeFromWeek;
-        this.harvestTimeToWeek = harvestTimeToWeek;
-        this.SellPricePerKg = sellPricePerKg;
-        this.BuyPricePerKg = buyPricePerKg;
+        this.harvestTimeAfterNoWeeks = harvestTimeAfterNoWeeks;
+        this.sellPricePerKg = sellPricePerKg;
+        this.buyPricePerKg = buyPricePerKg;
+        this.landPreparationCostPerHa = landPreparationCostPerHa;
+        this.protectionAgainstPests = protectionAgainstPests;
     }
 
     public String getPlantName() {
@@ -74,36 +80,36 @@ public class Plant {
         this.sowingTimeToWeek = sowingTimeToWeek;
     }
 
-    public Integer getHarvestTimeFromWeek() {
-        return harvestTimeFromWeek;
+    public Integer getHarvestTimeAfterNoWeeks() {
+        return harvestTimeAfterNoWeeks;
     }
 
-    public void setHarvestTimeFromWeek(Integer harvestTimeFromWeek) {
-        this.harvestTimeFromWeek = harvestTimeFromWeek;
+    public void setHarvestTimeAfterNoWeeks(Integer harvestTimeAfterNoWeeks) {
+        this.harvestTimeAfterNoWeeks = harvestTimeAfterNoWeeks;
     }
 
-    public Integer getHarvestTimeToWeek() {
-        return harvestTimeToWeek;
+    public Integer getNoOfWeeksLeftToHavest() {
+        return noOfWeeksLeftToHavest;
     }
 
-    public void setHarvestTimeToWeek(Integer harvestTimeToWeek) {
-        this.harvestTimeToWeek = harvestTimeToWeek;
+    public void setNoOfWeeksLeftToHavest(Integer noOfWeeksLeftToHavest) {
+        this.noOfWeeksLeftToHavest = noOfWeeksLeftToHavest;
     }
 
     public Double getSellPricePerKg() {
-        return SellPricePerKg;
+        return sellPricePerKg;
     }
 
     public void setSellPricePerKg(Double sellPricePerKg) {
-        SellPricePerKg = sellPricePerKg;
+        sellPricePerKg = sellPricePerKg;
     }
 
     public Double getBuyPricePerKg() {
-        return BuyPricePerKg;
+        return buyPricePerKg;
     }
 
     public void setBuyPricePerKg(Double buyPricePerKg) {
-        BuyPricePerKg = buyPricePerKg;
+        buyPricePerKg = buyPricePerKg;
     }
 
     public Integer getStoredInKg() {
@@ -112,5 +118,29 @@ public class Plant {
 
     public void setStoredInKg(Integer storedInKg) {
         this.storedInKg = storedInKg;
+    }
+
+    public Double getLandPreparationCostPerHa() {
+        return landPreparationCostPerHa;
+    }
+
+    public void setLandPreparationCostPerHa(Double landPreparationCostPerHa) {
+        this.landPreparationCostPerHa = landPreparationCostPerHa;
+    }
+
+    public Double getProtectionAgainstPests() {
+        return protectionAgainstPests;
+    }
+
+    public boolean isSownAlready() {
+        return isSownAlready;
+    }
+
+    public void setSownAlready(boolean sownAlready) {
+        isSownAlready = sownAlready;
+    }
+
+    public void setProtectionAgainstPests(Double protectionAgainstPests) {
+        this.protectionAgainstPests = protectionAgainstPests;
     }
 }

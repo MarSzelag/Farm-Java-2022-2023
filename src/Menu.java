@@ -51,7 +51,7 @@ public class Menu {
     }
 
     public void farmMenu(Farm farm) {
-        Byte farmMenuCounter = 0;
+        Integer farmMenuCounter = 0;
 
          // Do sprawdzenia --> System.out.println("Data: " + farm.getTime() + ", " + farm.getWeekOfYear() + " tydzień roku, " + " tura nr " + "farm.getTurnCounter()");
         System.out.println();
@@ -88,8 +88,8 @@ public class Menu {
         }
     }
 
-    public void possesionsMenu(Farm farm) { //TODO Farmfarm???
-        Byte possesionMenuCounter = 0;
+    public void possesionsMenu(Farm farm) { //TODO Farm farm???
+        Integer possesionMenuCounter = 0;
         farm.possesions();
 
         System.out.println("7. Powrót do menu głównego farmy.");
@@ -104,29 +104,29 @@ public class Menu {
     }
 
     public void shopMenu() {
-        Byte shopMenuCounter = 0;
-
         System.out.println("Wybierz dział: ");
-        System.out.println("1. Ziemia.");
-        System.out.println("2. Budynki.");
-        System.out.println("3. Rośliny.");
-        System.out.println("4. Zwierzęta.");
-        System.out.println("7. Powrót do menu głównego farmy.");
+        System.out.println("1. Rośliny.");
+        System.out.println("2. Zwierzęta.");
+        System.out.println("3. Budynki.");
+        System.out.println("4. Ziemia.");
+        System.out.println("9. Powrót do menu głównego farmy.");
+
+        Integer shopMenuCounter = 0;
 
         switch (shopMenuCounter) {
             case 1:
-                System.out.println("Ziemia.");
+                shopMenuPlants();
                 break;
             case 2:
-                System.out.println("Budynki.");
+                shopMenuAnimals();
                 break;
             case 3:
-                System.out.println("Rośliny.");
+                shopMenuBuildings();
                 break;
             case 4:
-                System.out.println("Zwierzęta.");
+                shopMenuLand();
                 break;
-            case 7:
+            case 9:
                 System.out.println("Powrót do menu głównego farmy.");
                 break;
             default:
@@ -135,8 +135,38 @@ public class Menu {
 
     }
 
+    public void shopMenuPlants(){
+        System.out.println("Sklep. Dział handlu roślinami.");
+        System.out.println("Wybierz, czym chcesz handlować: ");
+        System.out.println("1. Kukurydza.");
+        System.out.println("2. Ziemniak późny.");
+        System.out.println("3. Rzepak ozimy.");
+        System.out.println("4. Żyto ozime.");
+        System.out.println("5. Jęczmień jary.");
+        System.out.println("6. Burak cukrowy.");
+        System.out.println("7. Pszenica ozima.");
+        System.out.println("9. Powrót do menu głównego sklepu.");
+
+    }
+    public void shopMenuAnimals(){
+        System.out.println("Sklep. Dział handlu zwierzętami.");
+        System.out.println("Wybierz, czym chcesz handlować: ");
+
+    }
+    public void shopMenuBuildings(){
+        System.out.println("Sklep. Dział handlu budynkami.");
+        System.out.println("Wybierz, czym chcesz handlować: ");
+
+    }
+    public void shopMenuLand(){
+        System.out.println("Sklep. Dział handlu ziemią.");
+        System.out.println("Wybierz, czym chcesz handlować: ");
+
+    }
+
+
     public void sowAndHarvestMenu() {
-        Byte sowAndHarvestMenuCounter = 0;
+        Integer sowAndHarvestMenuCounter = 0;
 
         System.out.println("Wybierz opcję:");
         System.out.println("1. Zasiew.");
@@ -159,12 +189,12 @@ public class Menu {
     }
 
     public void sowMenu() {
-        Byte sowMenuCounter = 0;
+        Integer sowMenuCounter = 0;
 
     }
 
     public void harvestMenu() {
-        Byte harvestMenuCounter = 0;
+        Integer harvestMenuCounter = 0;
 
     }
 }
