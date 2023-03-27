@@ -6,13 +6,15 @@ public class Building {
     private Integer quantityOfThisBuildingType = 0;
     private Integer capacityOfOneBuilding;
 
-    private Double price;
+    private Double buyingPrice;
+    private Double sellingPrice;
 
-    public Building(String name, String storedGoods, Integer capacityOfOneBuilding, Double price) {
+    public Building(String name, String storedGoods, Integer capacityOfOneBuilding, Double buyingPrice, Double sellingPrice) {
         this.name = name;
         this.storedGoods = storedGoods;
         this.capacityOfOneBuilding = capacityOfOneBuilding;
-        this.price = price;
+        this.buyingPrice = buyingPrice;
+        this.sellingPrice = sellingPrice;
     }
 
     public String getName() {
@@ -47,12 +49,20 @@ public class Building {
         this.capacityOfOneBuilding = capacityOfOneBuilding;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getBuyingPrice() {
+        return buyingPrice;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setBuyingPrice(Double buyingPrice) {
+        this.buyingPrice = buyingPrice;
+    }
+
+    public Double getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(Double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 
     public Integer totalCapacity(){

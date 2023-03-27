@@ -172,8 +172,8 @@ public class Shop {
         boolean flag = false;
         while (!flag) {
             buildingPossesion(building, farm);
-            System.out.println("Cena kupna 1 " + building.getName() + " wynosi " + building.getPrice() + " zł");
-            System.out.println("Masz gotówkę na zakup maksymanie " + (Math.floor(farm.getCash() / building.getPrice())));
+            System.out.println("Cena kupna 1 " + building.getName() + " wynosi " + building.getBuyingPrice() + " zł");
+            System.out.println("Masz gotówkę na zakup maksymanie " + (Math.floor(farm.getCash() / building.getBuyingPrice())));
             System.out.println("Ile budynków chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
@@ -183,14 +183,12 @@ public class Shop {
                     flag = true;
                 } else if (quantity < 0) {
                     System.out.println("Nie można kupić ujemnej ilości budynków.");
-                } else if (farm.getCash() < (quantity * building.getPrice())) {
+                } else if (farm.getCash() < (quantity * building.getBuyingPrice())) {
                     System.out.println("Nie masz wystarczającej ilości pieniędzy, żeby kupić " + building.getName() + " w ilości " + quantity + "szt.");
-                } else if(quantity > ((building.getQuantityOfThisBuildingType() * building.getCapacityOfOneBuilding()) - farm.allPlantsKg()) / building.getCapacityOfOneBuilding()){
-                    System.out.println("Nie możesz sprzedać tylu budynk"); //TODO to jest do sprzedaży, a nie zakupów <-- przenieść
                 } else {
                     building.setQuantityOfThisBuildingType(building.getQuantityOfThisBuildingType() + quantity);
-                    farm.setCash(farm.getCash() - (quantity * building.getPrice()));
-                    System.out.println("Dokonałeś zakupu " + quantity + " " + building.getName() + " za kwotę " + (quantity * building.getPrice()) + "zł.");
+                    farm.setCash(farm.getCash() - (quantity * building.getBuyingPrice()));
+                    System.out.println("Dokonałeś zakupu " + quantity + " " + building.getName() + " za kwotę " + (quantity * building.getBuyingPrice()) + "zł.");
                     buildingPossesion(building, farm);
                     flag = true;
                 }
@@ -202,7 +200,41 @@ public class Shop {
         }
     }
 
-    public void sellBuilding(Farm farm){
+    public void sellBuilding(Building building, Farm farm){
+
+        Integer quantity;
+        Integer maxNumberOfBuildingsToSell = (building.getQuantityOfThisBuildingType() * building.getCapacityOfOneBuilding()) - farm.allPlantsKg() / building.getCapacityOfOneBuilding();
+        boolean flag = false;
+        while (!flag) {
+            landPossession(farm);
+            System.out.println("Cena sprzedaży 1 budynku wynosi " + farm.getLand().getSellPriceOfLandPerHa() + "zł za hektar.");
+            System.out.println("Możesz sprzedać tylko nieobsianą ziemię, czyli " + farm.getLand().getFreeLand());
+            System.out.println("Ile ha chcesz sprzedać? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
+
+            try {
+                quantity = scan.nextInt();
+                if (quantity == 0) {
+                    System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
+                    flag = true;
+                } else if (quantity < 0) {
+                    System.out.println("Nie można sprzedać ujemnej ilości ziemi.");
+                } else if (quantity > farm.getLand().getFreeLand()) {
+                    System.out.println("Nie możesz sprzedać więcej ziemi niż masz obecnie ziemi nieobsianej.");
+                }  else if(quantity > maxNumberOfBuildingsToSell){
+                    System.out.println("Możesz sprzedać tylko budynki, które stoją puste. Możesz sprzedać maksymalnie " + maxNumberOfBuildingsToSell);
+                } else {
+                    farm.getLand().setLandSizeInHa(farm.getLand().getLandSizeInHa() - quantity);
+                    farm.setCash(farm.getCash() + (quantity * farm.getLand().getBuyPriceOfLandPerHa()));
+                    System.out.println("Dokonałeś sprzedaży " + quantity + "ha ziemi za kwotę " + (quantity * farm.getLand().getBuyPriceOfLandPerHa() + "zł."));
+                    landPossession(farm);
+                    flag = true;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Ilość podajemy w pełnych hektarach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
+            }
+            scan.nextLine();
+        }
 
     }
     //TODO****************************Animals

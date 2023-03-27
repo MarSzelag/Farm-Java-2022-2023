@@ -1,14 +1,36 @@
 package animals;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Animal {
     private String race;
-    private Integer age;
-    private Integer ageOfAdulthood;
-    private Double weightGainPerWeek;
-    private List<String> acceptedFood; //TODO Maybe list of objects and then check if it is this type of food?
+    private Integer ageWeeks;
+    private Integer ageOfAdulthoodWeeks;
+    private Double weightInKg;
+    private Double weightGainPerWeekKg;
+    private String acceptedFood;
+    private String buildingNeeded;
+    private Double foodEatenPerWeek;
     private Double breedingChance;
+    private Double buyingPrice;
+    private Double sellingPrice;
+
+
+    public Animal(String race, Integer ageWeeks, Integer ageOfAdulthood, Double weightInKg, Double foodEatenPerWeek, Double weightGainPerWeek, Double breedingChance, Double buyingPrice, Double sellingPrice, String buildingNeeded, String acceptedFood) {
+        this.race = race;
+        this.ageWeeks = ageWeeks;
+        this.ageOfAdulthoodWeeks = ageOfAdulthood;
+        this.weightInKg = weightInKg;
+        this.foodEatenPerWeek = foodEatenPerWeek;
+        this.weightGainPerWeekKg = weightGainPerWeek;
+        this.breedingChance = breedingChance;
+        this.buyingPrice = buyingPrice;
+        this.sellingPrice = sellingPrice;
+        this.buildingNeeded = buildingNeeded;
+        this.acceptedFood = acceptedFood;
+    }
+
     //TODO Types of food accepted by animal
     //TODO Chances for breeding if there is more than one adult animal
     //TODO In Farm class list of animal type, and then each animal have its own cell in list
@@ -40,36 +62,60 @@ public class Animal {
         this.race = race;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getAgeWeeks() {
+        return ageWeeks;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setAgeWeeks(Integer ageWeeks) {
+        this.ageWeeks = ageWeeks;
     }
 
     public Integer getAgeOfAdulthood() {
-        return ageOfAdulthood;
+        return ageOfAdulthoodWeeks;
     }
 
     public void setAgeOfAdulthood(Integer ageOfAdulthood) {
-        this.ageOfAdulthood = ageOfAdulthood;
+        this.ageOfAdulthoodWeeks = ageOfAdulthood;
     }
 
-    public Double getWeightGainPerWeek() {
-        return weightGainPerWeek;
+    public Double getWeightGainPerWeekKg() {
+        return weightGainPerWeekKg;
     }
 
-    public void setWeightGainPerWeek(Double weightGainPerWeek) {
-        this.weightGainPerWeek = weightGainPerWeek;
+    public void setWeightGainPerWeekKg(Double weightGainPerWeekKg) {
+        this.weightGainPerWeekKg = weightGainPerWeekKg;
     }
 
-    public List<String> getAcceptedFood() {
+    public String getAcceptedFood() {
         return acceptedFood;
     }
 
-    public void setAcceptedFood(List<String> acceptedFood) {
+    public void setAcceptedFood(String acceptedFood) {
         this.acceptedFood = acceptedFood;
+    }
+
+    public Integer getAgeOfAdulthoodWeeks() {
+        return ageOfAdulthoodWeeks;
+    }
+
+    public void setAgeOfAdulthoodWeeks(Integer ageOfAdulthoodWeeks) {
+        this.ageOfAdulthoodWeeks = ageOfAdulthoodWeeks;
+    }
+
+    public Double getWeightInKg() {
+        return weightInKg;
+    }
+
+    public void setWeightInKg(Double weightInKg) {
+        this.weightInKg = weightInKg;
+    }
+
+    public Double getFoodEatenPerWeek() {
+        return foodEatenPerWeek;
+    }
+
+    public void setFoodEatenPerWeek(Double foodEatenPerWeek) {
+        this.foodEatenPerWeek = foodEatenPerWeek;
     }
 
     public Double getBreedingChance() {
@@ -78,6 +124,30 @@ public class Animal {
 
     public void setBreedingChance(Double breedingChance) {
         this.breedingChance = breedingChance;
+    }
+
+    public String getBuildingNeeded() {
+        return buildingNeeded;
+    }
+
+    public void setBuildingNeeded(String buildingNeeded) {
+        this.buildingNeeded = buildingNeeded;
+    }
+
+    public Double getBuyingPrice() {
+        return buyingPrice;
+    }
+
+    public void setBuyingPrice(Double buyingPrice) {
+        this.buyingPrice = buyingPrice;
+    }
+
+    public Double getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(Double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 }
 
