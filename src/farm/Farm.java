@@ -218,6 +218,17 @@ public class Farm {
     public void setChickenList(List<Chicken> chickenList) {
         this.chickenList = chickenList;
     }
+    public void addChicken(List<Chicken> chickenList, Integer numberOfChickens){
+        for(int i = 0; i < numberOfChickens; i++){
+            chickenList.add(new Chicken());
+        }
+    }
+
+    public void removeChicken(List<Chicken> chickenList, Integer numberOfChickens){
+        for(int i = 0; i < numberOfChickens; i++){
+            chickenList.remove(chickenList.size() - 1);
+        }
+    }
 
     public List<Cow> getCowList() {
         return cowList;
@@ -227,12 +238,35 @@ public class Farm {
         this.cowList = cowList;
     }
 
+    public void addCow(List<Cow> cowList, Integer numberOfCows){
+        for(int i = 0; i < numberOfCows; i++){
+            cowList.add(new Cow());
+        }
+    }
+
+    public void removeCow(List<Cow> cowList, Integer numberofCows){
+        for(int i = 0; i < numberofCows; i++){
+            cowList.remove(cowList.size() - 1);
+        }
+    }
+
     public List<Goat> getGoatList() {
         return goatList;
     }
 
     public void setGoatList(List<Goat> goatList) {
         this.goatList = goatList;
+    }
+    public void addGoat(List<Goat> goatList, Integer numberOfGoats){
+        for(int i = 0; i < numberOfGoats; i++){
+            goatList.add(new Goat());
+        }
+    }
+
+    public void removeGoat(List<Goat> goatList, Integer numberOfGoats){
+        for(int i = 0; i < numberOfGoats; i++){
+            goatList.remove(goatList.size() - 1);
+        }
     }
 
     public List<Goose> getGooseList() {
@@ -242,6 +276,17 @@ public class Farm {
     public void setGooseList(List<Goose> gooseList) {
         this.gooseList = gooseList;
     }
+    public void addGoose(List<Goose> GooseList, Integer numberOfGoose){
+        for(int i = 0; i < numberOfGoose; i++){
+            gooseList.add(new Goose());
+        }
+    }
+
+    public void removeGoose(List<Goose> gooseList, Integer numberOfGoose){
+        for(int i = 0; i < numberOfGoose; i++){
+            gooseList.remove(gooseList.size() - 1);
+        }
+    }
 
     public List<Pig> getPigList() {
         return pigList;
@@ -249,6 +294,17 @@ public class Farm {
 
     public void setPigList(List<Pig> pigList) {
         this.pigList = pigList;
+    }
+    public void addPig(List<Pig> pigList, Integer numberOfPigs){
+        for(int i = 0; i < numberOfPigs; i++){
+            pigList.add(new Pig());
+        }
+    }
+
+    public void removePig(List<Pig> pigList, Integer numberOfPigs){
+        for(int i = 0; i < numberOfPigs; i++){
+            pigList.remove(pigList.size() - 1);
+        }
     }
 
     public List<Sheep> getSheepList() {
@@ -258,6 +314,17 @@ public class Farm {
     public void setSheepList(List<Sheep> sheepList) {
         this.sheepList = sheepList;
     }
+    public void addSheep(List<Sheep>SheepList, Integer numberOfSheep){
+        for(int i = 0; i < numberOfSheep; i++){
+            sheepList.add(new Sheep());
+        }
+    }
+
+    public void removeSheep(List<Sheep> sheepList, Integer numberofSheep){
+        for(int i = 0; i < numberofSheep; i++){
+           sheepList.remove(sheepList.size() - 1);
+        }
+    }
 
     public List<Turkey> getTurkeyList() {
         return turkeyList;
@@ -265,6 +332,17 @@ public class Farm {
 
     public void setTurkeyList(List<Turkey> turkeyList) {
         this.turkeyList = turkeyList;
+    }
+    public void addTurkey(List<Turkey> turkeyList, Integer numberOfTurkey){
+        for(int i = 0; i < numberOfTurkey; i++){
+            turkeyList.add(new Turkey());
+        }
+    }
+
+    public void removeTurkey(List<Turkey> turkeyList, Integer numberofTurkey){
+        for(int i = 0; i < numberofTurkey; i++){
+            turkeyList.remove(turkeyList.size() - 1);
+        }
     }
 /*
     public Integer getLandOwned() {

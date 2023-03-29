@@ -1,7 +1,9 @@
+import animals.Animal;
 import farm.Farm;
 import plants.Corn;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +12,9 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
             Farm farm = new Farm();
+            farm.addChicken(farm.getChickenList(), 2);
+            farm.removeChicken(farm.getChickenList(), 2);
+            farm.shop.animalPossesionChicken(farm);
             farm.generateFarm();
             System.out.println(farm.getCorn().getStoredInKg()); // Test losowania ilości roślin
              System.out.println(Corn.class.getName());
