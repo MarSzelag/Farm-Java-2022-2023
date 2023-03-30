@@ -3,8 +3,10 @@ import farm.Farm;
 import java.util.Scanner;
 
 public class Menu {
+    Scanner scan = new Scanner(System.in);
 
     private Integer mainMenuCounter = 0;
+    String name;
 
     public Integer getMainMenuCounter() {
         return mainMenuCounter;
@@ -13,6 +15,7 @@ public class Menu {
     public void setMainMenuCounter(Integer mainMenuCounter) {
         this.mainMenuCounter = mainMenuCounter;
     }
+
 
 
     public void mainMenuShow() {
@@ -24,7 +27,9 @@ public class Menu {
     }
 
     public void mainMenu() {
+        mainMenuShow();
         System.out.println();
+        mainMenuCounter = scan.nextInt();
 
         switch (mainMenuCounter) {
             case 1:
@@ -46,7 +51,10 @@ public class Menu {
         //Scanner scan = new Scanner(System.in);
         System.out.println("Rozpoczynasz nową przygodę na swojej farmie.");
         System.out.println("Najpierw jednak musimy cię poznać.");
-        System.out.println("W tym celu podaj nam informację, jak mamy się do ciebie zwracać: ");
+        System.out.println("Napisz, jak mamy się do ciebie zwracać: ");
+        name = scan.nextLine();
+        System.out.println("Witamy " + name + "!");
+        System.out.println("Teraz wybierz farmę, którą chcesz zarządzać");
 
     }
 
