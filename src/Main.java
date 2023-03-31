@@ -9,17 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Farm farm = new Farm();
         Menu menu = new Menu();
         Scanner scan = new Scanner(System.in);
 
-            Farm farm = new Farm();
-            farm.generateFarm();
-
-        //Random rand = new Random();
-
+        farm = menu.mainMenu(farm);
 
         while(menu.getMainMenuCounter() != 9){
-            menu.mainMenu();
+            menu.farmMenu(farm);
         }
 
 

@@ -10,6 +10,8 @@ import java.util.*;
 
 public class Farm {
 
+    Scanner scan = new Scanner(System.in);
+
     Random rand = new Random();
     private String owner;
     private Double cash = 1000.00;
@@ -370,10 +372,12 @@ public class Farm {
     }
 
 
-    public void possesions() {
-        // TODO data, tydzień roku??? tura
-        System.out.println(this.owner + " aktualnie jesteś w posiadaniu: ");
+    public void possesionsLand(){
+        System.out.println("Twoja ziemia:");
         System.out.println(this.land.getLandSizeInHa() + " ha ziemi, w tym " + this.land.getSownLandInHa() + " ha ziemi obsianej i " + this.land.getFreeLand() + " ha ziemi nieobsianej.");
+    }
+    public void possesionsPlants(){
+        System.out.println("Twoje rośliny:  ");
         System.out.println(this.corn.getStoredInKg() + " kg kukurydzy.");
         System.out.println(this.latePotato.getStoredInKg() + " kg ziemniaka późnego.");
         System.out.println(this.lateRape.getStoredInKg() + " kg rzepaka ozimego.");
@@ -381,53 +385,96 @@ public class Farm {
         System.out.println(this.springBarley.getStoredInKg() + " kg jęczmienia jarego.");
         System.out.println(this.whiteBeet.getStoredInKg() + " kg buraka cukrowego.");
         System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej.");
+    }
+    public void possessionsAnimal(){        // TODO Animals
+        System.out.println("Twoje zwierzęta:  ");
+        System.out.println(this.getChickenList().size() + " kór.");
+        System.out.println(this.getCowList().size() + " krów.");
+        System.out.println(this.getGoatList().size() + " kóz.");
+        System.out.println(this.getGooseList().size() + " gęsi.");
+        System.out.println(this.getPigList().size() + " świń.");
+        System.out.println(this.getSheepList().size() + " owiec.");
+        System.out.println(this.getTurkeyList().size() + " indyków.");
+    }
+    public void possesionsBuilding(){        // TODO Building
+        System.out.println("Twoje budynki:  ");
+        System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół.");
+        System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników.");
+        System.out.println(this.cowShed.getQuantityOfThisBuildingType() + " obór.");
+        System.out.println(this.goatBarn.getQuantityOfThisBuildingType() + " stodół dla kóz.");
+        System.out.println(this.gooseCoop.getQuantityOfThisBuildingType() + " gęsich kórników.");
+        System.out.println(this.pigsty.getQuantityOfThisBuildingType() + " chlewów.");
+        System.out.println(this.sheepfold.getQuantityOfThisBuildingType() + " owczarń");
+        System.out.println(this.turkeyCoop.getQuantityOfThisBuildingType() + " kórników dla indyków.");
 
-        // TODO Animals
-        // TODO Building
+    }
+    public void possesions() {
+        // TODO data, tydzień roku??? tura
+        possesionsLand();
+        possesionsPlants();
+        possessionsAnimal();
+        possesionsBuilding();
+        System.out.println();
     }
 
     public Farm generateFarm() {
         Farm farm = new Farm();
         farm.calendar.set(2020, 0, 1);
-        randomStartingValues();
+        randomStartingValues(farm);
         return farm;
     }
 
-    public void randomStartingValues() {
+    public Farm generateManyFarms(){
+        Integer farmNumber;
+        Farm[] farmarr = new Farm[3];
+
+        for(int i = 0; i <= 2; i++){
+            farmarr[i] = generateFarm();
+            System.out.println("Farma nr " + (i + 1));
+            farmarr[i].possesions();
+        }
+
+        System.out.println("Wybierz swoją startową farmę spośród trzech powyżej dostępnych wpisując wartość 1, 2 lub 3: ");
+        farmNumber = scan.nextInt();
+
+        return farmarr[farmNumber - 1];
+    }
+
+    public void randomStartingValues(Farm farm) {
         Integer flag = 0;
 
         this.land.setLandSizeInHa(rand.nextInt(2) + 2);
         while (flag < 2) {
             if (rand.nextBoolean() && flag < 3) {
-                this.corn.setStoredInKg(this.corn.getStoredInKg() + rand.nextInt(20) + 100); //100
+                farm.corn.setStoredInKg(farm.corn.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
-                this.latePotato.setStoredInKg(this.latePotato.getStoredInKg() + rand.nextInt(20) + 100); //100
+                farm.latePotato.setStoredInKg(farm.latePotato.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
-                this.lateRape.setStoredInKg(this.lateRape.getStoredInKg() + rand.nextInt(20) + 100); //100
+                farm.lateRape.setStoredInKg(farm.lateRape.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
-                this.lateRye.setStoredInKg(this.lateRye.getStoredInKg() + rand.nextInt(20) + 100); //100
+                farm.lateRye.setStoredInKg(farm.lateRye.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
-                this.springBarley.setStoredInKg(this.springBarley.getStoredInKg() + rand.nextInt(20) + 100); //100
+                farm.springBarley.setStoredInKg(farm.springBarley.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
-                this.whiteBeet.setStoredInKg(this.whiteBeet.getStoredInKg() + rand.nextInt(20) + 100); //100
+                farm.whiteBeet.setStoredInKg(farm.whiteBeet.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
             if (rand.nextBoolean() && flag < 3) {
-                this.winterWheat.setStoredInKg(this.winterWheat.getStoredInKg() + rand.nextInt(20) + 100); //100
+                farm.winterWheat.setStoredInKg(farm.winterWheat.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
         }
-        this.getLand().setLandSizeInHa(rand.nextInt(5) + 3);
+        farm.getLand().setLandSizeInHa(rand.nextInt(5) + 3);
 
     }
 

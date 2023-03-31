@@ -149,5 +149,6 @@ public class Animal {
     public void setSellingPrice(Double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
+
 }
 
