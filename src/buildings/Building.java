@@ -1,5 +1,7 @@
 package buildings;
 
+import farm.Farm;
+
 public class Building {
     private String name;
     private String storedGoods;
@@ -68,6 +70,8 @@ public class Building {
     public Integer totalCapacity(){
         return this.quantityOfThisBuildingType * this.capacityOfOneBuilding;
     }
+
+
 
 }
 

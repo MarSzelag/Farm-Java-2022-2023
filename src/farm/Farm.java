@@ -44,11 +44,24 @@ public class Farm {
     private List<Pig> pigList = new LinkedList<>();
     private List<Sheep> sheepList = new LinkedList<>();
     private List<Turkey> turkeyList = new LinkedList<>();
+    private List<Sown> sown = new LinkedList<>();
 
 
     public Shop shop = new Shop(this);
 
 
+    public void addSown(Plant plant) {
+        Sown sown = new Sown().addToSown(plant, this);
+        if(sown != null) {
+            this.sown.add(sown);
+        }
+    }
+
+    public void harvestSown(){
+        for(int i = 0; i < this.sown.size(); i++){
+            sown.get(i).minusWeeksToHarvest(this);
+        }
+    }
 
     /*
     public List<Plant> sownPlantsList = new LinkedList<>(); // Plus przy losowanich, minus przy wyszukiwaniu konkretnej rośliny
@@ -161,56 +174,56 @@ public class Farm {
         return corn;
     }
 
-    public void setCorn(Corn corn) {
-        this.corn = corn;
+    public void setCorn(Integer kg) {
+        this.corn.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
     public LatePotato getLatePotato() {
         return latePotato;
     }
 
-    public void setLatePotato(LatePotato latePotato) {
-        this.latePotato = latePotato;
+    public void setLatePotato(Integer kg) {
+        this.latePotato.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
     public LateRape getLateRape() {
         return lateRape;
     }
 
-    public void setLateRape(LateRape lateRape) {
-        this.lateRape = lateRape;
+    public void setLateRape(Integer kg) {
+        this.lateRape.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
     public LateRye getLateRye() {
         return lateRye;
     }
 
-    public void setLateRye(LateRye lateRye) {
-        this.lateRye = lateRye;
+    public void setLateRye(Integer kg) {
+        this.lateRye.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
     public SpringBarley getSpringBarley() {
         return springBarley;
     }
 
-    public void setSpringBarley(SpringBarley springBarley) {
-        this.springBarley = springBarley;
+    public void setSpringBarley(Integer kg) {
+        this.springBarley.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
     public WhiteBeet getWhiteBeet() {
         return whiteBeet;
     }
 
-    public void setWhiteBeet(WhiteBeet whiteBeet) {
-        this.whiteBeet = whiteBeet;
+    public void setWhiteBeet(Integer kg) {
+        this.springBarley.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
     public WinterWheat getWinterWheat() {
         return winterWheat;
     }
 
-    public void setWinterWheat(WinterWheat winterWheat) {
-        this.winterWheat = winterWheat;
+    public void setWinterWheat(Integer kg) {
+        this.winterWheat.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
     public List<Chicken> getChickenList() {
@@ -482,13 +495,6 @@ public class Farm {
         return this.getCorn().getStoredInKg() + this.getLatePotato().getStoredInKg() + this.getLateRape().getStoredInKg() + this.getLateRye().getStoredInKg() + this.getSpringBarley().getStoredInKg() + this.getWhiteBeet().getStoredInKg() + this.getWinterWheat().getStoredInKg();
     }
 
-    public void buy() {
-
-    }
-
-    public void sell() {
-
-    }
 
     public void sow() {
 
@@ -510,8 +516,9 @@ public class Farm {
         return this.calendar.get(Calendar.WEEK_OF_YEAR);
     }
 
-    public void getTime() { //Zmienić void, jaki zwracany typ?
-        this.calendar.getTime();
+    public Date getTime() { //Zmienić void, jaki zwracany typ?
+
+        return this.calendar.getTime();
     }
 
     public void winningConditions() {

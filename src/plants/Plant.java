@@ -1,5 +1,10 @@
 package plants;
 
+import farm.Farm;
+
+import java.util.Date;
+import java.util.Scanner;
+
 public class Plant {
 
     private String plantName;
@@ -17,16 +22,17 @@ public class Plant {
     private Double landPreparationCostPerHa;
     private Double protectionAgainstPests;
 
-    private boolean isSownAlready;
+    //private boolean isSownAlready;
 
     private Integer storedInKg = 0;
 
-   // private Integer growTime; // Czas, jaki potrzebuje roślina do osiągnięcia dojrzałej formy.
+    // private Integer growTime; // Czas, jaki potrzebuje roślina do osiągnięcia dojrzałej formy.
     // private Integer age; // Obecny wiek zasadzonej rośliny.
 
-    public Plant(){
+    public Plant() {
 
     }
+
     public Plant(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHa, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeAfterNoWeeks, Double sellPricePerKg, Double buyPricePerKg, Double landPreparationCostPerHa, Double protectionAgainstPests) {
         this.plantName = plantName;
         this.neededToSowOneHaInKg = neededToSowOneHaInKg;
@@ -131,16 +137,19 @@ public class Plant {
     public Double getProtectionAgainstPests() {
         return protectionAgainstPests;
     }
-
+/*
     public boolean isSownAlready() {
         return isSownAlready;
     }
 
     public void setSownAlready(boolean sownAlready) {
         isSownAlready = sownAlready;
-    }
+    }*/
 
     public void setProtectionAgainstPests(Double protectionAgainstPests) {
         this.protectionAgainstPests = protectionAgainstPests;
     }
+
+
+
 }
