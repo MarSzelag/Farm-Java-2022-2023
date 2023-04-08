@@ -50,18 +50,7 @@ public class Farm {
     public Shop shop = new Shop(this);
 
 
-    public void addSown(Plant plant) {
-        Sown sown = new Sown().addToSown(plant, this);
-        if(sown != null) {
-            this.sown.add(sown);
-        }
-    }
 
-    public void harvestSown(){
-        for(int i = 0; i < this.sown.size(); i++){
-            sown.get(i).minusWeeksToHarvest(this);
-        }
-    }
 
     /*
     public List<Plant> sownPlantsList = new LinkedList<>(); // Plus przy losowanich, minus przy wyszukiwaniu konkretnej rośliny
@@ -496,19 +485,26 @@ public class Farm {
     }
 
 
-    public void sow() {
 
+    public void startOfTheTurn(){
+        System.out.println("Jest " + getTime() + " czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
+        harvestSown();
+        /*
+        - Wyświetlić datę, tydzień roku i numer tury *
+        - Zbiory *
+        - Eventy
+         */
     }
-
-    public void harvest() {
-
-    }
-
-
-
     public void nextTurn() {
+        /*TODO
+        - Zmienić tydzień i datę *
+        - Zmienić numer tury *
+        - Wiek zwierząt, rozmnażanie i zebranie produktów od nich
+        - Sprawdzić winningConditions *
+         */
         this.calendar.add(Calendar.DAY_OF_WEEK, 7); // Next week
         //Zwiększenie masy zwierząt, zmniejszenie czasu do zbiorów, eventy
+        this.winningConditions();
         this.turnCounter++;
     }
 
@@ -519,6 +515,18 @@ public class Farm {
     public Date getTime() { //Zmienić void, jaki zwracany typ?
 
         return this.calendar.getTime();
+    }
+    public void addSown(Plant plant) {
+        Sown sown = new Sown().addToSown(plant, this);
+        if(sown != null) {
+            this.sown.add(sown);
+        }
+    }
+
+    public void harvestSown(){
+        for(int i = 0; i < this.sown.size(); i++){
+            sown.get(i).minusWeeksToHarvest(this);
+        }
     }
 
     public void winningConditions() {
