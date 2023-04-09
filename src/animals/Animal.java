@@ -16,6 +16,11 @@ public class Animal {
     private Double buyingPrice;
     private Double sellingPrice;
 
+    private Integer numberOfAnimal;
+    private boolean isAdult = false;
+    //private static Integer totalNumberOfAnimal;
+    //private static Integer totalNumberOfAdultAnimal;
+
 
     public Animal(String race, Integer ageWeeks, Integer ageOfAdulthood, Double weightInKg, Double foodEatenPerWeek, Double weightGainPerWeek, Double breedingChance, Double buyingPrice, Double sellingPrice, String buildingNeeded, String acceptedFood) {
         this.race = race;
@@ -149,6 +154,161 @@ public class Animal {
     public void setSellingPrice(Double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
+
+    public Integer getNumberOfAnimal() {
+        return numberOfAnimal;
+    }
+
+    public void setNumberOfAnimal(Integer numberOfAnimal) {
+        this.numberOfAnimal = numberOfAnimal;
+    }
+
+    public boolean isAdult() {
+        return isAdult;
+    }
+
+    public void setAdult(boolean adult) {
+        isAdult = adult;
+    }
+
+
+    public void ageChange(){
+        this.ageWeeks = this.ageWeeks + 1;
+        if(this.ageWeeks < this.ageOfAdulthoodWeeks)
+            this.weightInKg = this.weightInKg + this.weightGainPerWeekKg;
+        if(this.ageWeeks == this.ageOfAdulthoodWeeks)
+            this.isAdult = true;
+    }
+
+    public void reproduce(){//TODO
+        if(this.ageWeeks >= this.ageOfAdulthoodWeeks){
+
+        }
+    }
+
+    public Integer howManyChickenInList(List<Chicken> list){
+        Integer numberOfAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultChickenInList(List<Chicken> list){
+        Integer numberOfAdultAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+    public Integer howManyCowInList(List<Cow> list){
+        Integer numberOfAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultCowInList(List<Cow> list){
+        Integer numberOfAdultAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+    public Integer howManyGoatInList(List<Goat> list){
+        Integer numberOfAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultGoatInList(List<Goat> list){
+        Integer numberOfAdultAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+    public Integer howManyGooseInList(List<Goose> list){
+        Integer numberOfAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultGooseInList(List<Goose> list){
+        Integer numberOfAdultAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+
+
+    public Integer howManyPigInList(List<Pig> list){ //TODO sprawdza po sprzedaży i zakupie
+        Integer numberOfAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultPigInList(List<Pig> list){//TODO sprawdza po sprzedaży i zakupie
+        Integer numberOfAdultAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.numberOfAnimal;
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+
+    public Integer howManySheepInList(List<Sheep> list){
+        Integer numberOfAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultSheepInList(List<Sheep> list){
+        Integer numberOfAdultAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+    public Integer howManyTurkeyInList(List<Turkey> list){
+        Integer numberOfAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultTurkeyInList(List<Turkey> list){
+        Integer numberOfAdultAnimals = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+
 
 }
 

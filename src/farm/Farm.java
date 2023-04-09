@@ -44,10 +44,30 @@ public class Farm {
     private List<Pig> pigList = new LinkedList<>();
     private List<Sheep> sheepList = new LinkedList<>();
     private List<Turkey> turkeyList = new LinkedList<>();
+    private Integer totalNumberOfChicken, totalNumberOfCow, totalNumberOfGoat, totalNumberOfGoose, totalNumberOfPig, totalNumberOfSheep, totalNumberOfTurkey;
+    private Integer totalNumberOfAdultChicken, totalNumberOfAdultCow, totalNumberOfAdultGoat, totalNumberOfAdultGoose, totalNumberOfAdultPig, totalNumberOfAdultSheep, totalNumberOfAdultTurkey;
     private List<Sown> sown = new LinkedList<>();
 
 
     public Shop shop = new Shop(this);
+
+    public void checkNumberOfAnimals(List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
+        totalNumberOfChicken = getChickenList().get(0).howManyChickenInList(chickenList);
+        totalNumberOfCow = getCowList().get(0).howManyCowInList(cowList);
+        totalNumberOfGoat = goatList.get(0).howManyGoatInList(goatList);
+        totalNumberOfGoose = gooseList.get(0).howManyGooseInList(gooseList);
+        totalNumberOfPig = pigList.get(0).howManyPigInList(pigList);
+        totalNumberOfSheep = sheepList.get(0).howManySheepInList(sheepList);
+        totalNumberOfTurkey = turkeyList.get(0).howManyTurkeyInList(turkeyList);
+
+        totalNumberOfAdultChicken = chickenList.get(0).howManyAdultChickenInList(chickenList);
+        totalNumberOfAdultCow = cowList.get(0).howManyAdultCowInList(cowList);
+        totalNumberOfAdultGoat = goatList.get(0).howManyAdultGoatInList(goatList);
+        totalNumberOfAdultGoose = gooseList.get(0).howManyAdultGooseInList(gooseList);
+        totalNumberOfAdultPig = pigList.get(0).howManyAdultPigInList(pigList);
+        totalNumberOfAdultSheep = sheepList.get(0).howManyAdultSheepInList(sheepList);
+        totalNumberOfAdultTurkey = turkeyList.get(0).howManyAdultTurkeyInList(turkeyList);
+    }
 
 
 
@@ -228,12 +248,12 @@ public class Farm {
             chickenList.add(new Chicken());
         }
     }
-
+/*
     public void removeChicken(List<Chicken> chickenList, Integer numberOfChickens) {
         for (int i = 0; i < numberOfChickens; i++) {
             chickenList.remove(chickenList.size() - 1);
         }
-    }
+    }*/
 
     public List<Cow> getCowList() {
         return cowList;
@@ -249,12 +269,13 @@ public class Farm {
         }
     }
 
-    public void removeCow(List<Cow> cowList, Integer numberofCows) {
-        for (int i = 0; i < numberofCows; i++) {
-            cowList.remove(cowList.size() - 1);
+    /*
+        public void removeCow(List<Cow> cowList, Integer numberofCows) {
+            for (int i = 0; i < numberofCows; i++) {
+                cowList.remove(cowList.size() - 1);
+            }
         }
-    }
-
+    */
     public List<Goat> getGoatList() {
         return goatList;
     }
@@ -268,12 +289,12 @@ public class Farm {
             goatList.add(new Goat());
         }
     }
-
+/*
     public void removeGoat(List<Goat> goatList, Integer numberOfGoats) {
         for (int i = 0; i < numberOfGoats; i++) {
             goatList.remove(goatList.size() - 1);
         }
-    }
+    }*/
 
     public List<Goose> getGooseList() {
         return gooseList;
@@ -288,12 +309,12 @@ public class Farm {
             gooseList.add(new Goose());
         }
     }
-
+/*
     public void removeGoose(List<Goose> gooseList, Integer numberOfGoose) {
         for (int i = 0; i < numberOfGoose; i++) {
             gooseList.remove(gooseList.size() - 1);
         }
-    }
+    }*/
 
     public List<Pig> getPigList() {
         return pigList;
@@ -308,12 +329,12 @@ public class Farm {
             pigList.add(new Pig());
         }
     }
-
+/*
     public void removePig(List<Pig> pigList, Integer numberOfPigs) {
         for (int i = 0; i < numberOfPigs; i++) {
             pigList.remove(pigList.size() - 1);
         }
-    }
+    }*/
 
     public List<Sheep> getSheepList() {
         return sheepList;
@@ -328,12 +349,12 @@ public class Farm {
             sheepList.add(new Sheep());
         }
     }
-
+/*
     public void removeSheep(List<Sheep> sheepList, Integer numberofSheep) {
         for (int i = 0; i < numberofSheep; i++) {
             sheepList.remove(sheepList.size() - 1);
         }
-    }
+    }*/
 
     public List<Turkey> getTurkeyList() {
         return turkeyList;
@@ -348,12 +369,12 @@ public class Farm {
             turkeyList.add(new Turkey());
         }
     }
-
+/*
     public void removeTurkey(List<Turkey> turkeyList, Integer numberofTurkey) {
         for (int i = 0; i < numberofTurkey; i++) {
             turkeyList.remove(turkeyList.size() - 1);
         }
-    }
+    }*/
 /*
     public Integer getLandOwned() {
         return landOwned;
@@ -373,12 +394,124 @@ public class Farm {
         this.turnCounter = turnCounter;
     }
 
+    public Integer getTotalNumberOfChicken() {
+        return totalNumberOfChicken;
+    }
 
-    public void possesionsLand(){
+    public void setTotalNumberOfChicken(Integer totalNumberOfChicken) {
+        this.totalNumberOfChicken = totalNumberOfChicken;
+    }
+
+    public Integer getTotalNumberOfCow() {
+        return totalNumberOfCow;
+    }
+
+    public void setTotalNumberOfCow(Integer totalNumberOfCow) {
+        this.totalNumberOfCow = totalNumberOfCow;
+    }
+
+    public Integer getTotalNumberOfGoat() {
+        return totalNumberOfGoat;
+    }
+
+    public void setTotalNumberOfGoat(Integer totalNumberOfGoat) {
+        this.totalNumberOfGoat = totalNumberOfGoat;
+    }
+
+    public Integer getTotalNumberOfGoose() {
+        return totalNumberOfGoose;
+    }
+
+    public void setTotalNumberOfGoose(Integer totalNumberOfGoose) {
+        this.totalNumberOfGoose = totalNumberOfGoose;
+    }
+
+    public Integer getTotalNumberOfPig() {
+        return totalNumberOfPig;
+    }
+
+    public void setTotalNumberOfPig(Integer totalNumberOfPig) {
+        this.totalNumberOfPig = totalNumberOfPig;
+    }
+
+    public Integer getTotalNumberOfSheep() {
+        return totalNumberOfSheep;
+    }
+
+    public void setTotalNumberOfSheep(Integer totalNumberOfSheep) {
+        this.totalNumberOfSheep = totalNumberOfSheep;
+    }
+
+    public Integer getTotalNumberOfTurkey() {
+        return totalNumberOfTurkey;
+    }
+
+    public void setTotalNumberOfTurkey(Integer totalNumberOfTurkey) {
+        this.totalNumberOfTurkey = totalNumberOfTurkey;
+    }
+
+    public Integer getTotalNumberOfAdultChicken() {
+        return totalNumberOfAdultChicken;
+    }
+
+    public void setTotalNumberOfAdultChicken(Integer totalNumberOfAdultChicken) {
+        this.totalNumberOfAdultChicken = totalNumberOfAdultChicken;
+    }
+
+    public Integer getTotalNumberOfAdultCow() {
+        return totalNumberOfAdultCow;
+    }
+
+    public void setTotalNumberOfAdultCow(Integer totalNumberOfAdultCow) {
+        this.totalNumberOfAdultCow = totalNumberOfAdultCow;
+    }
+
+    public Integer getTotalNumberOfAdultGoat() {
+        return totalNumberOfAdultGoat;
+    }
+
+    public void setTotalNumberOfAdultGoat(Integer totalNumberOfAdultGoat) {
+        this.totalNumberOfAdultGoat = totalNumberOfAdultGoat;
+    }
+
+    public Integer getTotalNumberOfAdultGoose() {
+        return totalNumberOfAdultGoose;
+    }
+
+    public void setTotalNumberOfAdultGoose(Integer totalNumberOfAdultGoose) {
+        this.totalNumberOfAdultGoose = totalNumberOfAdultGoose;
+    }
+
+    public Integer getTotalNumberOfAdultPig() {
+        return totalNumberOfAdultPig;
+    }
+
+    public void setTotalNumberOfAdultPig(Integer totalNumberOfAdultPig) {
+        this.totalNumberOfAdultPig = totalNumberOfAdultPig;
+    }
+
+    public Integer getTotalNumberOfAdultSheep() {
+        return totalNumberOfAdultSheep;
+    }
+
+    public void setTotalNumberOfAdultSheep(Integer totalNumberOfAdultSheep) {
+        this.totalNumberOfAdultSheep = totalNumberOfAdultSheep;
+    }
+
+    public Integer getTotalNumberOfAdultTurkey() {
+        return totalNumberOfAdultTurkey;
+    }
+
+    public void setTotalNumberOfAdultTurkey(Integer totalNumberOfAdultTurkey) {
+        this.totalNumberOfAdultTurkey = totalNumberOfAdultTurkey;
+    }
+
+    public void possesionsLand() {
         System.out.println("Twoja ziemia:");
         System.out.println(this.land.getLandSizeInHa() + " ha ziemi, w tym " + this.land.getSownLandInHa() + " ha ziemi obsianej i " + this.land.getFreeLand() + " ha ziemi nieobsianej.");
     }
-    public void possesionsPlants(){
+
+    public void possesionsPlants() {
         System.out.println("Twoje rośliny:  ");
         System.out.println(this.corn.getStoredInKg() + " kg kukurydzy.");
         System.out.println(this.latePotato.getStoredInKg() + " kg ziemniaka późnego.");
@@ -388,7 +521,8 @@ public class Farm {
         System.out.println(this.whiteBeet.getStoredInKg() + " kg buraka cukrowego.");
         System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej.");
     }
-    public void possessionsAnimal(){        // TODO Animals
+
+    public void possessionsAnimal() {        // TODO Animals
         System.out.println("Twoje zwierzęta:  ");
         System.out.println(this.getChickenList().size() + " kór.");
         System.out.println(this.getCowList().size() + " krów.");
@@ -398,7 +532,8 @@ public class Farm {
         System.out.println(this.getSheepList().size() + " owiec.");
         System.out.println(this.getTurkeyList().size() + " indyków.");
     }
-    public void possesionsBuilding(){        // TODO Building
+
+    public void possesionsBuilding() {        // TODO Building
         System.out.println("Twoje budynki:  ");
         System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół.");
         System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników.");
@@ -410,6 +545,7 @@ public class Farm {
         System.out.println(this.turkeyCoop.getQuantityOfThisBuildingType() + " kórników dla indyków.");
 
     }
+
     public void possesions() {
         // TODO data, tydzień roku??? tura
         possesionsLand();
@@ -426,11 +562,11 @@ public class Farm {
         return farm;
     }
 
-    public Farm generateManyFarms(){
+    public Farm generateManyFarms() {
         Integer farmNumber;
         Farm[] farmarr = new Farm[3];
 
-        for(int i = 0; i <= 2; i++){
+        for (int i = 0; i <= 2; i++) {
             farmarr[i] = generateFarm();
             System.out.println("Farma nr " + (i + 1));
             farmarr[i].possesions();
@@ -485,23 +621,27 @@ public class Farm {
     }
 
 
-
-    public void startOfTheTurn(){
+    public void startOfTheTurn() {
         System.out.println("Jest " + getTime() + " czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
+        checkNumberOfAnimals(chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         harvestSown();
         /*
+                - Sprawdzanie liczby młodych i dojrzałych zwierząt
         - Wyświetlić datę, tydzień roku i numer tury *
         - Zbiory *
         - Eventy
          */
     }
+
     public void nextTurn() {
         /*TODO
+
         - Zmienić tydzień i datę *
         - Zmienić numer tury *
         - Wiek zwierząt, rozmnażanie i zebranie produktów od nich
         - Sprawdzić winningConditions *
          */
+
         this.calendar.add(Calendar.DAY_OF_WEEK, 7); // Next week
         //Zwiększenie masy zwierząt, zmniejszenie czasu do zbiorów, eventy
         this.winningConditions();
@@ -512,19 +652,20 @@ public class Farm {
         return this.calendar.get(Calendar.WEEK_OF_YEAR);
     }
 
-    public Date getTime() { //Zmienić void, jaki zwracany typ?
+    public Date getTime() {
 
         return this.calendar.getTime();
     }
+
     public void addSown(Plant plant) {
         Sown sown = new Sown().addToSown(plant, this);
-        if(sown != null) {
+        if (sown != null) {
             this.sown.add(sown);
         }
     }
 
-    public void harvestSown(){
-        for(int i = 0; i < this.sown.size(); i++){
+    public void harvestSown() {
+        for (int i = 0; i < this.sown.size(); i++) {
             sown.get(i).minusWeeksToHarvest(this);
         }
     }
