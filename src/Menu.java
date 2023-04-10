@@ -112,7 +112,7 @@ public class Menu {
                 }
                 break;
             case 9:
-                System.out.println("Wyjdź z gry."); // Wyjście z gry powinno mieć potwierdzenie, czy na pewno.
+                System.out.println("Wyjdź z gry.");
                 break;
             default:
                 System.out.println("Wprowadzonow niewłaściwą wartość. Spróbuj jeszcze raz.");

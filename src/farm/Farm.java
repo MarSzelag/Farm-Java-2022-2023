@@ -785,13 +785,14 @@ public class Farm {
 
     public void nextTurn() {
         /*TODO
-        - eat()
+
         - Zmienić tydzień i datę *
         - Zmienić numer tury *
+        - eat() *
         - Wiek zwierząt, rozmnażanie i zebranie produktów od nich
         - Sprawdzić winningConditions *
          */
-
+        animal.eat(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         this.calendar.add(Calendar.DAY_OF_WEEK, 7); // Next week
         //Zwiększenie masy zwierząt, zmniejszenie czasu do zbiorów, eventy
         this.winningConditions();

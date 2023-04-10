@@ -16,6 +16,7 @@ public class Main {
 
         farm = menu.mainMenu(farm);
         System.out.println(farm.getTime()); //test
+
         while(farmMenuCounter != 9){
             farmMenuCounter = menu.farmMenu(farm);
         }

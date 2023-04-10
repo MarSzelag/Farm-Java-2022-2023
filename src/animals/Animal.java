@@ -22,7 +22,9 @@ public class Animal {
     private boolean isAdult = false;
     private Double animalProductPrice;
 
-    public Animal(){}
+    public Animal() {
+    }
+
     public Animal(String race, Integer ageWeeks, Integer ageOfAdulthood, Double weightInKg, Double foodEatenPerWeek, Double weightGainPerWeek, Integer breedingChance, Double buyingPrice, Double sellingPrice, String buildingNeeded, String acceptedFood) {
         this.race = race;
         this.ageWeeks = ageWeeks;
@@ -48,15 +50,15 @@ public class Animal {
     // owca - sheepfold
     // koza - goat barn
 
-    public void canAnimalEatIt(){
+    public void canAnimalEatIt() {
 
     }
 
-    public void breed(){
+    public void breed() {
 
     }
 
-    public void numberOfAdultAnimals(){
+    public void numberOfAdultAnimals() {
 
     }
 
@@ -172,179 +174,229 @@ public class Animal {
         this.animalProductPrice = animalProductPrice;
     }
 
-    public void ageChange(){
+    public void ageChange() {
         this.ageWeeks = this.ageWeeks + 1;
-        if(this.ageWeeks < this.ageOfAdulthoodWeeks)
+        if (this.ageWeeks < this.ageOfAdulthoodWeeks)
             this.weightInKg = this.weightInKg + this.weightGainPerWeekKg;
-        if(this.ageWeeks == this.ageOfAdulthoodWeeks)
+        if (this.ageWeeks == this.ageOfAdulthoodWeeks)
             this.isAdult = true;
     }
 
-    public void reproduce(){//TODO
-        if(this.ageWeeks >= this.ageOfAdulthoodWeeks){
+    public void reproduce() {//TODO
+        if (this.ageWeeks >= this.ageOfAdulthoodWeeks) {
 
         }
     }
 
-    public void eat(Farm farm, List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList){
+    public void eat(Farm farm, List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
         Double chickenFoodNeed = 0.0, cowFoodNeed = 0.0, goatFoodNeed = 0.0, gooseFoodNeed = 0.0, sheepFoodNeed = 0.0, turkeyFoodNeed = 0.0, pigFoodNeed = 0.0;
-        if(chickenList.get(0) != null) {
+        if (chickenList.get(0) != null) {
             chickenFoodNeed = chickenList.get(0).getFoodEatenPerWeek() * howManyChickenInList(chickenList);
         }
-        if(chickenList.get(0) != null) {
+        if (chickenList.get(0) != null) {
             cowFoodNeed = cowList.get(0).getFoodEatenPerWeek() * howManyCowInList(cowList);
         }
-        if(chickenList.get(0) != null) {
+        if (chickenList.get(0) != null) {
             goatFoodNeed = goatList.get(0).getFoodEatenPerWeek() * howManyGoatInList(goatList);
         }
-        if(chickenList.get(0) != null) {
+        if (chickenList.get(0) != null) {
             gooseFoodNeed = gooseList.get(0).getFoodEatenPerWeek() * howManyGooseInList(gooseList);
         }
-        if(chickenList.get(0) != null) {
+        if (chickenList.get(0) != null) {
             sheepFoodNeed = sheepList.get(0).getFoodEatenPerWeek() * howManySheepInList(sheepList);
         }
-        if(chickenList.get(0) != null) {
+        if (chickenList.get(0) != null) {
             turkeyFoodNeed = turkeyList.get(0).getFoodEatenPerWeek() * howManyTurkeyInList(turkeyList);
         }
-        if(chickenList.get(0) != null) {
+        if (chickenList.get(0) != null) {
             pigFoodNeed = pigList.get(0).getFoodEatenPerWeek() * howManyPigInList(pigList);
         }
 
-        if(farm.getCorn().getStoredInKg() >= chickenFoodNeed && chickenFoodNeed > 0){//chicken
+        if (farm.getCorn().getStoredInKg() >= chickenFoodNeed && chickenFoodNeed > 0) {
             System.out.println("Kury zjadły " + chickenFoodNeed + "kg kukurydzy.");
             farm.setCorn(-chickenFoodNeed);
+        } else {
+            for (int i = 0; i < chickenList.size(); i++) {
+                if (chickenList.get(i).getWeightInKg() > 0.5) {
+                    chickenList.get(i).setWeightInKg(chickenList.get(i).getWeightInKg() - 0.01);
+                    System.out.println("Kup kukurydzę. Kwoje kurczaki nie mają wystarczającej ilości i zaczęły chudnąć.");
+                }
+            }
         }
-        if(farm.getWinterWheat().getStoredInKg() >= cowFoodNeed && cowFoodNeed > 0){//cow
+        if (farm.getWinterWheat().getStoredInKg() >= cowFoodNeed && cowFoodNeed > 0) {
             System.out.println("Krowy zjadły " + cowFoodNeed + "kg pszenicy ozimej.");
-            farm.setWinterWheat(- cowFoodNeed);
+            farm.setWinterWheat(-cowFoodNeed);
+        } else {
+            for (int i = 0; i < cowList.size(); i++) {
+                if (cowList.get(i).getWeightInKg() > 45.0) {
+                    cowList.get(i).setWeightInKg(cowList.get(i).getWeightInKg() - 0.05);
+                    System.out.println("Kup pszenicę ozimą. Kwoje krowy nie mają wystarczającej ilości i zaczęły chudnąć.");
+                }
+            }
         }
-        if(farm.getSpringBarley().getStoredInKg() >= goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed && goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed > 0){ //goat, goose, sheep, turkey
-            System.out.println("Kozy, gęsi, owce i indyki zjadły razem " + goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed + "kg jęczmienia jarego." );
-            farm.setSpringBarley( - (goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed));
+        if (farm.getSpringBarley().getStoredInKg() >= goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed && goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed > 0) {
+            System.out.println("Kozy, gęsi, owce i indyki zjadły razem " + goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed + "kg jęczmienia jarego.");
+            farm.setSpringBarley(-(goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed));
+        } else {
+            for (int i = 0; i < goatList.size(); i++) {
+                if (goatList.get(i).getWeightInKg() > 34.0) {
+                    goatList.get(i).setWeightInKg(goatList.get(i).getWeightInKg() - 0.03);
+                    System.out.println("Kup jęczmień jary. Kwoje kozy nie mają wystarczającej ilości i zaczęły chudnąć.");
+                }
+            }
+            for (int i = 0; i < gooseList.size(); i++) {
+                if (gooseList.get(i).getWeightInKg() > 1.0) {
+                    gooseList.get(i).setWeightInKg(gooseList.get(i).getWeightInKg() - 0.007);
+                    System.out.println("Kup jęczmień jary. Kwoje gęsi nie mają wystarczającej ilości i zaczęły chudnąć.");
+                }
+            }
+            for (int i = 0; i < sheepList.size(); i++) {
+                if (sheepList.get(i).getWeightInKg() > 14.0) {
+                    sheepList.get(i).setWeightInKg(sheepList.get(i).getWeightInKg() - 0.02);
+                    System.out.println("Kup jęczmień jary. Kwoje owce nie mają wystarczającej ilości i zaczęły chudnąć.");
+                }
+            }
+            for (int i = 0; i < turkeyList.size(); i++) {
+                if (turkeyList.get(i).getWeightInKg() > 0.8) {
+                    turkeyList.get(i).setWeightInKg(turkeyList.get(i).getWeightInKg() - 0.006);
+                    System.out.println("Kup jęczmień jary. Kwoje indyki nie mają wystarczającej ilości i zaczęły chudnąć.");
+                }
+            }
         }
-        if(farm.getLatePotato().getStoredInKg() >= pigFoodNeed && pigFoodNeed > 0){ //pig
+        if (farm.getLatePotato().getStoredInKg() >= pigFoodNeed && pigFoodNeed > 0) {
             System.out.println("Świnie zjadły " + pigFoodNeed + "kg późnych ziemniaków.");
-            farm.setLatePotato(- pigFoodNeed);
-        } //TODO else
-    }
-
-    public Integer howManyChickenInList(List<Chicken> list){
-        Integer numberOfAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
-        }
-        return numberOfAnimals;
-    }
-
-    public Integer howManyAdultChickenInList(List<Chicken> list){
-        Integer numberOfAdultAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
-                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            farm.setLatePotato(-pigFoodNeed);
+        } else {
+            for (int i = 0; i < chickenList.size(); i++) {
+                if (chickenList.get(i).getWeightInKg() > 16.0) {
+                    chickenList.get(i).setWeightInKg(chickenList.get(i).getWeightInKg() - 0.02);
+                    System.out.println("Kup późne ziemniaki. Kwoje świnie nie mają wystarczającej ilości i zaczęły chudnąć.");
+                }
             }
         }
-        return numberOfAdultAnimals;
     }
-    public Integer howManyCowInList(List<Cow> list){
+
+    public Integer howManyChickenInList(List<Chicken> list) {
         Integer numberOfAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
         }
         return numberOfAnimals;
     }
 
-    public Integer howManyAdultCowInList(List<Cow> list){
+    public Integer howManyAdultChickenInList(List<Chicken> list) {
         Integer numberOfAdultAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
-                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
-            }
-        }
-        return numberOfAdultAnimals;
-    }
-    public Integer howManyGoatInList(List<Goat> list){
-        Integer numberOfAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
-        }
-        return numberOfAnimals;
-    }
-
-    public Integer howManyAdultGoatInList(List<Goat> list){
-        Integer numberOfAdultAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
-                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
-            }
-        }
-        return numberOfAdultAnimals;
-    }
-    public Integer howManyGooseInList(List<Goose> list){
-        Integer numberOfAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
-        }
-        return numberOfAnimals;
-    }
-
-    public Integer howManyAdultGooseInList(List<Goose> list){
-        Integer numberOfAdultAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
                 numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
             }
         }
         return numberOfAdultAnimals;
     }
 
-
-    public Integer howManyPigInList(List<Pig> list){ //TODO sprawdza po sprzedaży i zakupie
+    public Integer howManyCowInList(List<Cow> list) {
         Integer numberOfAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
         }
         return numberOfAnimals;
     }
 
-    public Integer howManyAdultPigInList(List<Pig> list){//TODO sprawdza po sprzedaży i zakupie
+    public Integer howManyAdultCowInList(List<Cow> list) {
         Integer numberOfAdultAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+
+    public Integer howManyGoatInList(List<Goat> list) {
+        Integer numberOfAnimals = 0;
+        for (int i = 0; i < list.size(); i++) {
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultGoatInList(List<Goat> list) {
+        Integer numberOfAdultAnimals = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+
+    public Integer howManyGooseInList(List<Goose> list) {
+        Integer numberOfAnimals = 0;
+        for (int i = 0; i < list.size(); i++) {
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultGooseInList(List<Goose> list) {
+        Integer numberOfAdultAnimals = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+                numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
+            }
+        }
+        return numberOfAdultAnimals;
+    }
+
+
+    public Integer howManyPigInList(List<Pig> list) { //TODO sprawdza po sprzedaży i zakupie
+        Integer numberOfAnimals = 0;
+        for (int i = 0; i < list.size(); i++) {
+            numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
+        }
+        return numberOfAnimals;
+    }
+
+    public Integer howManyAdultPigInList(List<Pig> list) {//TODO sprawdza po sprzedaży i zakupie
+        Integer numberOfAdultAnimals = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
                 numberOfAdultAnimals = numberOfAdultAnimals + this.numberOfAnimal;
             }
         }
         return numberOfAdultAnimals;
     }
 
-    public Integer howManySheepInList(List<Sheep> list){
+    public Integer howManySheepInList(List<Sheep> list) {
         Integer numberOfAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
         }
         return numberOfAnimals;
     }
 
-    public Integer howManyAdultSheepInList(List<Sheep> list){
+    public Integer howManyAdultSheepInList(List<Sheep> list) {
         Integer numberOfAdultAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
                 numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
             }
         }
         return numberOfAdultAnimals;
     }
-    public Integer howManyTurkeyInList(List<Turkey> list){
+
+    public Integer howManyTurkeyInList(List<Turkey> list) {
         Integer numberOfAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
         }
         return numberOfAnimals;
     }
 
-    public Integer howManyAdultTurkeyInList(List<Turkey> list){
+    public Integer howManyAdultTurkeyInList(List<Turkey> list) {
         Integer numberOfAdultAnimals = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {
                 numberOfAdultAnimals = numberOfAdultAnimals + this.getNumberOfAnimal();
             }
         }
