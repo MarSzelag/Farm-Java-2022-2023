@@ -226,7 +226,7 @@ public class Shop {
     public void sellBuilding(Building building, Farm farm) {
 
         Integer quantity;
-        Integer maxNumberOfBuildingsToSell = (building.getQuantityOfThisBuildingType() * building.getCapacityOfOneBuilding()) - farm.allPlantsKg() / building.getCapacityOfOneBuilding();
+        double maxNumberOfBuildingsToSell = (building.getQuantityOfThisBuildingType() * building.getCapacityOfOneBuilding()) - farm.allPlantsKg() / building.getCapacityOfOneBuilding();
         boolean flag = false;
         while (!flag) {
             landPossession(farm);

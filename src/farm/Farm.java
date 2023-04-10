@@ -48,6 +48,8 @@ public class Farm {
     private Integer totalNumberOfAdultChicken, totalNumberOfAdultCow, totalNumberOfAdultGoat, totalNumberOfAdultGoose, totalNumberOfAdultPig, totalNumberOfAdultSheep, totalNumberOfAdultTurkey;
     private List<Sown> sown = new LinkedList<>();
 
+    private Animal animal = new Animal();
+
 
     public Shop shop = new Shop(this);
 
@@ -166,7 +168,7 @@ public class Farm {
         return corn;
     }
 
-    public void setCorn(Integer kg) {
+    public void setCorn(double kg) {
         this.corn.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
@@ -174,7 +176,7 @@ public class Farm {
         return latePotato;
     }
 
-    public void setLatePotato(Integer kg) {
+    public void setLatePotato(double kg) {
         this.latePotato.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
@@ -182,7 +184,7 @@ public class Farm {
         return lateRape;
     }
 
-    public void setLateRape(Integer kg) {
+    public void setLateRape(double kg) {
         this.lateRape.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
@@ -190,7 +192,7 @@ public class Farm {
         return lateRye;
     }
 
-    public void setLateRye(Integer kg) {
+    public void setLateRye(double kg) {
         this.lateRye.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
@@ -198,7 +200,7 @@ public class Farm {
         return springBarley;
     }
 
-    public void setSpringBarley(Integer kg) {
+    public void setSpringBarley(double kg) {
         this.springBarley.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
@@ -206,7 +208,7 @@ public class Farm {
         return whiteBeet;
     }
 
-    public void setWhiteBeet(Integer kg) {
+    public void setWhiteBeet(double kg) {
         this.springBarley.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
@@ -214,7 +216,7 @@ public class Farm {
         return winterWheat;
     }
 
-    public void setWinterWheat(Integer kg) {
+    public void setWinterWheat(double kg) {
         this.winterWheat.setStoredInKg(this.corn.getStoredInKg() + kg);
     }
 
@@ -599,7 +601,7 @@ public class Farm {
 
     }
 
-    public Integer allPlantsKg() {
+    public Double allPlantsKg() {
         return this.getCorn().getStoredInKg() + this.getLatePotato().getStoredInKg() + this.getLateRape().getStoredInKg() + this.getLateRye().getStoredInKg() + this.getSpringBarley().getStoredInKg() + this.getWhiteBeet().getStoredInKg() + this.getWinterWheat().getStoredInKg();
     }
 
@@ -783,7 +785,7 @@ public class Farm {
 
     public void nextTurn() {
         /*TODO
-
+        - eat()
         - Zmienić tydzień i datę *
         - Zmienić numer tury *
         - Wiek zwierząt, rozmnażanie i zebranie produktów od nich
@@ -825,7 +827,7 @@ public class Farm {
         final Integer animalSpecies = 5;
         Integer plantSpeciesCounter = 0;
         Integer animalSpeciesCounter = 0;
-        Integer springBarleyCounter = this.getSpringBarley().getStoredInKg();
+        Double springBarleyCounter = this.getSpringBarley().getStoredInKg();
         boolean barleyFlag = true;
 
 

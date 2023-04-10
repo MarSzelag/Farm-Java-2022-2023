@@ -24,7 +24,7 @@ public class Plant {
 
     //private boolean isSownAlready;
 
-    private Integer storedInKg = 0;
+    private Double storedInKg = 0.00;
 
     // private Integer growTime; // Czas, jaki potrzebuje roślina do osiągnięcia dojrzałej formy.
     // private Integer age; // Obecny wiek zasadzonej rośliny.
@@ -118,11 +118,11 @@ public class Plant {
         buyPricePerKg = buyPricePerKg;
     }
 
-    public Integer getStoredInKg() {
+    public Double getStoredInKg() {
         return storedInKg;
     }
 
-    public void setStoredInKg(Integer storedInKg) {
+    public void setStoredInKg(Double storedInKg) {
         this.storedInKg = storedInKg;
     }
 

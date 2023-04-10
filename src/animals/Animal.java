@@ -1,5 +1,7 @@
 package animals;
 
+import farm.Farm;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class Animal {
     private boolean isAdult = false;
     private Double animalProductPrice;
 
-
+    public Animal(){}
     public Animal(String race, Integer ageWeeks, Integer ageOfAdulthood, Double weightInKg, Double foodEatenPerWeek, Double weightGainPerWeek, Integer breedingChance, Double buyingPrice, Double sellingPrice, String buildingNeeded, String acceptedFood) {
         this.race = race;
         this.ageWeeks = ageWeeks;
@@ -182,6 +184,48 @@ public class Animal {
         if(this.ageWeeks >= this.ageOfAdulthoodWeeks){
 
         }
+    }
+
+    public void eat(Farm farm, List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList){
+        Double chickenFoodNeed = 0.0, cowFoodNeed = 0.0, goatFoodNeed = 0.0, gooseFoodNeed = 0.0, sheepFoodNeed = 0.0, turkeyFoodNeed = 0.0, pigFoodNeed = 0.0;
+        if(chickenList.get(0) != null) {
+            chickenFoodNeed = chickenList.get(0).getFoodEatenPerWeek() * howManyChickenInList(chickenList);
+        }
+        if(chickenList.get(0) != null) {
+            cowFoodNeed = cowList.get(0).getFoodEatenPerWeek() * howManyCowInList(cowList);
+        }
+        if(chickenList.get(0) != null) {
+            goatFoodNeed = goatList.get(0).getFoodEatenPerWeek() * howManyGoatInList(goatList);
+        }
+        if(chickenList.get(0) != null) {
+            gooseFoodNeed = gooseList.get(0).getFoodEatenPerWeek() * howManyGooseInList(gooseList);
+        }
+        if(chickenList.get(0) != null) {
+            sheepFoodNeed = sheepList.get(0).getFoodEatenPerWeek() * howManySheepInList(sheepList);
+        }
+        if(chickenList.get(0) != null) {
+            turkeyFoodNeed = turkeyList.get(0).getFoodEatenPerWeek() * howManyTurkeyInList(turkeyList);
+        }
+        if(chickenList.get(0) != null) {
+            pigFoodNeed = pigList.get(0).getFoodEatenPerWeek() * howManyPigInList(pigList);
+        }
+
+        if(farm.getCorn().getStoredInKg() >= chickenFoodNeed && chickenFoodNeed > 0){//chicken
+            System.out.println("Kury zjadły " + chickenFoodNeed + "kg kukurydzy.");
+            farm.setCorn(-chickenFoodNeed);
+        }
+        if(farm.getWinterWheat().getStoredInKg() >= cowFoodNeed && cowFoodNeed > 0){//cow
+            System.out.println("Krowy zjadły " + cowFoodNeed + "kg pszenicy ozimej.");
+            farm.setWinterWheat(- cowFoodNeed);
+        }
+        if(farm.getSpringBarley().getStoredInKg() >= goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed && goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed > 0){ //goat, goose, sheep, turkey
+            System.out.println("Kozy, gęsi, owce i indyki zjadły razem " + goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed + "kg jęczmienia jarego." );
+            farm.setSpringBarley( - (goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed));
+        }
+        if(farm.getLatePotato().getStoredInKg() >= pigFoodNeed && pigFoodNeed > 0){ //pig
+            System.out.println("Świnie zjadły " + pigFoodNeed + "kg późnych ziemniaków.");
+            farm.setLatePotato(- pigFoodNeed);
+        } //TODO else
     }
 
     public Integer howManyChickenInList(List<Chicken> list){
