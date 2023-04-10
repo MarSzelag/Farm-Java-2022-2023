@@ -314,7 +314,9 @@ public class Shop {
 
             try {
                 quantity = scan.nextInt();
-                if (quantity == 0) {
+                if(farm.getChickenList() == null){
+                    System.out.println("Nie masz kur na sprzedaż. ");
+                } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
                 } else if (quantity > farm.getChickenList().size()) { //TODO metoda sprawdzająca ilość w liście
@@ -408,7 +410,9 @@ public class Shop {
 
             try {
                 quantity = scan.nextInt();
-                if (quantity == 0) {
+                if(farm.getCowList() == null){
+                    System.out.println("Nie masz kur na sprzedaż. ");
+                } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
                 } else if (quantity > farm.getCowList().size()) {
@@ -501,7 +505,9 @@ public class Shop {
 
             try {
                 quantity = scan.nextInt();
-                if (quantity == 0) {
+                if(farm.getGoatList() == null){
+                    System.out.println("Nie masz kur na sprzedaż. ");
+                } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
                 } else if (quantity > farm.getGoatList().size()) {
@@ -594,7 +600,9 @@ public class Shop {
 
             try {
                 quantity = scan.nextInt();
-                if (quantity == 0) {
+                if(farm.getGooseList() == null){
+                    System.out.println("Nie masz kur na sprzedaż. ");
+                } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
                 } else if (quantity > farm.getGooseList().size()) {
@@ -687,7 +695,9 @@ public class Shop {
 
             try {
                 quantity = scan.nextInt();
-                if (quantity == 0) {
+                if(farm.getPigList() == null){
+                    System.out.println("Nie masz kur na sprzedaż. ");
+                } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
                 } else if (quantity > farm.getPigList().size()) {
@@ -780,7 +790,9 @@ public class Shop {
 
             try {
                 quantity = scan.nextInt();
-                if (quantity == 0) {
+                if(farm.getSheepList() == null){
+                    System.out.println("Nie masz kur na sprzedaż. ");
+                } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
                 } else if (quantity > farm.getSheepList().size()) {
@@ -873,7 +885,9 @@ public class Shop {
 
             try {
                 quantity = scan.nextInt();
-                if (quantity == 0) {
+                if(farm.getTurkeyList() == null){
+                    System.out.println("Nie masz kur na sprzedaż. ");
+                } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
                 } else if (quantity > farm.getTurkeyList().size()) {

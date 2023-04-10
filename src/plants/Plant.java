@@ -20,7 +20,7 @@ public class Plant {
     private Double buyPricePerKg;
 
     private Double landPreparationCostPerHa;
-    private Double protectionAgainstPests;
+    private Double protectionAgainstPestsPerHa;
 
     //private boolean isSownAlready;
 
@@ -43,7 +43,7 @@ public class Plant {
         this.sellPricePerKg = sellPricePerKg;
         this.buyPricePerKg = buyPricePerKg;
         this.landPreparationCostPerHa = landPreparationCostPerHa;
-        this.protectionAgainstPests = protectionAgainstPests;
+        this.protectionAgainstPestsPerHa = protectionAgainstPests;
     }
 
     public String getPlantName() {
@@ -135,7 +135,7 @@ public class Plant {
     }
 
     public Double getProtectionAgainstPests() {
-        return protectionAgainstPests;
+        return protectionAgainstPestsPerHa;
     }
 /*
     public boolean isSownAlready() {
@@ -147,7 +147,7 @@ public class Plant {
     }*/
 
     public void setProtectionAgainstPests(Double protectionAgainstPests) {
-        this.protectionAgainstPests = protectionAgainstPests;
+        this.protectionAgainstPestsPerHa = protectionAgainstPests;
     }
 
 

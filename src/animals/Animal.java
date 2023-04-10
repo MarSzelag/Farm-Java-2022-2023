@@ -12,17 +12,16 @@ public class Animal {
     private String acceptedFood;
     private String buildingNeeded;
     private Double foodEatenPerWeek;
-    private Double breedingChance;
+    private Integer breedingChance;
     private Double buyingPrice;
     private Double sellingPrice;
 
     private Integer numberOfAnimal;
     private boolean isAdult = false;
-    //private static Integer totalNumberOfAnimal;
-    //private static Integer totalNumberOfAdultAnimal;
+    private Double animalProductPrice;
 
 
-    public Animal(String race, Integer ageWeeks, Integer ageOfAdulthood, Double weightInKg, Double foodEatenPerWeek, Double weightGainPerWeek, Double breedingChance, Double buyingPrice, Double sellingPrice, String buildingNeeded, String acceptedFood) {
+    public Animal(String race, Integer ageWeeks, Integer ageOfAdulthood, Double weightInKg, Double foodEatenPerWeek, Double weightGainPerWeek, Integer breedingChance, Double buyingPrice, Double sellingPrice, String buildingNeeded, String acceptedFood) {
         this.race = race;
         this.ageWeeks = ageWeeks;
         this.ageOfAdulthoodWeeks = ageOfAdulthood;
@@ -123,11 +122,11 @@ public class Animal {
         this.foodEatenPerWeek = foodEatenPerWeek;
     }
 
-    public Double getBreedingChance() {
+    public Integer getBreedingChance() {
         return breedingChance;
     }
 
-    public void setBreedingChance(Double breedingChance) {
+    public void setBreedingChance(Integer breedingChance) {
         this.breedingChance = breedingChance;
     }
 
@@ -163,14 +162,13 @@ public class Animal {
         this.numberOfAnimal = numberOfAnimal;
     }
 
-    public boolean isAdult() {
-        return isAdult;
+    public Double getAnimalProductPrice() {
+        return animalProductPrice;
     }
 
-    public void setAdult(boolean adult) {
-        isAdult = adult;
+    public void setAnimalProductPrice(Double animalProductPrice) {
+        this.animalProductPrice = animalProductPrice;
     }
-
 
     public void ageChange(){
         this.ageWeeks = this.ageWeeks + 1;
