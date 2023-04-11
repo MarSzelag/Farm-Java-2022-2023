@@ -2,6 +2,7 @@ package farm;
 
 import animals.*;
 import buildings.*;
+import events.Events;
 import land.Land;
 import plants.*;
 import shop.Shop;
@@ -491,6 +492,14 @@ public class Farm {
         this.totalNumberOfAdultTurkey = totalNumberOfAdultTurkey;
     }
 
+    public List<Sown> getSown() {
+        return sown;
+    }
+
+    public void setSown(List<Sown> sown) {
+        this.sown = sown;
+    }
+
     public void possesionsLand() {
         System.out.println("Twoja ziemia:");
         System.out.println(this.land.getLandSizeInHa() + " ha ziemi, w tym " + this.land.getSownLandInHa() + " ha ziemi obsianej i " + this.land.getFreeLand() + " ha ziemi nieobsianej.");
@@ -770,31 +779,16 @@ public class Farm {
     public void startOfTheTurn() {
         System.out.println("Jest " + getTime() + " czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
         checkNumberOfAnimals(chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
+        Events.eventCheck(this);
         reproduction();
         harvestSown();
         moneyEarnOnAnimals();
-        /*
-                - Sprawdzanie liczby młodych i dojrzałych zwierząt *
-        - Wyświetlić datę, tydzień roku i numer tury *
-        - Rozmnażanie *
-        - Zbiory *
-        - Produkty zwierzęce --> moneyEarnOnAnima() *
-        - Eventy
-         */
     }
 
     public void nextTurn() {
-        /*TODO
-
-        - Zmienić tydzień i datę *
-        - Zmienić numer tury *
-        - eat() *
-        - Wiek zwierząt, rozmnażanie i zebranie produktów od nich
-        - Sprawdzić winningConditions *
-         */
         animal.eat(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         this.calendar.add(Calendar.DAY_OF_WEEK, 7); // Next week
-        //Zwiększenie masy zwierząt, zmniejszenie czasu do zbiorów, eventy
+        //zmniejszenie czasu do zbiorów,
         this.winningConditions();
         this.turnCounter++;
     }

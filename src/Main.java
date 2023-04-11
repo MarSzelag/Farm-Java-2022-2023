@@ -15,10 +15,11 @@ public class Main {
         Integer farmMenuCounter = 0;
 
         farm = menu.mainMenu(farm);
-        System.out.println(farm.getTime()); //test
 
-        while(farmMenuCounter != 9){
+        while (farmMenuCounter != 9) {
+            farm.startOfTheTurn();
             farmMenuCounter = menu.farmMenu(farm);
+            farm.nextTurn();
         }
 
 
