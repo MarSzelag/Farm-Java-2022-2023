@@ -190,25 +190,25 @@ public class Animal {
 
     public void eat(Farm farm, List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
         Double chickenFoodNeed = 0.0, cowFoodNeed = 0.0, goatFoodNeed = 0.0, gooseFoodNeed = 0.0, sheepFoodNeed = 0.0, turkeyFoodNeed = 0.0, pigFoodNeed = 0.0;
-        if (chickenList.get(0) != null) {
+        if (!chickenList.isEmpty()) {
             chickenFoodNeed = chickenList.get(0).getFoodEatenPerWeek() * howManyChickenInList(chickenList);
         }
-        if (chickenList.get(0) != null) {
+        if (!chickenList.isEmpty()) {
             cowFoodNeed = cowList.get(0).getFoodEatenPerWeek() * howManyCowInList(cowList);
         }
-        if (chickenList.get(0) != null) {
+        if (!chickenList.isEmpty()) {
             goatFoodNeed = goatList.get(0).getFoodEatenPerWeek() * howManyGoatInList(goatList);
         }
-        if (chickenList.get(0) != null) {
+        if (!chickenList.isEmpty()) {
             gooseFoodNeed = gooseList.get(0).getFoodEatenPerWeek() * howManyGooseInList(gooseList);
         }
-        if (chickenList.get(0) != null) {
+        if (!chickenList.isEmpty()) {
             sheepFoodNeed = sheepList.get(0).getFoodEatenPerWeek() * howManySheepInList(sheepList);
         }
-        if (chickenList.get(0) != null) {
+        if (!chickenList.isEmpty()) {
             turkeyFoodNeed = turkeyList.get(0).getFoodEatenPerWeek() * howManyTurkeyInList(turkeyList);
         }
-        if (chickenList.get(0) != null) {
+        if (!chickenList.isEmpty()) {
             pigFoodNeed = pigList.get(0).getFoodEatenPerWeek() * howManyPigInList(pigList);
         }
 
@@ -276,7 +276,7 @@ public class Animal {
         }
     }
 
-    public Integer howManyChickenInList(List<Chicken> list) {
+    public  Integer howManyChickenInList(List<Chicken> list) {
         Integer numberOfAnimals = 0;
         for (int i = 0; i < list.size(); i++) {
             numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();

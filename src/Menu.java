@@ -73,8 +73,7 @@ public class Menu {
         System.out.println("1. Stan posiadania.");
         System.out.println("2. Sklep.");
         System.out.println("3. Obsiewanie.");
-        System.out.println("4. Zarządzanie zwierzętami.");
-        System.out.println("5. Koniec tury.");
+        System.out.println("4. Koniec tury.");
         System.out.println("9. Wyjdź z gry.");
 
         farmMenuCounter = Integer.parseInt(scan.nextLine());
@@ -83,9 +82,7 @@ public class Menu {
         switch (farmMenuCounter) {
             case 1:
                 System.out.println("Stan posiadania.");
-                while (farmCounter != 9) {
                     farm.possesions();
-                }
                 break;
             case 2:
                 System.out.println("Sklep.");
@@ -100,22 +97,13 @@ public class Menu {
                 }
                 break;
             case 4:
-                System.out.println("Zarządzanie zwierzętami.");
-                while (farmCounter != 9) {
-
-                }
-                break;
-            case 5:
                 System.out.println("Koniec tury.");
-                while (farmCounter != 9) {
-
-                }
                 break;
             case 9:
                 System.out.println("Wyjdź z gry.");
                 break;
             default:
-                System.out.println("Wprowadzonow niewłaściwą wartość. Spróbuj jeszcze raz.");
+                System.out.println("Wprowadzono niewłaściwą wartość. Spróbuj jeszcze raz.");
         }
         return farmMenuCounter;
     }
