@@ -304,42 +304,42 @@ public class Menu {
         switch (shopMenuBuildingsCounter) {
             case 1:
                 while(buildingCounter != 9) {
-                    shopMenuChickenCoop(farm);
+                    buildingCounter = shopMenuChickenCoop(farm);
                 }
                 break;
             case 2:
                 while(buildingCounter != 9) {
-                    shopMenuCowShed(farm);
+                    buildingCounter = shopMenuCowShed(farm);
                 }
                 break;
             case 3:
                 while(buildingCounter != 9) {
-                    shopMenuGoatBarn(farm);
+                    buildingCounter = shopMenuGoatBarn(farm);
                 }
                 break;
             case 4:
                 while(buildingCounter != 9) {
-                    shopMenuGooseCoop(farm);
+                    buildingCounter = shopMenuGooseCoop(farm);
                 }
                 break;
             case 5:
                 while(buildingCounter != 9) {
-                    shopMenuPigsty(farm);
+                    buildingCounter = shopMenuPigsty(farm);
                 }
                 break;
             case 6:
                 while(buildingCounter != 9) {
-                    shopMenuSheepfold(farm);
+                    buildingCounter = shopMenuSheepfold(farm);
                 }
                 break;
             case 7:
                 while(buildingCounter != 9) {
-                    shopMenuTurkeyCoop(farm);
+                    buildingCounter = shopMenuTurkeyCoop(farm);
                 }
                 break;
             case 8:
                 while(buildingCounter != 9) {
-                    shopMenuBarn(farm);
+                    buildingCounter = shopMenuBarn(farm);
                 }
                 break;
             case 9:
@@ -409,10 +409,10 @@ public class Menu {
 
         switch (shopMenuCornCounter) {
             case 1:
-                farm.shop.buyPlant(corn, farm);
+                farm.shop.buyPlant(farm.getCorn(), farm);
                 break;
             case 2:
-                farm.shop.sellPlant(corn, farm);
+                farm.shop.sellPlant(farm.getCorn(), farm);
                 break;
             case 9:
                 break;
@@ -433,10 +433,10 @@ public class Menu {
 
         switch (shopMenuLatePotatoCounter) {
             case 1:
-                farm.shop.buyPlant(latePotato, farm);
+                farm.shop.buyPlant(farm.getLatePotato(), farm);
                 break;
             case 2:
-                farm.shop.sellPlant(latePotato, farm);
+                farm.shop.sellPlant(farm.getLatePotato(), farm);
                 break;
             case 9:
                 break;
@@ -457,10 +457,10 @@ public class Menu {
 
         switch (shopMenuLateRapeCounter) {
             case 1:
-                farm.shop.buyPlant(lateRape, farm);
+                farm.shop.buyPlant(farm.getLateRape(), farm);
                 break;
             case 2:
-                farm.shop.sellPlant(lateRape, farm);
+                farm.shop.sellPlant(farm.getLateRape(), farm);
                 break;
             case 9:
                 break;
@@ -481,10 +481,10 @@ public class Menu {
 
         switch (shopMenuLateRyeCounter) {
             case 1:
-                farm.shop.buyPlant(lateRye, farm);
+                farm.shop.buyPlant(farm.getLateRye(), farm);
                 break;
             case 2:
-                farm.shop.sellPlant(lateRye, farm);
+                farm.shop.sellPlant(farm.getLateRye(), farm);
                 break;
             case 9:
                 break;
@@ -505,10 +505,10 @@ public class Menu {
 
         switch (shopMenuSpringBarleyCounter) {
             case 1:
-                farm.shop.buyPlant(springBarley, farm);
+                farm.shop.buyPlant(farm.getSpringBarley(), farm);
                 break;
             case 2:
-                farm.shop.sellPlant(springBarley, farm);
+                farm.shop.sellPlant(farm.getSpringBarley(), farm);
                 break;
             case 9:
                 break;
@@ -529,10 +529,10 @@ public class Menu {
 
         switch (shopMenuWhiteBeetCounter) {
             case 1:
-                farm.shop.buyPlant(whiteBeet, farm);
+                farm.shop.buyPlant(farm.getWhiteBeet(), farm);
                 break;
             case 2:
-                farm.shop.sellPlant(whiteBeet, farm);
+                farm.shop.sellPlant(farm.getWhiteBeet(), farm);
                 break;
             case 9:
                 break;
@@ -553,10 +553,10 @@ public class Menu {
 
         switch (shopMenuWinterWheatCounter) {
             case 1:
-                farm.shop.buyPlant(winterWheat, farm);
+                farm.shop.buyPlant(farm.getWinterWheat(), farm);
                 break;
             case 2:
-                farm.shop.sellPlant(winterWheat, farm);
+                farm.shop.sellPlant(farm.getWinterWheat(), farm);
                 break;
             case 9:
                 break;

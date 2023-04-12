@@ -15,7 +15,7 @@ public class Farm {
 
     Random rand = new Random();
     private String owner;
-    private Double cash = 1000.00;
+    private Double cash = 1500.00;
 
     private Integer turnCounter = 1; // Około 52 tury to rok
     //Plants
@@ -230,9 +230,10 @@ public class Farm {
     }
 
     public void addChicken(List<Chicken> chickenList, Integer numberOfChickens) {
-        for (int i = 0; i < numberOfChickens; i++) {
-            chickenList.add(new Chicken());
-        }
+        //for (int i = 0; i < numberOfChickens; i++) {
+            chickenList.add(new Chicken()); //TODO numberOfAnimal
+        chickenList.get(chickenList.size() - 1).setNumberOfAnimal(numberOfChickens);
+        //}
     }
 /*
     public void removeChicken(List<Chicken> chickenList, Integer numberOfChickens) {

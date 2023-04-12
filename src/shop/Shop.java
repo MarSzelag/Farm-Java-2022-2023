@@ -14,7 +14,7 @@ public class Shop {
     public Shop(Farm farm) {
     }
 
-    //TODO*****************************Plants
+
     public void plantPossession(Plant plant, Farm farm) {
         System.out.println("Posiadasz: " + plant.getStoredInKg() + " kg " + plant.getPlantName() + " oraz " + farm.getCash() + "zł w gotówce.");
     }
@@ -29,31 +29,45 @@ public class Shop {
 
 
     public void animalPossesionChicken(Farm farm) {
-        System.out.println("Posiadasz " + farm.getChickenList().size() + " kur.");
+        if (!farm.getChickenList().isEmpty()) {
+            System.out.println("Posiadasz " + farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList()) + " kur.");
+        } else System.out.println("Posiadasz 0 kur.");
     }
 
     public void animalPossesionCow(Farm farm) {
-        System.out.println("Posiadasz " + farm.getCowList().size() + " krów.");
+        if (!farm.getCowList().isEmpty()) {
+            System.out.println("Posiadasz " + farm.getCowList().get(0).howManyCowInList(farm.getCowList()) + " krów.");
+        } else System.out.println("Posiadasz 0 krów.");
     }
 
     public void animalPossesionGoat(Farm farm) {
-        System.out.println("Posiadasz " + farm.getGoatList().size() + " kóz.");
+        if (!farm.getGoatList().isEmpty()) {
+            System.out.println("Posiadasz " + farm.getGoatList().get(0).howManyGoatInList(farm.getGoatList()) + " kóz.");
+        } else System.out.println("Posiadasz 0 kóz.");
     }
 
     public void animalPossesionGoose(Farm farm) {
-        System.out.println("Posiadasz " + farm.getGooseList().size() + " gęsi.");
+        if (!farm.getGooseList().isEmpty()) {
+            System.out.println("Posiadasz " + farm.getGooseList().get(0).howManyGooseInList(farm.getGooseList()) + " gęsi.");
+        } else System.out.println("Posiadasz 0 gęsi.");
     }
 
     public void animalPossesionPig(Farm farm) {
-        System.out.println("Posiadasz " + farm.getPigList().size() + " świń.");
+        if (!farm.getPigList().isEmpty()) {
+            System.out.println("Posiadasz " + farm.getPigList().get(0).howManyPigInList(farm.getPigList()) + " świń.");
+        } else System.out.println("Posiadasz 0 świń.");
     }
 
     public void animalPossesionSheep(Farm farm) {
-        System.out.println("Posiadasz " + farm.getSheepList().size() + " owiec.");
+        if (!farm.getSheepList().isEmpty()) {
+            System.out.println("Posiadasz " + farm.getSheepList().get(0).howManySheepInList(farm.getSheepList()) + " owiec.");
+        } else System.out.println("Posiadasz 0 owiec.");
     }
 
     public void animalPossesionTurkey(Farm farm) {
-        System.out.println("Posiadasz " + farm.getTurkeyList().size() + " indyków.");
+        if (!farm.getTurkeyList().isEmpty()) {
+            System.out.println("Posiadasz " + farm.getTurkeyList().get(0).howManyTurkeyInList(farm.getTurkeyList()) + " indyków.");
+        } else System.out.println("Posiadasz 0 indyków.");
     }
 
     public void buyPlant(Plant plant, Farm farm) {
@@ -262,7 +276,7 @@ public class Shop {
 
     }
 
-    //TODO****************************Animals
+//TODO****************************Animals
 
     public void buyChicken(Farm farm) {
         Integer quantity;
@@ -286,6 +300,7 @@ public class Shop {
                 } else if (farm.getCash() < (quantity * chicken.getBuyingPrice())) {
                     System.out.println("Nie masz wystarczającej ilości pieniędzy, żeby kupić " + chicken.getRace() + " w ilości " + quantity + " szt.");
                 } else {
+
                     farm.addChicken(farm.getChickenList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * chicken.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + chicken.getRace() + " za kwotę " + (quantity * chicken.getBuyingPrice()) + "zł.");
@@ -309,43 +324,43 @@ public class Shop {
         while (!flag) {
             animalPossesionChicken(farm);
             System.out.println("Cena sprzedaży kur wynosi " + chicken.getSellingPrice() + "zł za sztukę.");
-            System.out.println("Posiadasz obecnie " + farm.getChickenList().size() + "sztuk kur.");
             System.out.println("Ile kur chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
-                if(farm.getChickenList() == null){
+                quantity = Integer.parseInt(scan.nextLine());
+                if (farm.getChickenList().isEmpty()) {
                     System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
-                } else if (quantity > farm.getChickenList().size()) { //TODO metoda sprawdzająca ilość w liście
+                } else if (quantity > farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
 
                 } else if (quantity < 0) {
                     System.out.println("Wprowadziłeś ilość mniejszą niż zero. Wprowadź odpowiednią ilość.");
                 } else {
                     Integer quantityTemp = quantity;
-                    for(int i = 0; i < farm.getChickenList().size(); i++){
-                        if(quantityTemp > 0){
-                            if(quantityTemp < farm.getChickenList().get(i).getNumberOfAnimal() ){
-                                farm.getChickenList().get(i).setNumberOfAnimal(farm.getChickenList().get(i).getNumberOfAnimal() - quantityTemp);
-                            } else if(quantityTemp == farm.getChickenList().get(i).getNumberOfAnimal()){
-                                farm.getChickenList().get(i).setNumberOfAnimal(farm.getChickenList().get(i).getNumberOfAnimal() - quantityTemp);
-                                farm.getChickenList().remove(i);
-                            } else{
-                                quantityTemp = quantityTemp - farm.getChickenList().get(i).getNumberOfAnimal();
-                                farm.getChickenList().remove(i);
+                    for (int i = 0; i < farm.getChickenList().size() && quantityTemp > 0; i++) {
+                       // System.out.println("XXX quantityTemp: " + quantityTemp +  ", i: " + i + " ilość kur: " + farm.getChickenList().get(0).getNumberOfAnimal()); //TODO TEST
+                        if (quantityTemp > 0) {
+                            if (quantityTemp < farm.getChickenList().get(0).getNumberOfAnimal()) {
+                                farm.getChickenList().get(i).setNumberOfAnimal(farm.getChickenList().get(0).getNumberOfAnimal() - quantityTemp);
+                                quantityTemp = 0; //TODO w każdym zwierzęciu, tu jest zły wzór
+                            } else if (quantityTemp == farm.getChickenList().get(0).getNumberOfAnimal()) {
+                                quantityTemp = 0; //TODO w każdym zwierzęciu
+                                farm.getChickenList().remove(0);
+                            } else {
+                                quantityTemp = quantityTemp - farm.getChickenList().get(0).getNumberOfAnimal();
+                                farm.getChickenList().remove(0);
                             }
                         }
                     }
-                   // farm.removeChicken(farm.getChickenList(), quantity);
                     farm.setCash(farm.getCash() + (quantity * chicken.getSellingPrice()));
                     System.out.println("Sprzedałeś " + quantity + " sztuk " + chicken.getRace() + " za kwotę " + (quantity * chicken.getSellingPrice()) + "zł.");
-                    if(farm.getChickenList() != null) {
+                    if (!farm.getChickenList().isEmpty()) {
                         farm.setTotalNumberOfChicken(farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList()));
-                        farm.setTotalNumberOfAdultGoat(farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList()));
-                    } else{
+                        farm.setTotalNumberOfAdultChicken(farm.getChickenList().get(0).howManyAdultChickenInList(farm.getChickenList()));
+                    } else {
                         farm.setTotalNumberOfChicken(0);
                         farm.setTotalNumberOfAdultChicken(0);
                     }
@@ -356,7 +371,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
     }
 
@@ -391,8 +405,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
-
         }
     }
 
@@ -405,53 +417,50 @@ public class Shop {
         while (!flag) {
             animalPossesionCow(farm);
             System.out.println("Cena sprzedaży krów wynosi " + cow.getSellingPrice() + "zł za sztukę.");
-            System.out.println("Posiadasz obecnie " + farm.getCowList().size() + "sztuk krów.");
             System.out.println("Ile krów chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
-                if(farm.getCowList() == null){
+                quantity = Integer.parseInt(scan.nextLine());
+                if (farm.getCowList() == null) {
                     System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
-                } else if (quantity > farm.getCowList().size()) {
+                } else if (quantity > farm.getCowList().get(0).howManyCowInList(farm.getCowList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
-
                 } else if (quantity < 0) {
                     System.out.println("Wprowadziłeś ilość mniejszą niż zero. Wprowadź odpowiednią ilość.");
-                }  else {
+                } else {
                     Integer quantityTemp = quantity;
-                    for(int i = 0; i < farm.getCowList().size(); i++){
-                        if(quantityTemp > 0){
-                            if(quantityTemp < farm.getCowList().get(i).getNumberOfAnimal() ){
-                                farm.getCowList().get(i).setNumberOfAnimal(farm.getCowList().get(i).getNumberOfAnimal() - quantityTemp);
-                            } else if(quantityTemp == farm.getCowList().get(i).getNumberOfAnimal()){
-                                farm.getCowList().get(i).setNumberOfAnimal(farm.getCowList().get(i).getNumberOfAnimal() - quantityTemp);
-                                farm.getCowList().remove(i);
-                            } else{
-                                quantityTemp = quantityTemp - farm.getCowList().get(i).getNumberOfAnimal();
-                                farm.getCowList().remove(i);
+                    for (int i = 0; i < farm.getCowList().size() && quantityTemp > 0; i++) {
+                        if (quantityTemp > 0) {
+                            if (quantityTemp < farm.getCowList().get(0).getNumberOfAnimal()) {
+                                farm.getCowList().get(0).setNumberOfAnimal(farm.getCowList().get(0).getNumberOfAnimal() - quantityTemp);
+                                quantityTemp = 0;
+                            } else if (quantityTemp == farm.getCowList().get(0).getNumberOfAnimal()) {
+                                quantityTemp = 0;
+                                farm.getCowList().remove(0);
+                            } else {
+                                quantityTemp = quantityTemp - farm.getCowList().get(0).getNumberOfAnimal();
+                                farm.getCowList().remove(0);
                             }
                         }
                     }
                     farm.setCash(farm.getCash() + (quantity * cow.getSellingPrice()));
                     System.out.println("Sprzedałeś " + quantity + " sztuk " + cow.getRace() + " za kwotę " + (quantity * cow.getSellingPrice()) + "zł.");
-                    if(farm.getCowList() != null) {
+                    if (!farm.getCowList().isEmpty()) {
                         farm.setTotalNumberOfCow(farm.getCowList().get(0).howManyCowInList(farm.getCowList()));
-                        farm.setTotalNumberOfAdultCow(farm.getCowList().get(0).howManyCowInList(farm.getCowList()));
-                    } else{
+                        farm.setTotalNumberOfAdultCow(farm.getCowList().get(0).howManyAdultCowInList(farm.getCowList()));
+                    } else {
                         farm.setTotalNumberOfCow(0);
                         farm.setTotalNumberOfAdultCow(0);
                     }
                     animalPossesionCow(farm);
                     flag = true;
                 }
-
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
     }
 
@@ -486,8 +495,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
-
         }
     }
 
@@ -500,42 +507,41 @@ public class Shop {
         while (!flag) {
             animalPossesionGoat(farm);
             System.out.println("Cena sprzedaży kóz wynosi " + goat.getSellingPrice() + "zł za sztukę.");
-            System.out.println("Posiadasz obecnie " + farm.getGoatList().size() + "sztuk kóz.");
             System.out.println("Ile kóz chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
-                if(farm.getGoatList() == null){
+                quantity = Integer.parseInt(scan.nextLine());
+                if (farm.getGoatList() == null) {
                     System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
-                } else if (quantity > farm.getGoatList().size()) {
+                } else if (quantity > farm.getGoatList().get(0).howManyGoatInList(farm.getGoatList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
-
                 } else if (quantity < 0) {
                     System.out.println("Wprowadziłeś ilość mniejszą niż zero. Wprowadź odpowiednią ilość.");
                 } else {
                     Integer quantityTemp = quantity;
-                    for(int i = 0; i < farm.getGoatList().size(); i++){
-                        if(quantityTemp > 0){
-                            if(quantityTemp < farm.getGoatList().get(i).getNumberOfAnimal() ){
-                                farm.getGoatList().get(i).setNumberOfAnimal(farm.getGoatList().get(i).getNumberOfAnimal() - quantityTemp);
-                            } else if(quantityTemp == farm.getGoatList().get(i).getNumberOfAnimal()){
-                                farm.getGoatList().get(i).setNumberOfAnimal(farm.getGoatList().get(i).getNumberOfAnimal() - quantityTemp);
-                                farm.getGoatList().remove(i);
-                            } else{
-                                quantityTemp = quantityTemp - farm.getGoatList().get(i).getNumberOfAnimal();
-                                farm.getGoatList().remove(i);
+                    for (int i = 0; i < farm.getGoatList().size() && quantityTemp > 0; i++) {
+                        if (quantityTemp > 0) {
+                            if (quantityTemp < farm.getGoatList().get(0).getNumberOfAnimal()) {
+                                farm.getGoatList().get(0).setNumberOfAnimal(farm.getGoatList().get(0).getNumberOfAnimal() - quantityTemp);
+                                quantityTemp = 0;
+                            } else if (quantityTemp == farm.getGoatList().get(0).getNumberOfAnimal()) {
+                                quantityTemp = 0;
+                                farm.getGoatList().remove(0);
+                            } else {
+                                quantityTemp = quantityTemp - farm.getGoatList().get(0).getNumberOfAnimal();
+                                farm.getGoatList().remove(0);
                             }
                         }
                     }
                     farm.setCash(farm.getCash() + (quantity * goat.getSellingPrice()));
                     System.out.println("Sprzedałeś " + quantity + " sztuk " + goat.getRace() + " za kwotę " + (quantity * goat.getSellingPrice()) + "zł.");
-                    if(farm.getGoatList() != null) {
+                    if (!farm.getGoatList().isEmpty()) {
                         farm.setTotalNumberOfGoat(farm.getGoatList().get(0).howManyGoatInList(farm.getGoatList()));
-                        farm.setTotalNumberOfAdultGoat(farm.getGoatList().get(0).howManyGoatInList(farm.getGoatList()));
-                    } else{
+                        farm.setTotalNumberOfAdultGoat(farm.getGoatList().get(0).howManyAdultGoatInList(farm.getGoatList()));
+                    } else {
                         farm.setTotalNumberOfGoat(0);
                         farm.setTotalNumberOfAdultGoat(0);
                     }
@@ -546,7 +552,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
     }
 
@@ -581,7 +586,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
 
         }
     }
@@ -595,53 +599,50 @@ public class Shop {
         while (!flag) {
             animalPossesionGoose(farm);
             System.out.println("Cena sprzedaży gęsi wynosi " + goose.getSellingPrice() + "zł za sztukę.");
-            System.out.println("Posiadasz obecnie " + farm.getGooseList().size() + "sztuk gęsi.");
             System.out.println("Ile gęsi chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
-                if(farm.getGooseList() == null){
+                quantity = Integer.parseInt(scan.nextLine());
+                if (farm.getGooseList() == null) {
                     System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
-                } else if (quantity > farm.getGooseList().size()) {
+                } else if (quantity > farm.getGooseList().get(0).howManyGooseInList(farm.getGooseList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
-
                 } else if (quantity < 0) {
                     System.out.println("Wprowadziłeś ilość mniejszą niż zero. Wprowadź odpowiednią ilość.");
                 } else {
                     Integer quantityTemp = quantity;
-                    for(int i = 0; i < farm.getGooseList().size(); i++){
-                        if(quantityTemp > 0){
-                            if(quantityTemp < farm.getGooseList().get(i).getNumberOfAnimal() ){
-                                farm.getGooseList().get(i).setNumberOfAnimal(farm.getGooseList().get(i).getNumberOfAnimal() - quantityTemp);
-                            } else if(quantityTemp == farm.getGooseList().get(i).getNumberOfAnimal()){
-                                farm.getGooseList().get(i).setNumberOfAnimal(farm.getGooseList().get(i).getNumberOfAnimal() - quantityTemp);
-                                farm.getGooseList().remove(i);
-                            } else{
-                                quantityTemp = quantityTemp - farm.getGooseList().get(i).getNumberOfAnimal();
-                                farm.getGooseList().remove(i);
+                    for (int i = 0; i < farm.getGooseList().size() && quantityTemp > 0; i++) {
+                        if (quantityTemp > 0) {
+                            if (quantityTemp < farm.getGooseList().get(0).getNumberOfAnimal()) {
+                                farm.getGooseList().get(0).setNumberOfAnimal(farm.getGooseList().get(0).getNumberOfAnimal() - quantityTemp);
+                                quantityTemp = 0;
+                            } else if (quantityTemp == farm.getGooseList().get(0).getNumberOfAnimal()) {
+                                quantityTemp = 0;
+                                farm.getGooseList().remove(0);
+                            } else {
+                                quantityTemp = quantityTemp - farm.getGooseList().get(0).getNumberOfAnimal();
+                                farm.getGooseList().remove(0);
                             }
                         }
                     }
                     farm.setCash(farm.getCash() + (quantity * goose.getSellingPrice()));
                     System.out.println("Sprzedałeś " + quantity + " sztuk " + goose.getRace() + " za kwotę " + (quantity * goose.getSellingPrice()) + "zł.");
-                    if(farm.getGooseList() != null) {
+                    if (!farm.getGooseList().isEmpty()) {
                         farm.setTotalNumberOfGoose(farm.getGooseList().get(0).howManyGooseInList(farm.getGooseList()));
-                        farm.setTotalNumberOfAdultGoose(farm.getGooseList().get(0).howManyGooseInList(farm.getGooseList()));
-                    } else{
+                        farm.setTotalNumberOfAdultGoose(farm.getGooseList().get(0).howManyAdultGooseInList(farm.getGooseList()));
+                    } else {
                         farm.setTotalNumberOfGoose(0);
                         farm.setTotalNumberOfAdultGoose(0);
                     }
                     animalPossesionGoose(farm);
                     flag = true;
                 }
-
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
     }
 
@@ -676,8 +677,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
-
         }
     }
 
@@ -690,42 +689,41 @@ public class Shop {
         while (!flag) {
             animalPossesionPig(farm);
             System.out.println("Cena sprzedaży świń wynosi " + pig.getSellingPrice() + "zł za sztukę.");
-            System.out.println("Posiadasz obecnie " + farm.getPigList().size() + "sztuk świń.");
             System.out.println("Ile świń chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
-                if(farm.getPigList() == null){
+                quantity = Integer.parseInt(scan.nextLine());
+                if (farm.getPigList() == null) {
                     System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
-                } else if (quantity > farm.getPigList().size()) {
+                } else if (quantity > farm.getPigList().get(0).howManyAdultPigInList(farm.getPigList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
-
                 } else if (quantity < 0) {
                     System.out.println("Wprowadziłeś ilość mniejszą niż zero. Wprowadź odpowiednią ilość.");
                 } else {
                     Integer quantityTemp = quantity;
-                    for(int i = 0; i < farm.getPigList().size(); i++){
-                        if(quantityTemp > 0){
-                            if(quantityTemp < farm.getPigList().get(i).getNumberOfAnimal() ){
-                                farm.getPigList().get(i).setNumberOfAnimal(farm.getPigList().get(i).getNumberOfAnimal() - quantityTemp);
-                            } else if(quantityTemp == farm.getPigList().get(i).getNumberOfAnimal()){
-                                farm.getPigList().get(i).setNumberOfAnimal(farm.getPigList().get(i).getNumberOfAnimal() - quantityTemp);
-                                farm.getPigList().remove(i);
-                            } else{
+                    for (int i = 0; i < farm.getPigList().size() && quantityTemp > 0; i++) {
+                        if (quantityTemp > 0) {
+                            if (quantityTemp < farm.getPigList().get(0).getNumberOfAnimal()) {
+                                farm.getPigList().get(0).setNumberOfAnimal(farm.getPigList().get(0).getNumberOfAnimal() - quantityTemp);
+                                quantityTemp = 0;
+                            } else if (quantityTemp == farm.getPigList().get(0).getNumberOfAnimal()) {
+                                quantityTemp = 0;
+                                farm.getPigList().remove(0);
+                            } else {
                                 quantityTemp = quantityTemp - farm.getPigList().get(i).getNumberOfAnimal();
-                                farm.getPigList().remove(i);
+                                farm.getPigList().remove(0);
                             }
                         }
                     }
                     farm.setCash(farm.getCash() + (quantity * pig.getSellingPrice()));
                     System.out.println("Sprzedałeś " + quantity + " sztuk " + pig.getRace() + " za kwotę " + (quantity * pig.getSellingPrice()) + "zł.");
-                    if(farm.getPigList() != null) {
+                    if (!farm.getPigList().isEmpty()) {
                         farm.setTotalNumberOfPig(farm.getPigList().get(0).howManyPigInList(farm.getPigList()));
-                        farm.setTotalNumberOfAdultPig(farm.getPigList().get(0).howManyPigInList(farm.getPigList()));
-                    } else{
+                        farm.setTotalNumberOfAdultPig(farm.getPigList().get(0).howManyAdultPigInList(farm.getPigList()));
+                    } else {
                         farm.setTotalNumberOfPig(0);
                         farm.setTotalNumberOfAdultPig(0);
                     }
@@ -736,7 +734,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
     }
 
@@ -771,8 +768,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
-
         }
     }
 
@@ -785,42 +780,41 @@ public class Shop {
         while (!flag) {
             animalPossesionSheep(farm);
             System.out.println("Cena sprzedaży owiec wynosi " + sheep.getSellingPrice() + "zł za sztukę.");
-            System.out.println("Posiadasz obecnie " + farm.getSheepList().size() + "sztuk owiec.");
             System.out.println("Ile owiec chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
-                if(farm.getSheepList() == null){
+                quantity = Integer.parseInt(scan.nextLine());
+                if (farm.getSheepList() == null) {
                     System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
-                } else if (quantity > farm.getSheepList().size()) {
+                } else if (quantity > farm.getSheepList().get(0).howManySheepInList(farm.getSheepList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
-
                 } else if (quantity < 0) {
                     System.out.println("Wprowadziłeś ilość mniejszą niż zero. Wprowadź odpowiednią ilość.");
                 } else {
                     Integer quantityTemp = quantity;
-                    for(int i = 0; i < farm.getSheepList().size(); i++){
-                        if(quantityTemp > 0){
-                            if(quantityTemp < farm.getSheepList().get(i).getNumberOfAnimal() ){
-                                farm.getSheepList().get(i).setNumberOfAnimal(farm.getSheepList().get(i).getNumberOfAnimal() - quantityTemp);
-                            } else if(quantityTemp == farm.getSheepList().get(i).getNumberOfAnimal()){
-                                farm.getSheepList().get(i).setNumberOfAnimal(farm.getSheepList().get(i).getNumberOfAnimal() - quantityTemp);
-                                farm.getSheepList().remove(i);
-                            } else{
-                                quantityTemp = quantityTemp - farm.getSheepList().get(i).getNumberOfAnimal();
-                                farm.getSheepList().remove(i);
+                    for (int i = 0; i < farm.getSheepList().size() && quantityTemp > 0; i++) {
+                        if (quantityTemp > 0) {
+                            if (quantityTemp < farm.getSheepList().get(0).getNumberOfAnimal()) {
+                                farm.getSheepList().get(0).setNumberOfAnimal(farm.getSheepList().get(0).getNumberOfAnimal() - quantityTemp);
+                                quantityTemp = 0;
+                            } else if (quantityTemp == farm.getSheepList().get(0).getNumberOfAnimal()) {
+                                quantityTemp = 0;
+                                farm.getSheepList().remove(0);
+                            } else {
+                                quantityTemp = quantityTemp - farm.getSheepList().get(0).getNumberOfAnimal();
+                                farm.getSheepList().remove(0);
                             }
                         }
                     }
                     farm.setCash(farm.getCash() + (quantity * sheep.getSellingPrice()));
                     System.out.println("Sprzedałeś " + quantity + " sztuk " + sheep.getRace() + " za kwotę " + (quantity * sheep.getSellingPrice()) + "zł.");
-                    if(farm.getSheepList() != null) {
+                    if (!farm.getSheepList().isEmpty()) {
                         farm.setTotalNumberOfSheep(farm.getSheepList().get(0).howManySheepInList(farm.getSheepList()));
-                        farm.setTotalNumberOfAdultSheep(farm.getSheepList().get(0).howManySheepInList(farm.getSheepList()));
-                    } else{
+                        farm.setTotalNumberOfAdultSheep(farm.getSheepList().get(0).howManyAdultSheepInList(farm.getSheepList()));
+                    } else {
                         farm.setTotalNumberOfSheep(0);
                         farm.setTotalNumberOfAdultSheep(0);
                     }
@@ -831,7 +825,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
     }
 
@@ -866,7 +859,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
 
         }
     }
@@ -880,42 +872,41 @@ public class Shop {
         while (!flag) {
             animalPossesionTurkey(farm);
             System.out.println("Cena sprzedaży indyków wynosi " + turkey.getSellingPrice() + "zł za sztukę.");
-            System.out.println("Posiadasz obecnie " + farm.getTurkeyList().size() + "sztuk indyków.");
             System.out.println("Ile indyków chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
-                if(farm.getTurkeyList() == null){
+                quantity = Integer.parseInt(scan.nextLine());
+                if (farm.getTurkeyList() == null) {
                     System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
-                } else if (quantity > farm.getTurkeyList().size()) {
+                } else if (quantity > farm.getTurkeyList().get(0).howManyTurkeyInList(farm.getTurkeyList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
-
                 } else if (quantity < 0) {
                     System.out.println("Wprowadziłeś ilość mniejszą niż zero. Wprowadź odpowiednią ilość.");
                 } else {
                     Integer quantityTemp = quantity;
-                    for(int i = 0; i < farm.getTurkeyList().size(); i++){
-                        if(quantityTemp > 0){
-                            if(quantityTemp < farm.getTurkeyList().get(i).getNumberOfAnimal() ){
-                                farm.getTurkeyList().get(i).setNumberOfAnimal(farm.getTurkeyList().get(i).getNumberOfAnimal() - quantityTemp);
-                            } else if(quantityTemp == farm.getTurkeyList().get(i).getNumberOfAnimal()){
-                                farm.getTurkeyList().get(i).setNumberOfAnimal(farm.getTurkeyList().get(i).getNumberOfAnimal() - quantityTemp);
-                                farm.getTurkeyList().remove(i);
-                            } else{
-                                quantityTemp = quantityTemp - farm.getTurkeyList().get(i).getNumberOfAnimal();
-                                farm.getTurkeyList().remove(i);
+                    for (int i = 0; i < farm.getTurkeyList().size() && quantityTemp > 0; i++) {
+                        if (quantityTemp > 0) {
+                            if (quantityTemp < farm.getTurkeyList().get(0).getNumberOfAnimal()) {
+                                farm.getTurkeyList().get(0).setNumberOfAnimal(farm.getTurkeyList().get(0).getNumberOfAnimal() - quantityTemp);
+                                quantityTemp = 0;
+                            } else if (quantityTemp == farm.getTurkeyList().get(0).getNumberOfAnimal()) {
+                                quantityTemp = 0;
+                                farm.getTurkeyList().remove(0);
+                            } else {
+                                quantityTemp = quantityTemp - farm.getTurkeyList().get(0).getNumberOfAnimal();
+                                farm.getTurkeyList().remove(0);
                             }
                         }
                     }
                     farm.setCash(farm.getCash() + (quantity * turkey.getSellingPrice()));
                     System.out.println("Sprzedałeś " + quantity + " sztuk " + turkey.getRace() + " za kwotę " + (quantity * turkey.getSellingPrice()) + "zł.");
-                    if(farm.getTurkeyList() != null) {
+                    if (!farm.getTurkeyList().isEmpty()) {
                         farm.setTotalNumberOfTurkey(farm.getTurkeyList().get(0).howManyTurkeyInList(farm.getTurkeyList()));
-                        farm.setTotalNumberOfAdultTurkey(farm.getTurkeyList().get(0).howManyTurkeyInList(farm.getTurkeyList()));
-                    } else{
+                        farm.setTotalNumberOfAdultTurkey(farm.getTurkeyList().get(0).howManyAdultTurkeyInList(farm.getTurkeyList()));
+                    } else {
                         farm.setTotalNumberOfTurkey(0);
                         farm.setTotalNumberOfAdultTurkey(0);
                     }
@@ -926,9 +917,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
     }
-
-
 }
