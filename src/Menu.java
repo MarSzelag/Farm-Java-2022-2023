@@ -351,18 +351,25 @@ public class Menu {
 
     public Integer shopMenuLand(Farm farm) {
         System.out.println("Sklep. Dział handlu ziemią.");
-        System.out.println("Wybierz, czym chcesz handlować: ");
+        System.out.println("Wybierz, czy chcesz kupić, czy sprzedać ziemię: ");
+        System.out.println("1. Kupno ziemi.");
+        System.out.println("2. Sprzedaż ziemi.");
+        System.out.println("9. Wyjście do menu głównego.");
 
         Integer shopMenuLandCounter = 0;
+        Integer landCounter;
         shopMenuLandCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuLandCounter) {
             case 1:
-                farm.shop.buyLand(farm); //TODO Can I remove farm from method if I have farm.shop?
-
+            //    while(landCounter != 0) {
+                    farm.shop.buyLand(farm);
+              //  }
                 break;
             case 2:
-                farm.shop.buyLand(farm);
+                //while(landCounter != 0) {
+                    farm.shop.sellLand(farm);
+                //}
                 break;
             case 9:
                 System.out.println("Powrót do menu głównego sklepu.");

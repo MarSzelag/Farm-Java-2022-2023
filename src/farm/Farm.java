@@ -230,17 +230,9 @@ public class Farm {
     }
 
     public void addChicken(List<Chicken> chickenList, Integer numberOfChickens) {
-        //for (int i = 0; i < numberOfChickens; i++) {
-            chickenList.add(new Chicken()); //TODO numberOfAnimal
+        chickenList.add(new Chicken());
         chickenList.get(chickenList.size() - 1).setNumberOfAnimal(numberOfChickens);
-        //}
     }
-/*
-    public void removeChicken(List<Chicken> chickenList, Integer numberOfChickens) {
-        for (int i = 0; i < numberOfChickens; i++) {
-            chickenList.remove(chickenList.size() - 1);
-        }
-    }*/
 
     public List<Cow> getCowList() {
         return cowList;
@@ -251,9 +243,8 @@ public class Farm {
     }
 
     public void addCow(List<Cow> cowList, Integer numberOfCows) {
-        for (int i = 0; i < numberOfCows; i++) {
-            cowList.add(new Cow());
-        }
+        cowList.add(new Cow());
+        cowList.get(cowList.size() - 1).setNumberOfAnimal(numberOfCows);
     }
 
     /*
@@ -272,10 +263,9 @@ public class Farm {
     }
 
     public void addGoat(List<Goat> goatList, Integer numberOfGoats) {
-        for (int i = 0; i < numberOfGoats; i++) {
-            goatList.add(new Goat());
+        goatList.add(new Goat());
+        goatList.get(goatList.size() - 1).setNumberOfAnimal(numberOfGoats);
         }
-    }
 /*
     public void removeGoat(List<Goat> goatList, Integer numberOfGoats) {
         for (int i = 0; i < numberOfGoats; i++) {
@@ -291,11 +281,10 @@ public class Farm {
         this.gooseList = gooseList;
     }
 
-    public void addGoose(List<Goose> GooseList, Integer numberOfGoose) {
-        for (int i = 0; i < numberOfGoose; i++) {
-            gooseList.add(new Goose());
+    public void addGoose(List<Goose> gooseList, Integer numberOfGoose) {
+        gooseList.add(new Goose());
+        gooseList.get(gooseList.size() - 1).setNumberOfAnimal(numberOfGoose);
         }
-    }
 /*
     public void removeGoose(List<Goose> gooseList, Integer numberOfGoose) {
         for (int i = 0; i < numberOfGoose; i++) {
@@ -312,10 +301,9 @@ public class Farm {
     }
 
     public void addPig(List<Pig> pigList, Integer numberOfPigs) {
-        for (int i = 0; i < numberOfPigs; i++) {
-            pigList.add(new Pig());
+        pigList.add(new Pig());
+        pigList.get(pigList.size() - 1).setNumberOfAnimal(numberOfPigs);
         }
-    }
 /*
     public void removePig(List<Pig> pigList, Integer numberOfPigs) {
         for (int i = 0; i < numberOfPigs; i++) {
@@ -332,10 +320,9 @@ public class Farm {
     }
 
     public void addSheep(List<Sheep> SheepList, Integer numberOfSheep) {
-        for (int i = 0; i < numberOfSheep; i++) {
-            sheepList.add(new Sheep());
+        sheepList.add(new Sheep());
+        sheepList.get(cowList.size() - 1).setNumberOfAnimal(numberOfSheep);
         }
-    }
 /*
     public void removeSheep(List<Sheep> sheepList, Integer numberofSheep) {
         for (int i = 0; i < numberofSheep; i++) {
@@ -352,10 +339,9 @@ public class Farm {
     }
 
     public void addTurkey(List<Turkey> turkeyList, Integer numberOfTurkey) {
-        for (int i = 0; i < numberOfTurkey; i++) {
-            turkeyList.add(new Turkey());
+        turkeyList.add(new Turkey());
+        turkeyList.get(turkeyList.size() - 1).setNumberOfAnimal(numberOfTurkey);
         }
-    }
 /*
     public void removeTurkey(List<Turkey> turkeyList, Integer numberofTurkey) {
         for (int i = 0; i < numberofTurkey; i++) {
@@ -576,7 +562,9 @@ public class Farm {
     public void randomStartingValues(Farm farm) {
         Integer flag = 0;
 
-        this.land.setLandSizeInHa(rand.nextInt(2) + 2);
+        farm.getLand().setLandSizeInHa(rand.nextInt(5) + 3);
+        farm.land.setFreeLand(farm.land.getLandSizeInHa());
+
         while (flag < 2) {
             if (rand.nextBoolean() && flag < 3) {
                 farm.corn.setStoredInKg(farm.corn.getStoredInKg() + rand.nextInt(20) + 100); //100
@@ -607,7 +595,7 @@ public class Farm {
                 flag++;
             }
         }
-        farm.getLand().setLandSizeInHa(rand.nextInt(5) + 3);
+
 
     }
 

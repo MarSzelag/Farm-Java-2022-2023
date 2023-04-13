@@ -157,6 +157,7 @@ public class Shop {
                     System.out.println("Nie masz wystarczającej ilości pieniędzy, żeby kupić ziemię w ilości " + quantity + "ha.");
                 } else {
                     farm.getLand().setLandSizeInHa(farm.getLand().getLandSizeInHa() + quantity);
+                    farm.getLand().setFreeLand(farm.getLand().getFreeLand() + quantity);
                     farm.setCash(farm.getCash() - (quantity * farm.getLand().getBuyPriceOfLandPerHa()));
                     System.out.println("Dokonałeś zakupu " + quantity + "ha ziemi za kwotę " + (quantity * farm.getLand().getBuyPriceOfLandPerHa() + "zł."));
                     landPossession(farm);
@@ -176,7 +177,7 @@ public class Shop {
         while (!flag) {
             landPossession(farm);
             System.out.println("Cena sprzedaży ziemi wynosi " + farm.getLand().getSellPriceOfLandPerHa() + "zł za hektar.");
-            System.out.println("Możesz sprzedać tylko nieobsianą ziemię, czyli " + farm.getLand().getFreeLand());
+            System.out.println("Możesz sprzedać tylko nieobsianą ziemię, czyli " + farm.getLand().getFreeLand() + "ha.");
             System.out.println("Ile ha chcesz sprzedać? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
@@ -190,6 +191,7 @@ public class Shop {
                     System.out.println("Nie możesz sprzedać więcej ziemi niż masz obecnie ziemi nieobsianej.");
                 } else {
                     farm.getLand().setLandSizeInHa(farm.getLand().getLandSizeInHa() - quantity);
+                    farm.getLand().setFreeLand(farm.getLand().getFreeLand() - quantity);
                     farm.setCash(farm.getCash() + (quantity * farm.getLand().getBuyPriceOfLandPerHa()));
                     System.out.println("Dokonałeś sprzedaży " + quantity + "ha ziemi za kwotę " + (quantity * farm.getLand().getBuyPriceOfLandPerHa()) + "zł.");
                     landPossession(farm);
@@ -244,8 +246,7 @@ public class Shop {
         boolean flag = false;
         while (!flag) {
             landPossession(farm);
-            System.out.println("Cena sprzedaży 1 budynku wynosi " + farm.getLand().getSellPriceOfLandPerHa() + "zł za hektar.");
-            System.out.println("Możesz sprzedać tylko nieobsianą ziemię, czyli " + farm.getLand().getFreeLand());
+            System.out.println("Posiadasz " + building.getQuantityOfThisBuildingType() + "Cena sprzedaży 1 budynku wynosi " + building.getSellingPrice() + "zł za 1 budynek.");
             System.out.println("Ile budynków chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
@@ -276,8 +277,6 @@ public class Shop {
 
     }
 
-//TODO****************************Animals
-
     public void buyChicken(Farm farm) {
         Integer quantity;
         boolean flag = false;
@@ -290,7 +289,7 @@ public class Shop {
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
 
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
@@ -300,7 +299,6 @@ public class Shop {
                 } else if (farm.getCash() < (quantity * chicken.getBuyingPrice())) {
                     System.out.println("Nie masz wystarczającej ilości pieniędzy, żeby kupić " + chicken.getRace() + " w ilości " + quantity + " szt.");
                 } else {
-
                     farm.addChicken(farm.getChickenList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * chicken.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + chicken.getRace() + " za kwotę " + (quantity * chicken.getBuyingPrice()) + "zł.");
@@ -310,7 +308,6 @@ public class Shop {
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
 
         }
 
@@ -328,11 +325,11 @@ public class Shop {
 
             try {
                 quantity = Integer.parseInt(scan.nextLine());
-                if (farm.getChickenList().isEmpty()) {
-                    System.out.println("Nie masz kur na sprzedaż. ");
-                } else if (quantity == 0) {
+                if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
+                } else if (farm.getChickenList().isEmpty()) {
+                    System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity > farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
 
@@ -341,7 +338,7 @@ public class Shop {
                 } else {
                     Integer quantityTemp = quantity;
                     for (int i = 0; i < farm.getChickenList().size() && quantityTemp > 0; i++) {
-                       // System.out.println("XXX quantityTemp: " + quantityTemp +  ", i: " + i + " ilość kur: " + farm.getChickenList().get(0).getNumberOfAnimal()); //TODO TEST
+                        // System.out.println("XXX quantityTemp: " + quantityTemp +  ", i: " + i + " ilość kur: " + farm.getChickenList().get(0).getNumberOfAnimal()); //TODO TEST
                         if (quantityTemp > 0) {
                             if (quantityTemp < farm.getChickenList().get(0).getNumberOfAnimal()) {
                                 farm.getChickenList().get(i).setNumberOfAnimal(farm.getChickenList().get(0).getNumberOfAnimal() - quantityTemp);
@@ -386,7 +383,7 @@ public class Shop {
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
 
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
@@ -476,7 +473,7 @@ public class Shop {
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
 
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
@@ -511,11 +508,11 @@ public class Shop {
 
             try {
                 quantity = Integer.parseInt(scan.nextLine());
-                if (farm.getGoatList() == null) {
-                    System.out.println("Nie masz kur na sprzedaż. ");
-                } else if (quantity == 0) {
+                if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
+                } else if (farm.getGoatList() == null) {
+                    System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity > farm.getGoatList().get(0).howManyGoatInList(farm.getGoatList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
                 } else if (quantity < 0) {
@@ -567,7 +564,7 @@ public class Shop {
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
 
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
@@ -577,6 +574,13 @@ public class Shop {
                 } else if (farm.getCash() < (quantity * goose.getBuyingPrice())) {
                     System.out.println("Nie masz wystarczającej ilości pieniędzy, żeby kupić " + goose.getRace() + " w ilości " + quantity + " szt.");
                 } else {
+                    /*
+                    farm.addChicken(farm.getChickenList(), quantity);
+                    farm.setCash(farm.getCash() - (quantity * chicken.getBuyingPrice()));
+                    System.out.println("Dokonałeś zakupu " + quantity + " szt." + chicken.getRace() + " za kwotę " + (quantity * chicken.getBuyingPrice()) + "zł.");
+                    animalPossesionChicken(farm);
+                    flag = true;
+                     */
                     farm.addGoose(farm.getGooseList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * goose.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + goose.getRace() + " za kwotę " + (quantity * goose.getBuyingPrice()) + "zł.");
@@ -603,11 +607,11 @@ public class Shop {
 
             try {
                 quantity = Integer.parseInt(scan.nextLine());
-                if (farm.getGooseList() == null) {
-                    System.out.println("Nie masz kur na sprzedaż. ");
-                } else if (quantity == 0) {
+                if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
+                } else if (farm.getGooseList() == null) {
+                    System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity > farm.getGooseList().get(0).howManyGooseInList(farm.getGooseList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
                 } else if (quantity < 0) {
@@ -658,7 +662,7 @@ public class Shop {
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
 
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
@@ -693,11 +697,11 @@ public class Shop {
 
             try {
                 quantity = Integer.parseInt(scan.nextLine());
-                if (farm.getPigList() == null) {
-                    System.out.println("Nie masz kur na sprzedaż. ");
-                } else if (quantity == 0) {
+                if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
+                } else if (farm.getPigList() == null) {
+                    System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity > farm.getPigList().get(0).howManyAdultPigInList(farm.getPigList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
                 } else if (quantity < 0) {
@@ -749,7 +753,7 @@ public class Shop {
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
 
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
@@ -784,11 +788,11 @@ public class Shop {
 
             try {
                 quantity = Integer.parseInt(scan.nextLine());
-                if (farm.getSheepList() == null) {
-                    System.out.println("Nie masz kur na sprzedaż. ");
-                } else if (quantity == 0) {
+                if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
+                } else if (farm.getSheepList() == null) {
+                    System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity > farm.getSheepList().get(0).howManySheepInList(farm.getSheepList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
                 } else if (quantity < 0) {
@@ -840,7 +844,7 @@ public class Shop {
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
 
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
@@ -876,11 +880,11 @@ public class Shop {
 
             try {
                 quantity = Integer.parseInt(scan.nextLine());
-                if (farm.getTurkeyList() == null) {
-                    System.out.println("Nie masz kur na sprzedaż. ");
-                } else if (quantity == 0) {
+                if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
+                } else if (farm.getTurkeyList() == null) {
+                    System.out.println("Nie masz kur na sprzedaż. ");
                 } else if (quantity > farm.getTurkeyList().get(0).howManyTurkeyInList(farm.getTurkeyList())) {
                     System.out.println("Nie możesz sprzedać więcej niż posiadasz. Wprowadź odpowiednią ilość.");
                 } else if (quantity < 0) {
