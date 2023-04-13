@@ -245,12 +245,12 @@ public class Shop {
         double maxNumberOfBuildingsToSell = (building.getQuantityOfThisBuildingType() * building.getCapacityOfOneBuilding()) - farm.allPlantsKg() / building.getCapacityOfOneBuilding();
         boolean flag = false;
         while (!flag) {
-            landPossession(farm);
-            System.out.println("Posiadasz " + building.getQuantityOfThisBuildingType() + "Cena sprzedaży 1 budynku wynosi " + building.getSellingPrice() + "zł za 1 budynek.");
+            buildingPossesion(building, farm);
+            System.out.println("Cena sprzedaży 1 budynku wynosi " + building.getSellingPrice() + "zł za 1 budynek.");
             System.out.println("Ile budynków chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
-                quantity = scan.nextInt();
+                quantity = Integer.parseInt(scan.nextLine());
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
@@ -261,20 +261,17 @@ public class Shop {
                 } else if (quantity > maxNumberOfBuildingsToSell) {
                     System.out.println("Możesz sprzedać tylko budynki, które stoją puste. Możesz sprzedać maksymalnie " + maxNumberOfBuildingsToSell + " budynki.");
                 } else {
-                    building.setQuantityOfThisBuildingType(building.getQuantityOfThisBuildingType() + quantity);
+                    building.setQuantityOfThisBuildingType(building.getQuantityOfThisBuildingType() - quantity);
                     farm.setCash(farm.getCash() + (quantity * building.getBuyingPrice()));
 
                     System.out.println("Dokonałeś sprzedaży " + quantity + " " + building.getName() + " za kwotę " + (quantity * building.getBuyingPrice()) + "zł.");
-                    landPossession(farm);
+                    buildingPossesion(building, farm);
                     flag = true;
                 }
-
             } catch (InputMismatchException e) {
                 System.out.println("Ilość podajemy w dodatnich liczbach całkowitych. Spróbuj jeszcze raz.");
             }
-            scan.nextLine();
         }
-
     }
 
     public void buyChicken(Farm farm) {

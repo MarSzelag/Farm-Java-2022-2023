@@ -528,7 +528,7 @@ public class Farm {
     }
 
     public void possesions() {
-        // TODO data, tydzień roku??? tura
+        System.out.println("Jest " + getTime() + ", czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
         possesionsLand();
         possesionsPlants();
         possessionsAnimal();
@@ -793,7 +793,7 @@ public class Farm {
 
 
     public void startOfTheTurn() {
-        System.out.println("Jest " + getTime() + " czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
+        System.out.println("Jest " + getTime() + ", czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
         checkNumberOfAnimals(chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         Events.eventCheck(this);
         reproduction();
@@ -819,7 +819,8 @@ public class Farm {
     }
 
     public void addSown(Plant plant) {
-        Sown sown = new Sown().addToSown(plant, this);
+        Sown sown = new Sown();
+        sown.addToSown(plant, this);
         if (sown != null) {
             this.sown.add(sown);
         }

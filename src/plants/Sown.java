@@ -47,10 +47,10 @@ public class Sown {
         this.plant = plant;
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Masz " + farm.getLand().getFreeLand() + " nieobsianej ziemi i " + plant.getStoredInKg() + " kg " + plant.getPlantName() + " Obsianie 1 ha ziemi wymaga " + plant.getNeededToSowOneHaInKg());
+        System.out.println("Masz " + farm.getLand().getFreeLand() + "ha nieobsianej ziemi i " + plant.getStoredInKg() + " kg " + plant.getPlantName() + " Obsianie 1 ha ziemi wymaga " + plant.getNeededToSowOneHaInKg() + "kg " + plant.getPlantName());
         System.out.println("Koszt przygotowania ziemi i obsiewu wynosi " + plant.getLandPreparationCostPerHa() + "zł, a koszt ochrony roślin " + plant.getProtectionAgainstPests() + "zł za każdy ha obsianej ziemi.");
         System.out.println("Wprowadź 0, aby wyjść.");
-        System.out.println("Ile ha " + plant.getPlantName() + "chcesz obsiać?");
+        System.out.println("Ile ha " + plant.getPlantName() + " chcesz obsiać?");
         try {
             haToSow = Integer.parseInt(scan.nextLine());
             if (haToSow < 0) {
@@ -65,7 +65,7 @@ public class Sown {
                     this.weeksToHarvest = plant.getHarvestTimeAfterNoWeeks();
                     System.out.println("Obsiałeś " + haToSow + " ziemi.");
                 } else
-                    System.out.println("Teraz nie da rady tego zasiać. Okres zasiewów jest od " + plant.getSowingTimeFromWeek() + " tygodnia do " + plant.getSowingTimeToWeek() + " tygodnia roku.");
+                    System.out.println("Teraz nie da rady tego zasiać. Okres zasiewów jest od " + plant.getSowingTimeFromWeek() + " tygodnia do " + plant.getSowingTimeToWeek() + " tygodnia roku, a obecnie mamy " + farm.getWeekOfYear() + " tydzień.");
             } else
                 System.out.println("Sprawdź dokładnie ile ziemi możesz obsiać i czy masz wystarczającą ilość roślin do obsiewu.");
         } catch (

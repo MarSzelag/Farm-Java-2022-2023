@@ -82,7 +82,7 @@ public class Menu {
         switch (farmMenuCounter) {
             case 1:
                 System.out.println("Stan posiadania.");
-                    farm.possesions();
+                farm.possesions();
                 break;
             case 2:
                 System.out.println("Sklep.");
@@ -93,7 +93,7 @@ public class Menu {
             case 3:
                 System.out.println("Obsiewanie");
                 while (farmCounter != 9) {
-
+                    farmCounter = sowMenu(farm);
                 }
                 break;
             case 4:
@@ -303,42 +303,42 @@ public class Menu {
 
         switch (shopMenuBuildingsCounter) {
             case 1:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuChickenCoop(farm);
                 }
                 break;
             case 2:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuCowShed(farm);
                 }
                 break;
             case 3:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuGoatBarn(farm);
                 }
                 break;
             case 4:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuGooseCoop(farm);
                 }
                 break;
             case 5:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuPigsty(farm);
                 }
                 break;
             case 6:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuSheepfold(farm);
                 }
                 break;
             case 7:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuTurkeyCoop(farm);
                 }
                 break;
             case 8:
-                while(buildingCounter != 9) {
+                while (buildingCounter != 9) {
                     buildingCounter = shopMenuBarn(farm);
                 }
                 break;
@@ -362,13 +362,13 @@ public class Menu {
 
         switch (shopMenuLandCounter) {
             case 1:
-            //    while(landCounter != 0) {
-                    farm.shop.buyLand(farm);
-              //  }
+                //    while(landCounter != 0) {
+                farm.shop.buyLand(farm);
+                //  }
                 break;
             case 2:
                 //while(landCounter != 0) {
-                    farm.shop.sellLand(farm);
+                farm.shop.sellLand(farm);
                 //}
                 break;
             case 9:
@@ -571,7 +571,6 @@ public class Menu {
         return shopMenuWinterWheatCounter;
     }
 
-    //TODO animals menus
     public Integer shopMenuChicken(Farm farm) {
         System.out.println("Chcesz sprzedać, czy kupić kury?");
         System.out.println("1. Kupić.");
@@ -927,51 +926,49 @@ public class Menu {
     }
 
     //TODO sow i harvest
-    public void sowMenu(Farm farm) {
+    public Integer sowMenu(Farm farm) {
         Integer sowMenuCounter = 0;
-        Integer sowCounter = 0;
-        while(sowCounter != 9) {
-            System.out.println("Co chcesz obsiać?");
-            System.out.println("1. Kukurydza.");
-            System.out.println("2. Ziemniak późny.");
-            System.out.println("3. Rzepak ozimy.");
-            System.out.println("4. Żyto ozime.");
-            System.out.println("5. Jęczmień jary.");
-            System.out.println("6. Burak cukrowy.");
-            System.out.println("7. Pszenica ozima.");
-            System.out.println("9. Powrót do menu głównego farmy.");
+        // Integer sowCounter = 0;
+        System.out.println("Co chcesz obsiać?");
+        System.out.println("1. Kukurydza.");
+        System.out.println("2. Ziemniak późny.");
+        System.out.println("3. Rzepak ozimy.");
+        System.out.println("4. Żyto ozime.");
+        System.out.println("5. Jęczmień jary.");
+        System.out.println("6. Burak cukrowy.");
+        System.out.println("7. Pszenica ozima.");
+        System.out.println("9. Powrót do menu głównego farmy.");
 
 
-            sowMenuCounter = Integer.parseInt(scan.nextLine());
+        sowMenuCounter = Integer.parseInt(scan.nextLine());
 
-            switch (sowMenuCounter) {
-                case 1:
-                    farm.addSown(farm.getCorn());
-                    break;
-                case 2:
-                    farm.addSown(farm.getLatePotato());
-                    break;
-                case 3:
-                    farm.addSown(farm.getLateRape());
-                    break;
-                case 4:
-                    farm.addSown(farm.getLateRye());
-                    break;
-                case 5:
-                    farm.addSown(farm.getSpringBarley());
-                    break;
-                case 6:
-                    farm.addSown(farm.getWhiteBeet());
-                    break;
-                case 7:
-                    farm.addSown(farm.getWinterWheat());
-                    break;
-                case 9:
-                    System.out.println("Powrót do menu głównego farmy.");
-                    break;
-            }
+        switch (sowMenuCounter) {
+            case 1:
+                farm.addSown(farm.getCorn());
+                break;
+            case 2:
+                farm.addSown(farm.getLatePotato());
+                break;
+            case 3:
+                farm.addSown(farm.getLateRape());
+                break;
+            case 4:
+                farm.addSown(farm.getLateRye());
+                break;
+            case 5:
+                farm.addSown(farm.getSpringBarley());
+                break;
+            case 6:
+                farm.addSown(farm.getWhiteBeet());
+                break;
+            case 7:
+                farm.addSown(farm.getWinterWheat());
+                break;
+            case 9:
+                System.out.println("Powrót do menu głównego farmy.");
+                break;
         }
-
+        return sowMenuCounter;
     }
 
 }
