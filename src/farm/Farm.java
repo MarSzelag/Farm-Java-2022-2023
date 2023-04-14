@@ -373,7 +373,7 @@ public class Farm {
         System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej.");
     }
 
-    public void possessionsAnimal() {        // TODO Animals
+    public void possessionsAnimal() {
         System.out.println("Twoje zwierzęta:  ");
         System.out.println(this.getChickenList().size() + " kór.");
         System.out.println(this.getCowList().size() + " krów.");
@@ -384,7 +384,7 @@ public class Farm {
         System.out.println(this.getTurkeyList().size() + " indyków.");
     }
 
-    public void possesionsBuilding() {        // TODO Building
+    public void possesionsBuilding() {
         System.out.println("Twoje budynki:  ");
         System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół.");
         System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników.");
@@ -432,8 +432,9 @@ public class Farm {
     public void randomStartingValues(Farm farm) {
         Integer flag = 0;
 
-        farm.getLand().setLandSizeInHa(rand.nextInt(5) + 3);
+        farm.getLand().setLandSizeInHa(rand.nextInt(10) + 5);
         farm.land.setFreeLand(farm.land.getLandSizeInHa());
+        farm.barn.setQuantityOfThisBuildingType(1);
 
         while (flag < 2) {
             if (rand.nextBoolean() && flag < 3) {

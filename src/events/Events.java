@@ -70,4 +70,3 @@ public class Events {
     }
 }
 
-// susza, powódź, stonka

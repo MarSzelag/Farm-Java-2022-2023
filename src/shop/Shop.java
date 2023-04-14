@@ -248,12 +248,40 @@ public class Shop {
             buildingPossesion(building, farm);
             System.out.println("Cena sprzedaży 1 budynku wynosi " + building.getSellingPrice() + "zł za 1 budynek.");
             System.out.println("Ile budynków chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
+            Integer enoughCapacityPlants = 0, enoughCapacityBuildings;
 
             try {
                 quantity = Integer.parseInt(scan.nextLine());
+                Barn barn;
+                if(building.getClass().equals(Barn.class.getClass())) {
+                    barn = (Barn) building;
+                    Double kgOfPlantsDouble = barn.kgOfPlantsStoredInBarn(farm);
+                    Integer kgOfPlantsInteger = kgOfPlantsDouble.intValue();
+                    enoughCapacityPlants = ((barn.getCapacityOfOneBuilding() * barn.getQuantityOfThisBuildingType()) - (barn.getCapacityOfOneBuilding() * quantity)) - kgOfPlantsInteger;
+                }
+
+                enoughCapacityBuildings = ((building.getCapacityOfOneBuilding() * building.getQuantityOfThisBuildingType()) - (building.getCapacityOfOneBuilding() * quantity));
+
+
                 if (quantity == 0) {
                     System.out.println("Dziękujemy za wizytę w naszym sklepie. Zapraszamy ponownie.");
                     flag = true;
+                }else if(building.getName().equals("Stodoła") && enoughCapacityPlants <= 0){
+                    System.out.println("Nie możesz sprzedać tylu budynków, ponieważ pozostanie za mało, żeby pomieścić rośliny.");
+                }else if(building.getName().equals("Kurnik") && ((enoughCapacityBuildings) - farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList())) <= 0 ){
+                    System.out.println("Nie możesz sprzedać tylu kurników, ponieważ nie będzie wystarczającej ilości, żeby pomieścić kury.");
+                }else if(building.getName().equals("Obora") && ((enoughCapacityBuildings) - farm.getCowList().get(0).howManyCowInList(farm.getCowList())) <= 0  ){
+                    System.out.println("Nie możesz sprzedać tylu kurników, ponieważ nie będzie wystarczającej ilości, żeby pomieścić krowy.");
+                }else if(building.getName().equals("Stodoła dla kóz") && ((enoughCapacityBuildings) - farm.getGoatList().get(0).howManyGoatInList(farm.getGoatList())) <= 0 ){
+                    System.out.println("Nie możesz sprzedać tylu kurników, ponieważ nie będzie wystarczającej ilości, żeby pomieścić kozy.");
+                }else if(building.getName().equals("Gęsi kurnik") && ((enoughCapacityBuildings) - farm.getGooseList().get(0).howManyGooseInList(farm.getGooseList())) <= 0 ){
+                    System.out.println("Nie możesz sprzedać tylu kurników, ponieważ nie będzie wystarczającej ilości, żeby pomieścić gęsi.");
+                }else if(building.getName().equals("Chlew") && ((enoughCapacityBuildings) - farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList())) <= 0 ){
+                    System.out.println("Nie możesz sprzedać tylu kurników, ponieważ nie będzie wystarczającej ilości, żeby pomieścić świnie.");
+                }else if(building.getName().equals("Owczarnia") && ((enoughCapacityBuildings) - farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList())) <= 0 ){
+                    System.out.println("Nie możesz sprzedać tylu kurników, ponieważ nie będzie wystarczającej ilości, żeby pomieścić owce.");
+                }else if(building.getName().equals("Kurnik dla indyków") && ((enoughCapacityBuildings) - farm.getChickenList().get(0).howManyChickenInList(farm.getChickenList())) <= 0 ){
+                    System.out.println("Nie możesz sprzedać tylu kurników, ponieważ nie będzie wystarczającej ilości, żeby pomieścić indyki.");
                 } else if (quantity < 0) {
                     System.out.println("Nie można sprzedać ujemnej ilości budynków.");
                 } else if (quantity > farm.getLand().getFreeLand()) {

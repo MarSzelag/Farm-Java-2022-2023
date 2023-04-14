@@ -5,7 +5,7 @@ import farm.Farm;
 public class Building {
     private String name;
     private String storedGoods;
-    private static Integer quantityOfThisBuildingType = 0;
+    private Integer quantityOfThisBuildingType = 0;
     private Integer capacityOfOneBuilding;
 
     private Double buyingPrice;
