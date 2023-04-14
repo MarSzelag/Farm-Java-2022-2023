@@ -17,7 +17,7 @@ public class Farm {
     private String owner;
     private Double cash = 1500.00;
 
-    private Integer turnCounter = 1; // Około 52 tury to rok
+    private Integer turnCounter = 1;
     //Plants
     private Land land = new Land();
     //Buildings initialization
@@ -55,26 +55,6 @@ public class Farm {
     public Shop shop = new Shop(this);
 
 
-
-
-
-    /*
-    public List<Plant> sownPlantsList = new LinkedList<>(); // Plus przy losowanich, minus przy wyszukiwaniu konkretnej rośliny
-
-    public void setSownPlantsList() {
-        this.sownPlantsList.add(corn);
-        this.sownPlantsList.add(latePotato);
-
-        this.sownPlantsList.get(1).setPlantName("Dziobu");
-
-        for(int i = 0; i < this.sownPlantsList.size(); i++){
-            System.out.println(this.sownPlantsList.get(i).getPlantName());
-        }
-    }*/
-//Animals
-    //Buildings
-
-
     public Calendar calendar = new GregorianCalendar(Locale.GERMAN);
 
     public String getOwner() {
@@ -105,65 +85,6 @@ public class Farm {
         return barn;
     }
 
-    public void setBarn(Barn barn) {
-        this.barn = barn;
-    }
-
-    public ChickenCoop getChickenCoop() {
-        return chickenCoop;
-    }
-
-    public void setChickenCoop(ChickenCoop chickenCoop) {
-        this.chickenCoop = chickenCoop;
-    }
-
-    public CowShed getCowShed() {
-        return cowShed;
-    }
-
-    public void setCowShed(CowShed cowShed) {
-        this.cowShed = cowShed;
-    }
-
-    public GoatBarn getGoatBarn() {
-        return goatBarn;
-    }
-
-    public void setGoatBarn(GoatBarn goatBarn) {
-        this.goatBarn = goatBarn;
-    }
-
-    public GooseCoop getGooseCoop() {
-        return gooseCoop;
-    }
-
-    public void setGooseCoop(GooseCoop gooseCoop) {
-        this.gooseCoop = gooseCoop;
-    }
-
-    public Pigsty getPigsty() {
-        return pigsty;
-    }
-
-    public void setPigsty(Pigsty pigsty) {
-        this.pigsty = pigsty;
-    }
-
-    public Sheepfold getSheepfold() {
-        return sheepfold;
-    }
-
-    public void setSheepfold(Sheepfold sheepfold) {
-        this.sheepfold = sheepfold;
-    }
-
-    public TurkeyCoop getTurkeyCoop() {
-        return turkeyCoop;
-    }
-
-    public void setTurkeyCoop(TurkeyCoop turkeyCoop) {
-        this.turkeyCoop = turkeyCoop;
-    }
 
     public Corn getCorn() {
         return corn;
@@ -247,13 +168,6 @@ public class Farm {
         cowList.get(cowList.size() - 1).setNumberOfAnimal(numberOfCows);
     }
 
-    /*
-        public void removeCow(List<Cow> cowList, Integer numberofCows) {
-            for (int i = 0; i < numberofCows; i++) {
-                cowList.remove(cowList.size() - 1);
-            }
-        }
-    */
     public List<Goat> getGoatList() {
         return goatList;
     }
@@ -266,12 +180,6 @@ public class Farm {
         goatList.add(new Goat());
         goatList.get(goatList.size() - 1).setNumberOfAnimal(numberOfGoats);
         }
-/*
-    public void removeGoat(List<Goat> goatList, Integer numberOfGoats) {
-        for (int i = 0; i < numberOfGoats; i++) {
-            goatList.remove(goatList.size() - 1);
-        }
-    }*/
 
     public List<Goose> getGooseList() {
         return gooseList;
@@ -285,12 +193,6 @@ public class Farm {
         gooseList.add(new Goose());
         gooseList.get(gooseList.size() - 1).setNumberOfAnimal(numberOfGoose);
         }
-/*
-    public void removeGoose(List<Goose> gooseList, Integer numberOfGoose) {
-        for (int i = 0; i < numberOfGoose; i++) {
-            gooseList.remove(gooseList.size() - 1);
-        }
-    }*/
 
     public List<Pig> getPigList() {
         return pigList;
@@ -304,12 +206,6 @@ public class Farm {
         pigList.add(new Pig());
         pigList.get(pigList.size() - 1).setNumberOfAnimal(numberOfPigs);
         }
-/*
-    public void removePig(List<Pig> pigList, Integer numberOfPigs) {
-        for (int i = 0; i < numberOfPigs; i++) {
-            pigList.remove(pigList.size() - 1);
-        }
-    }*/
 
     public List<Sheep> getSheepList() {
         return sheepList;
@@ -323,12 +219,6 @@ public class Farm {
         sheepList.add(new Sheep());
         sheepList.get(cowList.size() - 1).setNumberOfAnimal(numberOfSheep);
         }
-/*
-    public void removeSheep(List<Sheep> sheepList, Integer numberofSheep) {
-        for (int i = 0; i < numberofSheep; i++) {
-            sheepList.remove(sheepList.size() - 1);
-        }
-    }*/
 
     public List<Turkey> getTurkeyList() {
         return turkeyList;
@@ -342,26 +232,6 @@ public class Farm {
         turkeyList.add(new Turkey());
         turkeyList.get(turkeyList.size() - 1).setNumberOfAnimal(numberOfTurkey);
         }
-/*
-    public void removeTurkey(List<Turkey> turkeyList, Integer numberofTurkey) {
-        for (int i = 0; i < numberofTurkey; i++) {
-            turkeyList.remove(turkeyList.size() - 1);
-        }
-    }*/
-/*
-    public Integer getLandOwned() {
-        return landOwned;
-    }
-
-    public void setLandOwned(Integer landOwned) {
-        this.landOwned = landOwned;
-    }
-
- */
-/*
-    public Integer getTurnCounter() {
-        return turnCounter;
-    }*/
 
     public void setTurnCounter(Integer turnCounter) {
         this.turnCounter = turnCounter;

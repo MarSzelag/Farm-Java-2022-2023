@@ -22,11 +22,10 @@ public class Menu {
     public void mainMenuShow() {
         System.out.println("Witamy na farmie. Posługując się poniższym menu wybierz, co chcesz zrobić.");
         System.out.println("1. Utwórz nową grę dla jednego gracza.");
-        System.out.println("2. Utwórz nową grę dla wielu graczy.");
         System.out.println("9. Zakończ i opuść grę.");
     }
 
-    public Farm mainMenu(Farm farm) { //TODO If there is wrong input in scan then repeat
+    public Farm mainMenu(Farm farm) {
         Farm menuFarm = farm;
         mainMenuShow();
         System.out.println();
@@ -38,9 +37,6 @@ public class Menu {
                 menuFarm = createFarmMenu(farm);
                 setOwnerName(menuFarm);
                 return menuFarm;
-            case 2:
-                System.out.println("Do zrobienia:                                         Wybrałeś '2' Utworzenie gry dla wielu graczy.");
-                break;
             case 9:
                 System.out.println("Wybrałeś '9' Opuszczenie gry. Zapraszamy serdecznie, gdy tylko znowu zapragniesz zaznać uroków farmerskiego życia.");
                 break;
@@ -66,7 +62,6 @@ public class Menu {
     public Integer farmMenu(Farm farm) {
         Integer farmMenuCounter = 0;
 
-        // Do sprawdzenia --> System.out.println("Data: " + farm.getTime() + ", " + farm.getWeekOfYear() + " tydzień roku, " + " tura nr " + "farm.getTurnCounter()");
         System.out.println();
 
         System.out.println("Wybierz opcję: ");
@@ -925,7 +920,6 @@ public class Menu {
         return shopMenuTurkeyCoopCounter;
     }
 
-    //TODO sow i harvest
     public Integer sowMenu(Farm farm) {
         Integer sowMenuCounter = 0;
         // Integer sowCounter = 0;

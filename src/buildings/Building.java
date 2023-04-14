@@ -71,15 +71,4 @@ public class Building {
         return this.quantityOfThisBuildingType * this.capacityOfOneBuilding;
     }
 
-
-
 }
-
-
-/*
-barn - zboża
-chickenCoop - kury
-cowShed - krowy
-pigsty - świnie
- */
-// magazyn, silos, stodoła, obora, kurnik, garaź

@@ -334,7 +334,7 @@ public class Animal {
     }
 
 
-    public Integer howManyPigInList(List<Pig> list) { //TODO sprawdza po sprzedaży i zakupie
+    public Integer howManyPigInList(List<Pig> list) {
         Integer numberOfAnimals = 0;
         for (int i = 0; i < list.size(); i++) {
             numberOfAnimals = numberOfAnimals + list.get(i).getNumberOfAnimal();
@@ -342,7 +342,7 @@ public class Animal {
         return numberOfAnimals;
     }
 
-    public Integer howManyAdultPigInList(List<Pig> list) {//TODO sprawdza po sprzedaży i zakupie
+    public Integer howManyAdultPigInList(List<Pig> list) {
         Integer numberOfAdultAnimals = 0;
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getAgeOfAdulthoodWeeks() <= list.get(i).getAgeWeeks()) {

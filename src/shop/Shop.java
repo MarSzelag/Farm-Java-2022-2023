@@ -335,13 +335,13 @@ public class Shop {
                 } else {
                     Integer quantityTemp = quantity;
                     for (int i = 0; i < farm.getChickenList().size() && quantityTemp > 0; i++) {
-                        // System.out.println("XXX quantityTemp: " + quantityTemp +  ", i: " + i + " ilość kur: " + farm.getChickenList().get(0).getNumberOfAnimal()); //TODO TEST
+
                         if (quantityTemp > 0) {
                             if (quantityTemp < farm.getChickenList().get(0).getNumberOfAnimal()) {
                                 farm.getChickenList().get(i).setNumberOfAnimal(farm.getChickenList().get(0).getNumberOfAnimal() - quantityTemp);
-                                quantityTemp = 0; //TODO w każdym zwierzęciu, tu jest zły wzór
+                                quantityTemp = 0;
                             } else if (quantityTemp == farm.getChickenList().get(0).getNumberOfAnimal()) {
-                                quantityTemp = 0; //TODO w każdym zwierzęciu
+                                quantityTemp = 0;
                                 farm.getChickenList().remove(0);
                             } else {
                                 quantityTemp = quantityTemp - farm.getChickenList().get(0).getNumberOfAnimal();
@@ -571,13 +571,6 @@ public class Shop {
                 } else if (farm.getCash() < (quantity * goose.getBuyingPrice())) {
                     System.out.println("Nie masz wystarczającej ilości pieniędzy, żeby kupić " + goose.getRace() + " w ilości " + quantity + " szt.");
                 } else {
-                    /*
-                    farm.addChicken(farm.getChickenList(), quantity);
-                    farm.setCash(farm.getCash() - (quantity * chicken.getBuyingPrice()));
-                    System.out.println("Dokonałeś zakupu " + quantity + " szt." + chicken.getRace() + " za kwotę " + (quantity * chicken.getBuyingPrice()) + "zł.");
-                    animalPossesionChicken(farm);
-                    flag = true;
-                     */
                     farm.addGoose(farm.getGooseList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * goose.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + goose.getRace() + " za kwotę " + (quantity * goose.getBuyingPrice()) + "zł.");
