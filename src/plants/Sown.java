@@ -69,7 +69,7 @@ public class Sown {
                     System.out.println("Teraz nie da rady tego zasiać. Okres zasiewów jest od " + plant.getSowingTimeFromWeek() + " tygodnia do " + plant.getSowingTimeToWeek() + " tygodnia roku, a obecnie mamy " + farm.getWeekOfYear() + " tydzień.");
             } else
                 System.out.println("Sprawdź dokładnie ile ziemi możesz obsiać i czy masz wystarczającą ilość roślin do obsiewu.");
-        } catch ( InputMismatchException e) {
+        } catch ( NumberFormatException e) {
             System.out.println("Wprowadzono nieprawidłowwe dane.");
         }
         return sown;

@@ -346,7 +346,7 @@ public class Shop {
                     animalPossesionChicken(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
 
@@ -406,7 +406,7 @@ public class Shop {
                     flag = true;
                 }
 
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -442,7 +442,7 @@ public class Shop {
                     animalPossesionCow(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -498,7 +498,7 @@ public class Shop {
                     animalPossesionCow(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -534,7 +534,7 @@ public class Shop {
                     animalPossesionGoat(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -591,7 +591,7 @@ public class Shop {
                     flag = true;
                 }
 
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -627,7 +627,7 @@ public class Shop {
                     animalPossesionGoose(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
 
@@ -684,7 +684,7 @@ public class Shop {
                     animalPossesionGoose(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -720,7 +720,7 @@ public class Shop {
                     animalPossesionPig(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -777,7 +777,7 @@ public class Shop {
                     flag = true;
                 }
 
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -813,7 +813,7 @@ public class Shop {
                     animalPossesionSheep(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -870,7 +870,7 @@ public class Shop {
                     flag = true;
                 }
 
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }
@@ -906,7 +906,7 @@ public class Shop {
                     animalPossesionTurkey(farm);
                     flag = true;
                 }
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
 
@@ -964,7 +964,7 @@ public class Shop {
                     flag = true;
                 }
 
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Ilość podajemy w sztukach. Bez wartości ułamkowych. Używamy tylko cyfr. Spróbuj jeszcze raz.");
             }
         }

@@ -423,13 +423,6 @@ public class Farm {
         this.sown = sown;
     }
 
-    public Scanner getScan() {
-        return scan;
-    }
-
-    public void setScan(Scanner scan) {
-        this.scan = scan;
-    }
 
     public Drought getDrought() {
         return drought;
@@ -501,7 +494,7 @@ public class Farm {
         possesionsPlants();
         possessionsAnimal();
         possesionsBuilding();
-        System.out.println();
+        //System.out.println();
     }
 
     public Farm generateFarm() {
@@ -512,7 +505,7 @@ public class Farm {
     }
 
     public Farm generateManyFarms() {
-        Integer farmNumber;
+        Integer farmNumber = 0;
         Farm[] farmarr = new Farm[3];
 
         for (int i = 0; i <= 2; i++) {
@@ -521,8 +514,15 @@ public class Farm {
             farmarr[i].possesions();
         }
 
-        System.out.println("Wybierz swoją startową farmę spośród trzech powyżej dostępnych wpisując wartość 1, 2 lub 3: ");
-        farmNumber = scan.nextInt();
+        while(farmNumber != 1 && farmNumber != 2 && farmNumber != 3) {
+            try {
+                System.out.println("Wybierz swoją startową farmę spośród trzech powyżej dostępnych wpisując wartość 1, 2 lub 3: ");
+                farmNumber = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                farmNumber = 0;
+            }
+        }
 
         return farmarr[farmNumber - 1];
     }

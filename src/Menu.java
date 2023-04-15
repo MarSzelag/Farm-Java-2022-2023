@@ -27,9 +27,17 @@ public class Menu {
 
     public Farm mainMenu(Farm farm) {
         Farm menuFarm = farm;
-        mainMenuShow();
-        System.out.println();
-        mainMenuCounter = Integer.parseInt(scan.nextLine());
+
+        while (mainMenuCounter != 1 && mainMenuCounter != 9) {
+            try {
+                mainMenuShow();
+                System.out.println();
+                mainMenuCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadzono złą wartość. Spróbuj jeszcze raz");
+                mainMenuCounter = 0;
+            }
+        }
 
         switch (mainMenuCounter) {
             case 1:
@@ -47,7 +55,6 @@ public class Menu {
     }
 
     public Farm createFarmMenu(Farm farm) {
-        //Scanner scan = new Scanner(System.in);
         System.out.println("Rozpoczynasz nową farmerską przygodę.");
         System.out.println("Wybierz farmę, którą chcesz zarządzać");
         return farm.generateManyFarms();
@@ -62,16 +69,21 @@ public class Menu {
     public Integer farmMenu(Farm farm) {
         Integer farmMenuCounter = 0;
 
-        System.out.println();
+        while (farmMenuCounter != 1 && farmMenuCounter != 2 && farmMenuCounter != 3 && farmMenuCounter != 4 && farmMenuCounter != 9) {
+            System.out.println();
+            System.out.println("Wybierz opcję: ");
+            System.out.println("1. Stan posiadania.");
+            System.out.println("2. Sklep.");
+            System.out.println("3. Obsiewanie.");
+            System.out.println("4. Koniec tury.");
+            System.out.println("9. Wyjdź z gry.");
 
-        System.out.println("Wybierz opcję: ");
-        System.out.println("1. Stan posiadania.");
-        System.out.println("2. Sklep.");
-        System.out.println("3. Obsiewanie.");
-        System.out.println("4. Koniec tury.");
-        System.out.println("9. Wyjdź z gry.");
-
-        farmMenuCounter = Integer.parseInt(scan.nextLine());
+            try {
+                farmMenuCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość");
+            }
+        }
         Integer farmCounter = 0;
 
         switch (farmMenuCounter) {
@@ -103,31 +115,23 @@ public class Menu {
         return farmMenuCounter;
     }
 
-    public void possesionsMenu(Farm farm) {
-        Integer possesionMenuCounter = 0;
-        farm.possesions();
-
-        System.out.println("7. Powrót do menu głównego farmy.");
-
-        switch (possesionMenuCounter) {
-            case 5:
-                break;
-            default:
-                System.out.println("Wprowadzonow niewłaściwą wartość. Spróbuj jeszcze raz.");
-        }
-
-    }
 
     public Integer shopMenu(Farm farm) {
-        System.out.println("Wybierz dział: ");
-        System.out.println("1. Rośliny.");
-        System.out.println("2. Zwierzęta.");
-        System.out.println("3. Budynki.");
-        System.out.println("4. Ziemia.");
-        System.out.println("9. Powrót do menu głównego farmy.");
-
         Integer shopMenuCounter = 0;
-        shopMenuCounter = Integer.parseInt(scan.nextLine());
+        while (shopMenuCounter != 1 && shopMenuCounter != 2 && shopMenuCounter != 3 && shopMenuCounter != 4 && shopMenuCounter != 9) {
+            System.out.println("Wybierz dział: ");
+            System.out.println("1. Rośliny.");
+            System.out.println("2. Zwierzęta.");
+            System.out.println("3. Budynki.");
+            System.out.println("4. Ziemia.");
+            System.out.println("9. Powrót do menu głównego farmy.");
+            try {
+                shopMenuCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź właściwą wartość.");
+                shopMenuCounter = 0;
+            }
+        }
         Integer shopCounter = 0;
 
         switch (shopMenuCounter) {
@@ -161,20 +165,27 @@ public class Menu {
     }
 
     public Integer shopMenuPlants(Farm farm) {
-        System.out.println("Sklep. Dział handlu roślinami.");
-        System.out.println("Wybierz, czym chcesz handlować: ");
-        System.out.println("1. Kukurydza.");
-        System.out.println("2. Ziemniak późny.");
-        System.out.println("3. Rzepak ozimy.");
-        System.out.println("4. Żyto ozime.");
-        System.out.println("5. Jęczmień jary.");
-        System.out.println("6. Burak cukrowy.");
-        System.out.println("7. Pszenica ozima.");
-        System.out.println("9. Powrót do menu głównego sklepu.");
-
         Integer shopMenuPlantsCounter = 0;
         Integer plantsCounter = 0;
-        shopMenuPlantsCounter = Integer.parseInt(scan.nextLine());
+        while (shopMenuPlantsCounter != 1 && shopMenuPlantsCounter != 2 && shopMenuPlantsCounter != 3 && shopMenuPlantsCounter != 4 && shopMenuPlantsCounter != 5 && shopMenuPlantsCounter != 6 && shopMenuPlantsCounter != 7 && shopMenuPlantsCounter != 9) {
+            System.out.println("Sklep. Dział handlu roślinami.");
+            System.out.println("Wybierz, czym chcesz handlować: ");
+            System.out.println("1. Kukurydza.");
+            System.out.println("2. Ziemniak późny.");
+            System.out.println("3. Rzepak ozimy.");
+            System.out.println("4. Żyto ozime.");
+            System.out.println("5. Jęczmień jary.");
+            System.out.println("6. Burak cukrowy.");
+            System.out.println("7. Pszenica ozima.");
+            System.out.println("9. Powrót do menu głównego sklepu.");
+
+            try {
+                shopMenuPlantsCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuPlantsCounter = 0;
+            }
+        }
 
         switch (shopMenuPlantsCounter) {
             case 1:
@@ -220,20 +231,27 @@ public class Menu {
     }
 
     public Integer shopMenuAnimals(Farm farm) {
-        System.out.println("Sklep. Dział handlu zwierzętami.");
-        System.out.println("Wybierz, czym chcesz handlować: ");
-        System.out.println("1. Kury.");
-        System.out.println("2. Krowy.");
-        System.out.println("3. Kozy.");
-        System.out.println("4. Gęsi.");
-        System.out.println("5. Świnie.");
-        System.out.println("6. Owce.");
-        System.out.println("7. Indyki.");
-        System.out.println("9. Powrót do menu głównego sklepu.");
-
         Integer shopMenuAnimalsCounter = 0;
         Integer animalCounter = 0;
-        shopMenuAnimalsCounter = Integer.parseInt(scan.nextLine());
+        while (shopMenuAnimalsCounter != 1 && shopMenuAnimalsCounter != 2 && shopMenuAnimalsCounter != 3 && shopMenuAnimalsCounter != 4 && shopMenuAnimalsCounter != 5 && shopMenuAnimalsCounter != 6 && shopMenuAnimalsCounter != 7 && shopMenuAnimalsCounter != 9) {
+            System.out.println("Sklep. Dział handlu zwierzętami.");
+            System.out.println("Wybierz, czym chcesz handlować: ");
+            System.out.println("1. Kury.");
+            System.out.println("2. Krowy.");
+            System.out.println("3. Kozy.");
+            System.out.println("4. Gęsi.");
+            System.out.println("5. Świnie.");
+            System.out.println("6. Owce.");
+            System.out.println("7. Indyki.");
+            System.out.println("9. Powrót do menu głównego sklepu.");
+
+            try {
+                shopMenuAnimalsCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuAnimalsCounter = 0;
+            }
+        }
 
         switch (shopMenuAnimalsCounter) {
             case 1:
@@ -280,21 +298,28 @@ public class Menu {
     }
 
     public Integer shopMenuBuildings(Farm farm) {
-        System.out.println("Sklep. Dział handlu budynkami.");
-        System.out.println("Wybierz, czym chcesz handlować: ");
-        System.out.println("1. Kurniki.");
-        System.out.println("2. Obory.");
-        System.out.println("3. Stodoły dla kóz.");
-        System.out.println("4. Kurniki dla gęsi.");
-        System.out.println("5. Chlewy.");
-        System.out.println("6. Owczarnie.");
-        System.out.println("7. Kurniki dla indyków.");
-        System.out.println("8. Stodoły.");
-        System.out.println("9. Powrót do menu głównego sklepu.");
-
         Integer shopMenuBuildingsCounter = 0;
         Integer buildingCounter = 0;
-        shopMenuBuildingsCounter = Integer.parseInt(scan.nextLine());
+        while (shopMenuBuildingsCounter != 1 && shopMenuBuildingsCounter != 2 && shopMenuBuildingsCounter != 3 && shopMenuBuildingsCounter != 4 && shopMenuBuildingsCounter != 5 && shopMenuBuildingsCounter != 6 && shopMenuBuildingsCounter != 7 && shopMenuBuildingsCounter != 8 && shopMenuBuildingsCounter != 9) {
+            System.out.println("Sklep. Dział handlu budynkami.");
+            System.out.println("Wybierz, czym chcesz handlować: ");
+            System.out.println("1. Kurniki.");
+            System.out.println("2. Obory.");
+            System.out.println("3. Stodoły dla kóz.");
+            System.out.println("4. Kurniki dla gęsi.");
+            System.out.println("5. Chlewy.");
+            System.out.println("6. Owczarnie.");
+            System.out.println("7. Kurniki dla indyków.");
+            System.out.println("8. Stodoły.");
+            System.out.println("9. Powrót do menu głównego sklepu.");
+
+            try {
+                shopMenuBuildingsCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuBuildingsCounter = 0;
+            }
+        }
 
         switch (shopMenuBuildingsCounter) {
             case 1:
@@ -345,26 +370,28 @@ public class Menu {
     }
 
     public Integer shopMenuLand(Farm farm) {
-        System.out.println("Sklep. Dział handlu ziemią.");
-        System.out.println("Wybierz, czy chcesz kupić, czy sprzedać ziemię: ");
-        System.out.println("1. Kupno ziemi.");
-        System.out.println("2. Sprzedaż ziemi.");
-        System.out.println("9. Wyjście do menu głównego.");
-
         Integer shopMenuLandCounter = 0;
-        Integer landCounter;
-        shopMenuLandCounter = Integer.parseInt(scan.nextLine());
+        while (shopMenuLandCounter != 1 && shopMenuLandCounter != 2) {
+            System.out.println("Sklep. Dział handlu ziemią.");
+            System.out.println("Wybierz, czy chcesz kupić, czy sprzedać ziemię: ");
+            System.out.println("1. Kupno ziemi.");
+            System.out.println("2. Sprzedaż ziemi.");
+            System.out.println("9. Wyjście do menu głównego.");
+
+            try {
+                shopMenuLandCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuLandCounter = 0;
+            }
+        }
 
         switch (shopMenuLandCounter) {
             case 1:
-                //    while(landCounter != 0) {
                 farm.shop.buyLand(farm);
-                //  }
                 break;
             case 2:
-                //while(landCounter != 0) {
                 farm.shop.sellLand(farm);
-                //}
                 break;
             case 9:
                 System.out.println("Powrót do menu głównego sklepu.");
@@ -372,42 +399,22 @@ public class Menu {
         }
         return shopMenuLandCounter;
     }
-/*
 
-    public void sowAndHarvestMenu(Farm farm) {
-        Integer sowAndHarvestMenuCounter = 0;
-
-        System.out.println("Wybierz opcję:");
-        System.out.println("1. Zasiew.");
-        System.out.println("2. Zbiory.");
-        System.out.println("7. Powrót do menu głównego farmy.");
-
-        switch (sowAndHarvestMenuCounter) {
-            case 1:
-                System.out.println("Zasiew.");
-                break;
-            case 2:
-                System.out.println("Zbiory.");
-                break;
-            case 7:
-                System.out.println("Powrót do menu głównego farmy.");
-                break;
-            default:
-                System.out.println("Wprowadzonow niewłaściwą wartość. Spróbuj jeszcze raz.");
-        }
-    }*/
-
-    //TODO plants menus
     public Integer shopMenuCorn(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić kukurydzę?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu roślin w sklepie.");
-
         Integer shopMenuCornCounter = 0;
-        Corn corn = new Corn();
+        while (shopMenuCornCounter != 1 && shopMenuCornCounter != 2 && shopMenuCornCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić kukurydzę?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu roślin w sklepie.");
 
-        shopMenuCornCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuCornCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuCornCounter = 0;
+            }
+        }
 
         switch (shopMenuCornCounter) {
             case 1:
@@ -423,15 +430,20 @@ public class Menu {
     }
 
     public Integer shopMenuLatePotato(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić późne ziemniaki?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu roślin w sklepie.");
-
         Integer shopMenuLatePotatoCounter = 0;
-        LatePotato latePotato = new LatePotato();
+        while (shopMenuLatePotatoCounter != 1 && shopMenuLatePotatoCounter != 2 && shopMenuLatePotatoCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić późne ziemniaki?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu roślin w sklepie.");
 
-        shopMenuLatePotatoCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuLatePotatoCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuLatePotatoCounter = 0;
+            }
+        }
 
         switch (shopMenuLatePotatoCounter) {
             case 1:
@@ -447,15 +459,20 @@ public class Menu {
     }
 
     public Integer shopMenuLateRape(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić rzepak ozimy?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu roślin w sklepie.");
-
         Integer shopMenuLateRapeCounter = 0;
-        LateRape lateRape = new LateRape();
+        while (shopMenuLateRapeCounter != 1 && shopMenuLateRapeCounter != 2 && shopMenuLateRapeCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić rzepak ozimy?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu roślin w sklepie.");
 
-        shopMenuLateRapeCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuLateRapeCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuLateRapeCounter = 0;
+            }
+        }
 
         switch (shopMenuLateRapeCounter) {
             case 1:
@@ -471,15 +488,20 @@ public class Menu {
     }
 
     public Integer shopMenuLateRye(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić żyto ozime?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu roślin w sklepie.");
-
         Integer shopMenuLateRyeCounter = 0;
-        LateRye lateRye = new LateRye();
+        while (shopMenuLateRyeCounter != 1 && shopMenuLateRyeCounter != 2 && shopMenuLateRyeCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić żyto ozime?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu roślin w sklepie.");
 
-        shopMenuLateRyeCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuLateRyeCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuLateRyeCounter = 0;
+            }
+        }
 
         switch (shopMenuLateRyeCounter) {
             case 1:
@@ -495,15 +517,21 @@ public class Menu {
     }
 
     public Integer shopMenuSpringBarley(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić jęczmień jary?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu roślin w sklepie.");
-
         Integer shopMenuSpringBarleyCounter = 0;
-        SpringBarley springBarley = new SpringBarley();
+        while (shopMenuSpringBarleyCounter != 1 && shopMenuSpringBarleyCounter != 2 && shopMenuSpringBarleyCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić jęczmień jary?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu roślin w sklepie.");
 
-        shopMenuSpringBarleyCounter = Integer.parseInt(scan.nextLine());
+
+            try {
+                shopMenuSpringBarleyCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuSpringBarleyCounter = 0;
+            }
+        }
 
         switch (shopMenuSpringBarleyCounter) {
             case 1:
@@ -519,15 +547,20 @@ public class Menu {
     }
 
     public Integer shopMenuWhiteBeet(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić buraki cukrowe?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu roślin w sklepie.");
-
         Integer shopMenuWhiteBeetCounter = 0;
-        WhiteBeet whiteBeet = new WhiteBeet();
+        while (shopMenuWhiteBeetCounter != 1 && shopMenuWhiteBeetCounter != 2 && shopMenuWhiteBeetCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić buraki cukrowe?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu roślin w sklepie.");
 
-        shopMenuWhiteBeetCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuWhiteBeetCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuWhiteBeetCounter = 0;
+            }
+        }
 
         switch (shopMenuWhiteBeetCounter) {
             case 1:
@@ -543,15 +576,20 @@ public class Menu {
     }
 
     public Integer shopMenuWinterWheat(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić pszenicę ozimą?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu roślin w sklepie.");
-
         Integer shopMenuWinterWheatCounter = 0;
-        WinterWheat winterWheat = new WinterWheat();
+        while (shopMenuWinterWheatCounter != 1 && shopMenuWinterWheatCounter != 2 && shopMenuWinterWheatCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić pszenicę ozimą?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu roślin w sklepie.");
 
-        shopMenuWinterWheatCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuWinterWheatCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuWinterWheatCounter = 0;
+            }
+        }
 
         switch (shopMenuWinterWheatCounter) {
             case 1:
@@ -567,14 +605,20 @@ public class Menu {
     }
 
     public Integer shopMenuChicken(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić kury?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu zwierząt w sklepie.");
-
         Integer shopMenuChickenCounter = 0;
+        while (shopMenuChickenCounter != 1 && shopMenuChickenCounter != 2 && shopMenuChickenCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić kury?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu zwierząt w sklepie.");
 
-        shopMenuChickenCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuChickenCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuChickenCounter = 0;
+            }
+        }
 
         switch (shopMenuChickenCounter) {
             case 1:
@@ -590,14 +634,20 @@ public class Menu {
     }
 
     public Integer shopMenuCow(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić krowy?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu zwierząt w sklepie.");
-
         Integer shopMenuCowCounter = 0;
+        while (shopMenuCowCounter != 1 && shopMenuCowCounter != 2 && shopMenuCowCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić krowy?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu zwierząt w sklepie.");
 
-        shopMenuCowCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuCowCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuCowCounter = 0;
+            }
+        }
 
         switch (shopMenuCowCounter) {
             case 1:
@@ -613,14 +663,20 @@ public class Menu {
     }
 
     public Integer shopMenuGoat(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić ");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu zwierząt w sklepie.");
-
         Integer shopMenuGoatCounter = 0;
+        while (shopMenuGoatCounter != 1 && shopMenuGoatCounter != 2 && shopMenuGoatCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić ");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu zwierząt w sklepie.");
 
-        shopMenuGoatCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuGoatCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuGoatCounter = 0;
+            }
+        }
 
         switch (shopMenuGoatCounter) {
             case 1:
@@ -636,14 +692,20 @@ public class Menu {
     }
 
     public Integer shopMenuGoose(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić kozy?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu zwierząt w sklepie.");
-
         Integer shopMenuGooseCounter = 0;
+        while (shopMenuGooseCounter != 1 && shopMenuGooseCounter != 2 && shopMenuGooseCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić kozy?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu zwierząt w sklepie.");
 
-        shopMenuGooseCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuGooseCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuGooseCounter = 0;
+            }
+        }
 
         switch (shopMenuGooseCounter) {
             case 1:
@@ -659,14 +721,20 @@ public class Menu {
     }
 
     public Integer shopMenuPig(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić świnie?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu zwierząt w sklepie.");
-
         Integer shopMenuPigCounter = 0;
+        while (shopMenuPigCounter != 1 && shopMenuPigCounter != 2 && shopMenuPigCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić świnie?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu zwierząt w sklepie.");
 
-        shopMenuPigCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuPigCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuPigCounter = 0;
+            }
+        }
 
         switch (shopMenuPigCounter) {
             case 1:
@@ -682,14 +750,20 @@ public class Menu {
     }
 
     public Integer shopMenuSheep(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić owce?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu zwierząt w sklepie.");
-
         Integer shopMenuSheepCounter = 0;
+        while (shopMenuSheepCounter != 1 && shopMenuSheepCounter != 2 && shopMenuSheepCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić owce?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu zwierząt w sklepie.");
 
-        shopMenuSheepCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuSheepCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuSheepCounter = 0;
+            }
+        }
 
         switch (shopMenuSheepCounter) {
             case 1:
@@ -705,14 +779,20 @@ public class Menu {
     }
 
     public Integer shopMenuTurkey(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić indyki?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu zwierząt w sklepie.");
-
         Integer shopMenuTurkeyCounter = 0;
+        while (shopMenuTurkeyCounter != 1 && shopMenuTurkeyCounter != 2 && shopMenuTurkeyCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić indyki?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu zwierząt w sklepie.");
 
-        shopMenuTurkeyCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuTurkeyCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuTurkeyCounter = 0;
+            }
+        }
 
         switch (shopMenuTurkeyCounter) {
             case 1:
@@ -728,15 +808,21 @@ public class Menu {
     }
 
     public Integer shopMenuBarn(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić stodoły?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuBarnCounter = 0;
-       // Barn barn = new Barn();
+        while (shopMenuBarnCounter != 1 && shopMenuBarnCounter != 2 && shopMenuBarnCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić stodoły?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuBarnCounter = Integer.parseInt(scan.nextLine());
+
+            try {
+                shopMenuBarnCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuBarnCounter = 0;
+            }
+        }
 
         switch (shopMenuBarnCounter) {
             case 1:
@@ -752,15 +838,20 @@ public class Menu {
     }
 
     public Integer shopMenuChickenCoop(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić kurniki?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuChickenCoopCounter = 0;
-        //ChickenCoop chickenCoop = new ChickenCoop();
+        while (shopMenuChickenCoopCounter != 1 && shopMenuChickenCoopCounter != 2 && shopMenuChickenCoopCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić kurniki?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuChickenCoopCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuChickenCoopCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuChickenCoopCounter = 0;
+            }
+        }
 
         switch (shopMenuChickenCoopCounter) {
             case 1:
@@ -776,15 +867,20 @@ public class Menu {
     }
 
     public Integer shopMenuCowShed(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić obory?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuCowShedCounter = 0;
-        //CowShed cowShed = new CowShed();
+        while (shopMenuCowShedCounter != 1 && shopMenuCowShedCounter != 2 && shopMenuCowShedCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić obory?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuCowShedCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuCowShedCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuCowShedCounter = 0;
+            }
+        }
 
         switch (shopMenuCowShedCounter) {
             case 1:
@@ -800,15 +896,20 @@ public class Menu {
     }
 
     public Integer shopMenuGoatBarn(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić stodoły dla kóz?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuGoatBarnCounter = 0;
-        //Barn barn = new Barn();
+        while (shopMenuGoatBarnCounter != 1 && shopMenuGoatBarnCounter != 2 && shopMenuGoatBarnCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić stodoły dla kóz?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuGoatBarnCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuGoatBarnCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuGoatBarnCounter = 0;
+            }
+        }
 
         switch (shopMenuGoatBarnCounter) {
             case 1:
@@ -824,15 +925,20 @@ public class Menu {
     }
 
     public Integer shopMenuGooseCoop(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić kurniki dla gęsi?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuGooseCoopCounter = 0;
-       // GooseCoop gooseCoop = new GooseCoop();
+        while (shopMenuGooseCoopCounter != 1 && shopMenuGooseCoopCounter != 2 && shopMenuGooseCoopCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić kurniki dla gęsi?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuGooseCoopCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuGooseCoopCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuGooseCoopCounter = 0;
+            }
+        }
 
         switch (shopMenuGooseCoopCounter) {
             case 1:
@@ -848,15 +954,20 @@ public class Menu {
     }
 
     public Integer shopMenuPigsty(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić chlewy?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuPigstyCounter = 0;
-       // Pigsty pigsty = new Pigsty();
+        while (shopMenuPigstyCounter != 1 && shopMenuPigstyCounter != 2 && shopMenuPigstyCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić chlewy?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuPigstyCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuPigstyCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuPigstyCounter = 0;
+            }
+        }
 
         switch (shopMenuPigstyCounter) {
             case 1:
@@ -872,15 +983,20 @@ public class Menu {
     }
 
     public Integer shopMenuSheepfold(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić owczarnie?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuSheepfoldCounter = 0;
-        //Sheepfold sheepfold = new Sheepfold();
+        while (shopMenuSheepfoldCounter != 1 && shopMenuSheepfoldCounter != 2 && shopMenuSheepfoldCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić owczarnie?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuSheepfoldCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuSheepfoldCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuSheepfoldCounter = 0;
+            }
+        }
 
         switch (shopMenuSheepfoldCounter) {
             case 1:
@@ -896,15 +1012,20 @@ public class Menu {
     }
 
     public Integer shopMenuTurkeyCoop(Farm farm) {
-        System.out.println("Chcesz sprzedać, czy kupić kurniki dla indyków?");
-        System.out.println("1. Kupić.");
-        System.out.println("2. Sprzedać.");
-        System.out.println("9. Powrót do menu budynków w sklepie.");
-
         Integer shopMenuTurkeyCoopCounter = 0;
-       // TurkeyCoop turkeyCoop = new TurkeyCoop();
+        while (shopMenuTurkeyCoopCounter != 1 && shopMenuTurkeyCoopCounter != 2 && shopMenuTurkeyCoopCounter != 9) {
+            System.out.println("Chcesz sprzedać, czy kupić kurniki dla indyków?");
+            System.out.println("1. Kupić.");
+            System.out.println("2. Sprzedać.");
+            System.out.println("9. Powrót do menu budynków w sklepie.");
 
-        shopMenuTurkeyCoopCounter = Integer.parseInt(scan.nextLine());
+            try {
+                shopMenuTurkeyCoopCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                shopMenuTurkeyCoopCounter = 0;
+            }
+        }
 
         switch (shopMenuTurkeyCoopCounter) {
             case 1:
@@ -921,19 +1042,24 @@ public class Menu {
 
     public Integer sowMenu(Farm farm) {
         Integer sowMenuCounter = 0;
-        // Integer sowCounter = 0;
-        System.out.println("Co chcesz obsiać?");
-        System.out.println("1. Kukurydza.");
-        System.out.println("2. Ziemniak późny.");
-        System.out.println("3. Rzepak ozimy.");
-        System.out.println("4. Żyto ozime.");
-        System.out.println("5. Jęczmień jary.");
-        System.out.println("6. Burak cukrowy.");
-        System.out.println("7. Pszenica ozima.");
-        System.out.println("9. Powrót do menu głównego farmy.");
+        while (sowMenuCounter != 1 && sowMenuCounter != 2 && sowMenuCounter != 3 && sowMenuCounter != 4 && sowMenuCounter != 5 && sowMenuCounter != 7 && sowMenuCounter != 9) {
+            System.out.println("Co chcesz obsiać?");
+            System.out.println("1. Kukurydza.");
+            System.out.println("2. Ziemniak późny.");
+            System.out.println("3. Rzepak ozimy.");
+            System.out.println("4. Żyto ozime.");
+            System.out.println("5. Jęczmień jary.");
+            System.out.println("6. Burak cukrowy.");
+            System.out.println("7. Pszenica ozima.");
+            System.out.println("9. Powrót do menu głównego farmy.");
 
-
-        sowMenuCounter = Integer.parseInt(scan.nextLine());
+            try {
+                sowMenuCounter = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wprowadź prawidłową wartość.");
+                sowMenuCounter = 0;
+            }
+        }
 
         switch (sowMenuCounter) {
             case 1:
