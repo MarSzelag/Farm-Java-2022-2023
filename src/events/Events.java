@@ -16,7 +16,7 @@ public class Events {
         this.damage = damage;
     }
 
-    public static Integer getChance() {
+    public Integer getChance() {
         return chance;
     }
 
@@ -44,16 +44,16 @@ public class Events {
         for(int i = 0; i < farm.getSown().size(); i++){
             droughtFlag = false;
 
-            if(rand.nextInt(Drought.getChance()) == 1){
+            if(rand.nextInt(farm.getDrought().getChance()) == 1){
                 farm.getSown().get(i).setEventsDamages(farm.getSown().get(i).getEventsDamages() - Drought.getDamage());
                droughtFlag = true;
                droughtFlagGlobal = true;
             }
-            if(rand.nextInt(Flood.getChance()) == 1 && !droughtFlag){
+            if(rand.nextInt(farm.getFlood().getChance()) == 1 && !droughtFlag){
                 farm.getSown().get(i).setEventsDamages(farm.getSown().get(i).getEventsDamages() - Flood.getDamage());
                 floodFlagGlobal = true;
             }
-            if(rand.nextInt(PotatoBeetle.getChance()) == 1){
+            if(rand.nextInt(farm.getPotatoBeetle().getChance()) == 1){
                 farm.getSown().get(i).setEventsDamages(farm.getSown().get(i).getEventsDamages() - PotatoBeetle.getDamage());
                 potatoBeetleFlatGlobal = true;
             }

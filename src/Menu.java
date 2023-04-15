@@ -727,7 +727,6 @@ public class Menu {
         return shopMenuTurkeyCounter;
     }
 
-    //TODO buildings menus
     public Integer shopMenuBarn(Farm farm) {
         System.out.println("Chcesz sprzedać, czy kupić stodoły?");
         System.out.println("1. Kupić.");
@@ -735,16 +734,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuBarnCounter = 0;
-        Barn barn = new Barn();
+       // Barn barn = new Barn();
 
         shopMenuBarnCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuBarnCounter) {
             case 1:
-                farm.shop.buyBuilding(barn, farm);
+                farm.shop.buyBuilding(farm.getBarn(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(barn, farm);
+                farm.shop.sellBuilding(farm.getBarn(), farm);
                 break;
             case 9:
                 break;
@@ -759,16 +758,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuChickenCoopCounter = 0;
-        ChickenCoop chickenCoop = new ChickenCoop();
+        //ChickenCoop chickenCoop = new ChickenCoop();
 
         shopMenuChickenCoopCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuChickenCoopCounter) {
             case 1:
-                farm.shop.buyBuilding(chickenCoop, farm);
+                farm.shop.buyBuilding(farm.getChickenCoop(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(chickenCoop, farm);
+                farm.shop.sellBuilding(farm.getChickenCoop(), farm);
                 break;
             case 9:
                 break;
@@ -783,16 +782,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuCowShedCounter = 0;
-        CowShed cowShed = new CowShed();
+        //CowShed cowShed = new CowShed();
 
         shopMenuCowShedCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuCowShedCounter) {
             case 1:
-                farm.shop.buyBuilding(cowShed, farm);
+                farm.shop.buyBuilding(farm.getCowShed(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(cowShed, farm);
+                farm.shop.sellBuilding(farm.getCowShed(), farm);
                 break;
             case 9:
                 break;
@@ -807,16 +806,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuGoatBarnCounter = 0;
-        Barn barn = new Barn();
+        //Barn barn = new Barn();
 
         shopMenuGoatBarnCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuGoatBarnCounter) {
             case 1:
-                farm.shop.buyBuilding(barn, farm);
+                farm.shop.buyBuilding(farm.getBarn(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(barn, farm);
+                farm.shop.sellBuilding(farm.getBarn(), farm);
                 break;
             case 9:
                 break;
@@ -831,16 +830,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuGooseCoopCounter = 0;
-        GooseCoop gooseCoop = new GooseCoop();
+       // GooseCoop gooseCoop = new GooseCoop();
 
         shopMenuGooseCoopCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuGooseCoopCounter) {
             case 1:
-                farm.shop.buyBuilding(gooseCoop, farm);
+                farm.shop.buyBuilding(farm.getGooseCoop(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(gooseCoop, farm);
+                farm.shop.sellBuilding(farm.getGooseCoop(), farm);
                 break;
             case 9:
                 break;
@@ -855,16 +854,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuPigstyCounter = 0;
-        Pigsty pigsty = new Pigsty();
+       // Pigsty pigsty = new Pigsty();
 
         shopMenuPigstyCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuPigstyCounter) {
             case 1:
-                farm.shop.buyBuilding(pigsty, farm);
+                farm.shop.buyBuilding(farm.getPigsty(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(pigsty, farm);
+                farm.shop.sellBuilding(farm.getPigsty(), farm);
                 break;
             case 9:
                 break;
@@ -879,16 +878,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuSheepfoldCounter = 0;
-        Sheepfold sheepfold = new Sheepfold();
+        //Sheepfold sheepfold = new Sheepfold();
 
         shopMenuSheepfoldCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuSheepfoldCounter) {
             case 1:
-                farm.shop.buyBuilding(sheepfold, farm);
+                farm.shop.buyBuilding(farm.getSheepfold(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(sheepfold, farm);
+                farm.shop.sellBuilding(farm.getSheepfold(), farm);
                 break;
             case 9:
                 break;
@@ -903,16 +902,16 @@ public class Menu {
         System.out.println("9. Powrót do menu budynków w sklepie.");
 
         Integer shopMenuTurkeyCoopCounter = 0;
-        TurkeyCoop turkeyCoop = new TurkeyCoop();
+       // TurkeyCoop turkeyCoop = new TurkeyCoop();
 
         shopMenuTurkeyCoopCounter = Integer.parseInt(scan.nextLine());
 
         switch (shopMenuTurkeyCoopCounter) {
             case 1:
-                farm.shop.buyBuilding(turkeyCoop, farm);
+                farm.shop.buyBuilding(farm.getTurkeyCoop(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(turkeyCoop, farm);
+                farm.shop.sellBuilding(farm.getTurkeyCoop(), farm);
                 break;
             case 9:
                 break;

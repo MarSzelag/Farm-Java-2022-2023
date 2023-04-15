@@ -2,7 +2,10 @@ package farm;
 
 import animals.*;
 import buildings.*;
+import events.Drought;
 import events.Events;
+import events.Flood;
+import events.PotatoBeetle;
 import land.Land;
 import plants.*;
 import shop.Shop;
@@ -48,6 +51,9 @@ public class Farm {
     private Integer totalNumberOfChicken, totalNumberOfCow, totalNumberOfGoat, totalNumberOfGoose, totalNumberOfPig, totalNumberOfSheep, totalNumberOfTurkey;
     private Integer totalNumberOfAdultChicken, totalNumberOfAdultCow, totalNumberOfAdultGoat, totalNumberOfAdultGoose, totalNumberOfAdultPig, totalNumberOfAdultSheep, totalNumberOfAdultTurkey;
     private List<Sown> sown = new LinkedList<>();
+    private Drought drought = new Drought();
+    private Flood flood = new Flood();
+    private PotatoBeetle potatoBeetle = new PotatoBeetle();
 
     private Animal animal = new Animal();
 
@@ -233,6 +239,66 @@ public class Farm {
         turkeyList.get(turkeyList.size() - 1).setNumberOfAnimal(numberOfTurkey);
         }
 
+    public void setBarn(Barn barn) {
+        this.barn = barn;
+    }
+
+    public ChickenCoop getChickenCoop() {
+        return chickenCoop;
+    }
+
+    public void setChickenCoop(ChickenCoop chickenCoop) {
+        this.chickenCoop = chickenCoop;
+    }
+
+    public CowShed getCowShed() {
+        return cowShed;
+    }
+
+    public void setCowShed(CowShed cowShed) {
+        this.cowShed = cowShed;
+    }
+
+    public GoatBarn getGoatBarn() {
+        return goatBarn;
+    }
+
+    public void setGoatBarn(GoatBarn goatBarn) {
+        this.goatBarn = goatBarn;
+    }
+
+    public GooseCoop getGooseCoop() {
+        return gooseCoop;
+    }
+
+    public void setGooseCoop(GooseCoop gooseCoop) {
+        this.gooseCoop = gooseCoop;
+    }
+
+    public Pigsty getPigsty() {
+        return pigsty;
+    }
+
+    public void setPigsty(Pigsty pigsty) {
+        this.pigsty = pigsty;
+    }
+
+    public Sheepfold getSheepfold() {
+        return sheepfold;
+    }
+
+    public void setSheepfold(Sheepfold sheepfold) {
+        this.sheepfold = sheepfold;
+    }
+
+    public TurkeyCoop getTurkeyCoop() {
+        return turkeyCoop;
+    }
+
+    public void setTurkeyCoop(TurkeyCoop turkeyCoop) {
+        this.turkeyCoop = turkeyCoop;
+    }
+
     public void setTurnCounter(Integer turnCounter) {
         this.turnCounter = turnCounter;
     }
@@ -355,6 +421,38 @@ public class Farm {
 
     public void setSown(List<Sown> sown) {
         this.sown = sown;
+    }
+
+    public Scanner getScan() {
+        return scan;
+    }
+
+    public void setScan(Scanner scan) {
+        this.scan = scan;
+    }
+
+    public Drought getDrought() {
+        return drought;
+    }
+
+    public void setDrought(Drought drought) {
+        this.drought = drought;
+    }
+
+    public Flood getFlood() {
+        return flood;
+    }
+
+    public void setFlood(Flood flood) {
+        this.flood = flood;
+    }
+
+    public PotatoBeetle getPotatoBeetle() {
+        return potatoBeetle;
+    }
+
+    public void setPotatoBeetle(PotatoBeetle potatoBeetle) {
+        this.potatoBeetle = potatoBeetle;
     }
 
     public void possesionsLand() {
