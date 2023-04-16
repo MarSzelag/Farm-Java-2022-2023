@@ -41,20 +41,20 @@ public class Events {
         Random rand = new Random();
       //  Integer temp;
 
-        for(int i = 0; i < farm.getSown().size(); i++){
+        for(int i = 0; i < farm.getSownList().size(); i++){
             droughtFlag = false;
 
             if(rand.nextInt(farm.getDrought().getChance()) == 1){
-                farm.getSown().get(i).setEventsDamages(farm.getSown().get(i).getEventsDamages() - Drought.getDamage());
+                farm.getSownList().get(i).setEventsDamages(farm.getSownList().get(i).getEventsDamages() - Drought.getDamage());
                droughtFlag = true;
                droughtFlagGlobal = true;
             }
             if(rand.nextInt(farm.getFlood().getChance()) == 1 && !droughtFlag){
-                farm.getSown().get(i).setEventsDamages(farm.getSown().get(i).getEventsDamages() - Flood.getDamage());
+                farm.getSownList().get(i).setEventsDamages(farm.getSownList().get(i).getEventsDamages() - Flood.getDamage());
                 floodFlagGlobal = true;
             }
             if(rand.nextInt(farm.getPotatoBeetle().getChance()) == 1){
-                farm.getSown().get(i).setEventsDamages(farm.getSown().get(i).getEventsDamages() - PotatoBeetle.getDamage());
+                farm.getSownList().get(i).setEventsDamages(farm.getSownList().get(i).getEventsDamages() - PotatoBeetle.getDamage());
                 potatoBeetleFlatGlobal = true;
             }
         }

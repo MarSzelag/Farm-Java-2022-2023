@@ -1,6 +1,4 @@
 import farm.Farm;
-import plants.*;
-import buildings.*;
 
 import java.util.Scanner;
 
@@ -89,7 +87,7 @@ public class Menu {
         switch (farmMenuCounter) {
             case 1:
                 System.out.println("Stan posiadania.");
-                farm.possesions();
+                farm.possessions();
                 break;
             case 2:
                 System.out.println("Sklep.");
@@ -1042,7 +1040,7 @@ public class Menu {
 
     public Integer sowMenu(Farm farm) {
         Integer sowMenuCounter = 0;
-        while (sowMenuCounter != 1 && sowMenuCounter != 2 && sowMenuCounter != 3 && sowMenuCounter != 4 && sowMenuCounter != 5 && sowMenuCounter != 7 && sowMenuCounter != 9) {
+        while (sowMenuCounter != 1 && sowMenuCounter != 2 && sowMenuCounter != 3 && sowMenuCounter != 4 && sowMenuCounter != 5 && sowMenuCounter != 6 && sowMenuCounter != 7 && sowMenuCounter != 9) {
             System.out.println("Co chcesz obsiać?");
             System.out.println("1. Kukurydza.");
             System.out.println("2. Ziemniak późny.");
@@ -1079,6 +1077,7 @@ public class Menu {
                 break;
             case 6:
                 farm.addSown(farm.getWhiteBeet());
+                System.out.println("XXXXXXXXXXX");
                 break;
             case 7:
                 farm.addSown(farm.getWinterWheat());

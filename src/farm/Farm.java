@@ -38,6 +38,11 @@ public class Farm {
     private LateRape lateRape = new LateRape();
     private LateRye lateRye = new LateRye();
     private SpringBarley springBarley = new SpringBarley();
+
+    public void setSpringBarley(SpringBarley springBarley) {
+        this.springBarley = springBarley;
+    }
+
     private WhiteBeet whiteBeet = new WhiteBeet();
     private WinterWheat winterWheat = new WinterWheat();
     //Animal initiallization
@@ -50,7 +55,7 @@ public class Farm {
     private List<Turkey> turkeyList = new LinkedList<>();
     private Integer totalNumberOfChicken, totalNumberOfCow, totalNumberOfGoat, totalNumberOfGoose, totalNumberOfPig, totalNumberOfSheep, totalNumberOfTurkey;
     private Integer totalNumberOfAdultChicken, totalNumberOfAdultCow, totalNumberOfAdultGoat, totalNumberOfAdultGoose, totalNumberOfAdultPig, totalNumberOfAdultSheep, totalNumberOfAdultTurkey;
-    private List<Sown> sown = new LinkedList<>();
+    private List<Sown> sownList = new LinkedList<>();
     private Drought drought = new Drought();
     private Flood flood = new Flood();
     private PotatoBeetle potatoBeetle = new PotatoBeetle();
@@ -185,7 +190,7 @@ public class Farm {
     public void addGoat(List<Goat> goatList, Integer numberOfGoats) {
         goatList.add(new Goat());
         goatList.get(goatList.size() - 1).setNumberOfAnimal(numberOfGoats);
-        }
+    }
 
     public List<Goose> getGooseList() {
         return gooseList;
@@ -198,7 +203,7 @@ public class Farm {
     public void addGoose(List<Goose> gooseList, Integer numberOfGoose) {
         gooseList.add(new Goose());
         gooseList.get(gooseList.size() - 1).setNumberOfAnimal(numberOfGoose);
-        }
+    }
 
     public List<Pig> getPigList() {
         return pigList;
@@ -211,7 +216,7 @@ public class Farm {
     public void addPig(List<Pig> pigList, Integer numberOfPigs) {
         pigList.add(new Pig());
         pigList.get(pigList.size() - 1).setNumberOfAnimal(numberOfPigs);
-        }
+    }
 
     public List<Sheep> getSheepList() {
         return sheepList;
@@ -224,7 +229,7 @@ public class Farm {
     public void addSheep(List<Sheep> SheepList, Integer numberOfSheep) {
         sheepList.add(new Sheep());
         sheepList.get(cowList.size() - 1).setNumberOfAnimal(numberOfSheep);
-        }
+    }
 
     public List<Turkey> getTurkeyList() {
         return turkeyList;
@@ -237,7 +242,7 @@ public class Farm {
     public void addTurkey(List<Turkey> turkeyList, Integer numberOfTurkey) {
         turkeyList.add(new Turkey());
         turkeyList.get(turkeyList.size() - 1).setNumberOfAnimal(numberOfTurkey);
-        }
+    }
 
     public void setBarn(Barn barn) {
         this.barn = barn;
@@ -415,12 +420,12 @@ public class Farm {
         this.totalNumberOfAdultTurkey = totalNumberOfAdultTurkey;
     }
 
-    public List<Sown> getSown() {
-        return sown;
+    public List<Sown> getSownList() {
+        return sownList;
     }
 
-    public void setSown(List<Sown> sown) {
-        this.sown = sown;
+    public void setSownList(List<Sown> sownList) {
+        this.sownList = sownList;
     }
 
 
@@ -447,21 +452,24 @@ public class Farm {
     public void setPotatoBeetle(PotatoBeetle potatoBeetle) {
         this.potatoBeetle = potatoBeetle;
     }
+    public void possessionsCash(){
+        System.out.println("Posiadasz " + this.getCash() + "zł.");
+    }
 
-    public void possesionsLand() {
+    public void possessionsLand() {
         System.out.println("Twoja ziemia:");
         System.out.println(this.land.getLandSizeInHa() + " ha ziemi, w tym " + this.land.getSownLandInHa() + " ha ziemi obsianej i " + this.land.getFreeLand() + " ha ziemi nieobsianej.");
     }
 
-    public void possesionsPlants() {
+    public void possessionsPlants() {
         System.out.println("Twoje rośliny:  ");
-        System.out.println(this.corn.getStoredInKg() + " kg kukurydzy.");
-        System.out.println(this.latePotato.getStoredInKg() + " kg ziemniaka późnego.");
-        System.out.println(this.lateRape.getStoredInKg() + " kg rzepaka ozimego.");
-        System.out.println(this.lateRye.getStoredInKg() + " kg żyta ozimego.");
-        System.out.println(this.springBarley.getStoredInKg() + " kg jęczmienia jarego.");
-        System.out.println(this.whiteBeet.getStoredInKg() + " kg buraka cukrowego.");
-        System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej.");
+        System.out.println(this.corn.getStoredInKg() + " kg kukurydzy. Obsiewanie od " + this.corn.getSowingTimeFromWeek() + " do " + this.corn.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.latePotato.getStoredInKg() + " kg ziemniaka późnego. Obsiewane od " + this.latePotato.getSowingTimeFromWeek() + " do " + this.latePotato.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.lateRape.getStoredInKg() + " kg rzepaka ozimego. Obsiewane od " + this.lateRape.getSowingTimeFromWeek() + " do " + this.lateRape.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.lateRye.getStoredInKg() + " kg żyta ozimego. Obsiewane od " + this.lateRye.getSowingTimeFromWeek() + " do " + this.lateRye.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.springBarley.getStoredInKg() + " kg jęczmienia jarego. Obsiewane od " + this.springBarley.getSowingTimeFromWeek() + " do " + this.springBarley.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.whiteBeet.getStoredInKg() + " kg buraka cukrowego. Obsiewane od " + this.whiteBeet.getSowingTimeFromWeek() + " do " + this.whiteBeet.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej. Obsiewane od " + this.winterWheat.getSowingTimeFromWeek() + " do " + this.winterWheat.getSowingTimeToWeek() + " tygodnia roku.");
     }
 
     public void possessionsAnimal() {
@@ -475,7 +483,7 @@ public class Farm {
         System.out.println(this.getTurkeyList().size() + " indyków.");
     }
 
-    public void possesionsBuilding() {
+    public void possessionsBuilding() {
         System.out.println("Twoje budynki:  ");
         System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół.");
         System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników.");
@@ -488,13 +496,29 @@ public class Farm {
 
     }
 
-    public void possesions() {
-        System.out.println("Jest " + getTime() + ", czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
-        possesionsLand();
-        possesionsPlants();
+    public void possessionsSownPlants(){
+        System.out.println("Rośliny, które zostały zasiane: ");
+        for (int i = 0; i < this.sownList.size(); i++) {
+            System.out.println(sownList.get(i).getName() + ", obsiane " + sownList.get(i).getHaSown() + "ha, pozostało " + sownList.get(i).getWeeksToHarvest() + " tygodni do zbiorów.");
+        }
+    }
+
+    public void possessions() {
+        System.out.println("--------------------------------------------------------------------------------------------");
+        currentTime();
+        System.out.println("--------------------------------------------------------------------------------------------");
+        possessionsCash();
+        System.out.println("--------------------------------------------------------------------------------------------");
+        possessionsLand();
+        System.out.println("--------------------------------------------------------------------------------------------");
+        possessionsPlants();
+        System.out.println("--------------------------------------------------------------------------------------------");
+        possessionsSownPlants();
+        System.out.println("--------------------------------------------------------------------------------------------");
         possessionsAnimal();
-        possesionsBuilding();
-        //System.out.println();
+        System.out.println("--------------------------------------------------------------------------------------------");
+        possessionsBuilding();
+        System.out.println("--------------------------------------------------------------------------------------------");
     }
 
     public Farm generateFarm() {
@@ -511,10 +535,10 @@ public class Farm {
         for (int i = 0; i <= 2; i++) {
             farmarr[i] = generateFarm();
             System.out.println("Farma nr " + (i + 1));
-            farmarr[i].possesions();
+            farmarr[i].possessions();
         }
 
-        while(farmNumber != 1 && farmNumber != 2 && farmNumber != 3) {
+        while (farmNumber != 1 && farmNumber != 2 && farmNumber != 3) {
             try {
                 System.out.println("Wybierz swoją startową farmę spośród trzech powyżej dostępnych wpisując wartość 1, 2 lub 3: ");
                 farmNumber = Integer.parseInt(scan.nextLine());
@@ -555,6 +579,7 @@ public class Farm {
                 farm.springBarley.setStoredInKg(farm.springBarley.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
+            farm.springBarley.setStoredInKg(500.0); //TODO TEST
             if (rand.nextBoolean() && flag < 3) {
                 farm.whiteBeet.setStoredInKg(farm.whiteBeet.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
@@ -619,7 +644,7 @@ public class Farm {
 
     public void moneyEarnOnAnimals() {
         boolean moneyFlag = false;
-        System.out.println(this.owner + " Na sprzedaży produktów zwierzęcych zarobiłeś: ");
+        System.out.print(this.owner + ", na sprzedaży produktów zwierzęcych zarobiłeś: ");
         if (totalNumberOfAdultChicken > 0) {
             System.out.println("Na kurzych jajach " + totalNumberOfAdultChicken * this.getChickenList().get(0).getAnimalProductPrice());
             this.setCash(this.getCash() + totalNumberOfAdultChicken * this.getChickenList().get(0).getAnimalProductPrice());
@@ -757,23 +782,25 @@ public class Farm {
             }
         }
         if (!reproductionFlag)
-            System.out.println("0 zwierząt.");
+            System.out.println("Narodziło się 0 zwierząt.");
     }
 
+    public void currentTime() {
+        System.out.println("Jest " + calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + ", czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
+    }
 
     public void startOfTheTurn() {
-        System.out.println("Jest " + getTime() + ", czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
+        currentTime();
         checkNumberOfAnimals(chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         Events.eventCheck(this);
-        reproduction();
         harvestSown();
+        reproduction();
         moneyEarnOnAnimals();
     }
 
     public void nextTurn() {
         animal.eat(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
-        this.calendar.add(Calendar.DAY_OF_WEEK, 7); // Next week
-        //zmniejszenie czasu do zbiorów,
+        this.calendar.add(Calendar.DAY_OF_WEEK, 7);
         this.winningConditions();
         this.turnCounter++;
     }
@@ -789,17 +816,27 @@ public class Farm {
 
     public void addSown(Plant plant) {
         Sown sown = new Sown();
-        sown.addToSown(plant, this);
-        if (sown != null) {
-            this.sown.add(sown);
-        }
+        sown = sown.addToSown(plant, this);
+        if(sown != null)
+        sownList.add(sown);
+
     }
 
     public void harvestSown() {
-        for (int i = 0; i < this.sown.size(); i++) {
-            sown.get(i).minusWeeksToHarvest(this);
+        Boolean harvested = false;
+        for (int i = 0; i < this.sownList.size(); i++) {
+            sownList.get(i).minusWeekToHarvest();
+        }
+        for (int i = 0; i < this.sownList.size(); i++) {
+            harvested = sownList.get(i).harvestTime(this);
+            if(harvested){
+                sownList.remove(i);
+                i--;
+            }
+            harvested = false;
         }
     }
+
 
     public void winningConditions() {
         //20ha ziemi, 5 różncyh gatunków zwierząt, 5 różnych gatunków roślin i jedzenie dla zwierząt na rok.
