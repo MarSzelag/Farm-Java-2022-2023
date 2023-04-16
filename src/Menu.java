@@ -911,10 +911,10 @@ public class Menu {
 
         switch (shopMenuGoatBarnCounter) {
             case 1:
-                farm.shop.buyBuilding(farm.getBarn(), farm);
+                farm.shop.buyBuilding(farm.getGoatBarn(), farm);
                 break;
             case 2:
-                farm.shop.sellBuilding(farm.getBarn(), farm);
+                farm.shop.sellBuilding(farm.getGoatBarn(), farm);
                 break;
             case 9:
                 break;

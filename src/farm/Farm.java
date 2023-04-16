@@ -18,7 +18,7 @@ public class Farm {
 
     Random rand = new Random();
     private String owner;
-    private Double cash = 1500.00;
+    private Double cash = 150000.00;
 
     private Integer turnCounter = 1;
     //Plants
@@ -38,11 +38,6 @@ public class Farm {
     private LateRape lateRape = new LateRape();
     private LateRye lateRye = new LateRye();
     private SpringBarley springBarley = new SpringBarley();
-
-    public void setSpringBarley(SpringBarley springBarley) {
-        this.springBarley = springBarley;
-    }
-
     private WhiteBeet whiteBeet = new WhiteBeet();
     private WinterWheat winterWheat = new WinterWheat();
     //Animal initiallization
@@ -53,6 +48,7 @@ public class Farm {
     private List<Pig> pigList = new LinkedList<>();
     private List<Sheep> sheepList = new LinkedList<>();
     private List<Turkey> turkeyList = new LinkedList<>();
+
     private Integer totalNumberOfChicken, totalNumberOfCow, totalNumberOfGoat, totalNumberOfGoose, totalNumberOfPig, totalNumberOfSheep, totalNumberOfTurkey;
     private Integer totalNumberOfAdultChicken, totalNumberOfAdultCow, totalNumberOfAdultGoat, totalNumberOfAdultGoose, totalNumberOfAdultPig, totalNumberOfAdultSheep, totalNumberOfAdultTurkey;
     private List<Sown> sownList = new LinkedList<>();
