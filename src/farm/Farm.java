@@ -907,6 +907,8 @@ public class Farm {
             plantSpeciesCounter++;
 
         if (animalSpeciesCounter >= animalSpecies && plantSpeciesCounter >= plantSpecies && this.getLand().getLandSizeInHa() >= landArea && barleyFlag == true) {
+            System.out.println("     *************************************************************************************************************************************");
+            System.out.println("***********************************************************************************************************************************************");
             System.out.println("Gratulacje!!! Udało ci się osiągnąć cel gry, jakim jest zebranie jednocześnie przynajmniej: ");
             System.out.println("- 20 ha ziemi;");
             System.out.println("- Pięciu gatunków roślin;");
@@ -914,6 +916,8 @@ public class Farm {
             System.out.println("- Karmy dla zwierząt na okres przynajmniej roku.");
             System.out.println();
             System.out.println("Stałeś się rolnikiem doskonałym. Cały świat chyli czoło przed twoimi wybitnymi osiągnięciami i otrzymujesz listy gratulacyjne z całego świata!");
+            System.out.println("************************************************************************************************************************************************");
+            System.out.println("     *************************************************************************************************************************************");
         }
 
     }
