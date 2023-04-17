@@ -795,6 +795,7 @@ public class Farm {
     }
 
     public void nextTurn() {
+        animal.reproduce(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         animal.eat(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         this.calendar.add(Calendar.DAY_OF_WEEK, 7);
         this.winningConditions();
