@@ -40,13 +40,6 @@ public class Animal {
     }
 
 
-    // kura, gęś, indyk - coop
-    // krowa - barn
-    // świnia - pigsty
-    // owca - sheepfold
-    // koza - goat barn
-
-
     public String getRace() {
         return race;
     }
@@ -176,37 +169,38 @@ public class Animal {
     public void eat(Farm farm, List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
         Double chickenFoodNeed = 0.0, cowFoodNeed = 0.0, goatFoodNeed = 0.0, gooseFoodNeed = 0.0, sheepFoodNeed = 0.0, turkeyFoodNeed = 0.0, pigFoodNeed = 0.0;
         if (!chickenList.isEmpty()) {
-            chickenFoodNeed = chickenList.get(0).getFoodEatenPerWeek() * howManyChickenInList(chickenList);
+            chickenFoodNeed = chickenList.get(0).getFoodEatenPerWeek() * farm.getTotalNumberOfChicken();
         }
-        if (!chickenList.isEmpty()) {
-            cowFoodNeed = cowList.get(0).getFoodEatenPerWeek() * howManyCowInList(cowList);
+        if (!cowList.isEmpty()) {
+            cowFoodNeed = cowList.get(0).getFoodEatenPerWeek() * farm.getTotalNumberOfCow();
         }
-        if (!chickenList.isEmpty()) {
-            goatFoodNeed = goatList.get(0).getFoodEatenPerWeek() * howManyGoatInList(goatList);
+        if (!goatList.isEmpty()) {
+            goatFoodNeed = goatList.get(0).getFoodEatenPerWeek() * farm.getTotalNumberOfGoat();
         }
-        if (!chickenList.isEmpty()) {
-            gooseFoodNeed = gooseList.get(0).getFoodEatenPerWeek() * howManyGooseInList(gooseList);
+        if (!gooseList.isEmpty()) {
+            gooseFoodNeed = gooseList.get(0).getFoodEatenPerWeek() * farm.getTotalNumberOfGoose();
         }
-        if (!chickenList.isEmpty()) {
-            sheepFoodNeed = sheepList.get(0).getFoodEatenPerWeek() * howManySheepInList(sheepList);
+        if (!pigList.isEmpty()) {
+            pigFoodNeed = pigList.get(0).getFoodEatenPerWeek() * farm.getTotalNumberOfPig();
         }
-        if (!chickenList.isEmpty()) {
-            turkeyFoodNeed = turkeyList.get(0).getFoodEatenPerWeek() * howManyTurkeyInList(turkeyList);
+        if (!sheepList.isEmpty()) {
+            sheepFoodNeed = sheepList.get(0).getFoodEatenPerWeek() * farm.getTotalNumberOfSheep();
         }
-        if (!chickenList.isEmpty()) {
-            pigFoodNeed = pigList.get(0).getFoodEatenPerWeek() * howManyPigInList(pigList);
+        if (!turkeyList.isEmpty()) {
+            turkeyFoodNeed = turkeyList.get(0).getFoodEatenPerWeek() * farm.getTotalNumberOfTurkey();
         }
 
-        if (farm.getCorn().getStoredInKg() >= chickenFoodNeed && chickenFoodNeed > 0) {
+        if (farm.getCorn().getStoredInKg() >= chickenFoodNeed){ //TODO **************
             System.out.println("Kury zjadły " + chickenFoodNeed + "kg kukurydzy.");
             farm.setCorn(-chickenFoodNeed);
         } else {
             for (int i = 0; i < chickenList.size(); i++) {
                 if (chickenList.get(i).getWeightInKg() > 0.5) {
                     chickenList.get(i).setWeightInKg(chickenList.get(i).getWeightInKg() - 0.01);
-                    System.out.println("Kup kukurydzę. Kwoje kurczaki nie mają wystarczającej ilości i zaczęły chudnąć.");
                 }
             }
+            System.out.println("Kup kukurydzę. Kwoje kurczaki nie mają wystarczającej ilości i zaczęły chudnąć.");
+            farm.setCorn(0);
         }
         if (farm.getWinterWheat().getStoredInKg() >= cowFoodNeed && cowFoodNeed > 0) {
             System.out.println("Krowy zjadły " + cowFoodNeed + "kg pszenicy ozimej.");
@@ -215,9 +209,10 @@ public class Animal {
             for (int i = 0; i < cowList.size(); i++) {
                 if (cowList.get(i).getWeightInKg() > 45.0) {
                     cowList.get(i).setWeightInKg(cowList.get(i).getWeightInKg() - 0.05);
-                    System.out.println("Kup pszenicę ozimą. Kwoje krowy nie mają wystarczającej ilości i zaczęły chudnąć.");
                 }
             }
+            System.out.println("Kup pszenicę ozimą. Kwoje krowy nie mają wystarczającej ilości i zaczęły chudnąć.");
+            farm.setWinterWheat(0);
         }
         if (farm.getSpringBarley().getStoredInKg() >= goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed && goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed > 0) {
             System.out.println("Kozy, gęsi, owce i indyki zjadły razem " + goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed + "kg jęczmienia jarego.");
@@ -226,27 +221,31 @@ public class Animal {
             for (int i = 0; i < goatList.size(); i++) {
                 if (goatList.get(i).getWeightInKg() > 34.0) {
                     goatList.get(i).setWeightInKg(goatList.get(i).getWeightInKg() - 0.03);
-                    System.out.println("Kup jęczmień jary. Kwoje kozy nie mają wystarczającej ilości i zaczęły chudnąć.");
                 }
             }
+            System.out.println("Kup jęczmień jary. Kwoje kozy nie mają wystarczającej ilości i zaczęły chudnąć.");
+
             for (int i = 0; i < gooseList.size(); i++) {
                 if (gooseList.get(i).getWeightInKg() > 1.0) {
                     gooseList.get(i).setWeightInKg(gooseList.get(i).getWeightInKg() - 0.007);
-                    System.out.println("Kup jęczmień jary. Kwoje gęsi nie mają wystarczającej ilości i zaczęły chudnąć.");
                 }
             }
+            System.out.println("Kup jęczmień jary. Kwoje gęsi nie mają wystarczającej ilości i zaczęły chudnąć.");
+
             for (int i = 0; i < sheepList.size(); i++) {
                 if (sheepList.get(i).getWeightInKg() > 14.0) {
                     sheepList.get(i).setWeightInKg(sheepList.get(i).getWeightInKg() - 0.02);
-                    System.out.println("Kup jęczmień jary. Kwoje owce nie mają wystarczającej ilości i zaczęły chudnąć.");
                 }
             }
+            System.out.println("Kup jęczmień jary. Kwoje owce nie mają wystarczającej ilości i zaczęły chudnąć.");
+
             for (int i = 0; i < turkeyList.size(); i++) {
                 if (turkeyList.get(i).getWeightInKg() > 0.8) {
                     turkeyList.get(i).setWeightInKg(turkeyList.get(i).getWeightInKg() - 0.006);
-                    System.out.println("Kup jęczmień jary. Kwoje indyki nie mają wystarczającej ilości i zaczęły chudnąć.");
                 }
             }
+            System.out.println("Kup jęczmień jary. Kwoje indyki nie mają wystarczającej ilości i zaczęły chudnąć.");
+            farm.setSpringBarley(0);
         }
         if (farm.getLatePotato().getStoredInKg() >= pigFoodNeed && pigFoodNeed > 0) {
             System.out.println("Świnie zjadły " + pigFoodNeed + "kg późnych ziemniaków.");
@@ -255,9 +254,10 @@ public class Animal {
             for (int i = 0; i < chickenList.size(); i++) {
                 if (chickenList.get(i).getWeightInKg() > 16.0) {
                     chickenList.get(i).setWeightInKg(chickenList.get(i).getWeightInKg() - 0.02);
-                    System.out.println("Kup późne ziemniaki. Kwoje świnie nie mają wystarczającej ilości i zaczęły chudnąć.");
                 }
             }
+            System.out.println("Kup późne ziemniaki. Kwoje świnie nie mają wystarczającej ilości i zaczęły chudnąć.");
+            farm.setLatePotato(0);
         }
     }
 

@@ -309,7 +309,7 @@ public class Shop {
         while (!flag) {
             animalPossesionChicken(farm);
             System.out.println("Cena kupna kury wynosi " + chicken.getBuyingPrice() + " za sztukę.");
-            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / chicken.getBuyingPrice()));
+            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / chicken.getBuyingPrice()) + " kur.");
             System.out.println("Posiadasz obecnie " + farm.getTotalNumberOfChicken() + " kur oraz " + farm.getChickenCoop().getQuantityOfThisBuildingType() + " kurników, w których możesz pomieścić maksymalnie " + farm.getChickenCoop().getQuantityOfThisBuildingType() * farm.getChickenCoop().getCapacityOfOneBuilding() + " kur.");
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
@@ -405,7 +405,7 @@ public class Shop {
         while (!flag) {
             animalPossesionCow(farm);
             System.out.println("Cena kupna krowy wynosi " + cow.getBuyingPrice() + " za sztukę.");
-            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / cow.getBuyingPrice()));
+            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / cow.getBuyingPrice()) + " krów.");
             System.out.println("Posiadasz obecnie " + farm.getTotalNumberOfCow() + " krów oraz " + farm.getCowShed().getQuantityOfThisBuildingType() + " obór, w których możesz pomieścić maksymalnie " + farm.getCowShed().getQuantityOfThisBuildingType() * farm.getCowShed().getCapacityOfOneBuilding() + "krów.");
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
@@ -498,7 +498,7 @@ public class Shop {
         while (!flag) {
             animalPossesionGoat(farm);
             System.out.println("Cena kupna kozy wynosi " + goat.getBuyingPrice() + " za sztukę.");
-            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / goat.getBuyingPrice()));
+            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / goat.getBuyingPrice()) + " kóz.");
             System.out.println("Posiadasz obecnie " + farm.getTotalNumberOfGoat() + " kóz oraz " + farm.getGoatBarn().getQuantityOfThisBuildingType() + " kurników, w których możesz pomieścić maksymalnie " + farm.getGoatBarn().getQuantityOfThisBuildingType() * farm.getGoatBarn().getCapacityOfOneBuilding() + " kóz.");
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
@@ -592,7 +592,7 @@ public class Shop {
         while (!flag) {
             animalPossesionGoose(farm);
             System.out.println("Cena kupna gęsi wynosi " + goose.getBuyingPrice() + " za sztukę.");
-            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / goose.getBuyingPrice()));
+            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / goose.getBuyingPrice() + " gęsi."));
             System.out.println("Posiadasz obecnie " + farm.getTotalNumberOfGoose() + " gęsi oraz " + farm.getGooseCoop().getQuantityOfThisBuildingType() + " kurników dla gęsi, w których możesz pomieścić maksymalnie " + farm.getGooseCoop().getQuantityOfThisBuildingType() * farm.getGooseCoop().getCapacityOfOneBuilding() + " gęsi.");
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
@@ -686,7 +686,7 @@ public class Shop {
         while (!flag) {
             animalPossesionPig(farm);
             System.out.println("Cena kupna świni wynosi " + pig.getBuyingPrice() + " za sztukę.");
-            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / pig.getBuyingPrice()));
+            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / pig.getBuyingPrice()) + " świń.");
             System.out.println("Posiadasz obecnie " + farm.getTotalNumberOfPig() + " świń oraz " + farm.getPigsty().getQuantityOfThisBuildingType() + " chlewów, w których możesz pomieścić maksymalnie " + farm.getPigsty().getQuantityOfThisBuildingType() * farm.getPigsty().getCapacityOfOneBuilding() + " świń.");
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
@@ -780,7 +780,7 @@ public class Shop {
         while (!flag) {
             animalPossesionSheep(farm);
             System.out.println("Cena kupna owcy wynosi " + sheep.getBuyingPrice() + " za sztukę.");
-            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / sheep.getBuyingPrice()));
+            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / sheep.getBuyingPrice()) + " owiec.");
             System.out.println("Posiadasz obecnie " + farm.getTotalNumberOfSheep() + " owiec oraz " + farm.getSheepfold().getQuantityOfThisBuildingType() + " owczarni, w których możesz pomieścić maksymalnie " + farm.getSheepfold().getQuantityOfThisBuildingType() * farm.getSheepfold().getCapacityOfOneBuilding() + " owiec.");
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
@@ -874,7 +874,7 @@ public class Shop {
         while (!flag) {
             animalPossesionTurkey(farm);
             System.out.println("Cena kupna indyka wynosi " + turkey.getBuyingPrice() + " za sztukę.");
-            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / turkey.getBuyingPrice()));
+            System.out.println("Posiadasz " + farm.getCash() + "zł. To wystarczy na zakup maksymalnie " + (farm.getCash() / turkey.getBuyingPrice()) + " indyków.");
             System.out.println("Posiadasz obecnie " + farm.getTotalNumberOfTurkey() + " indyków oraz " + farm.getTurkeyCoop().getQuantityOfThisBuildingType() + " kurników dla indyków, w których możesz pomieścić maksymalnie " + farm.getTurkeyCoop().getQuantityOfThisBuildingType() * farm.getTurkeyCoop().getCapacityOfOneBuilding() + " indyków.");
             System.out.println("Ile sztuk chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 

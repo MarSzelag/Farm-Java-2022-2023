@@ -18,7 +18,7 @@ public class Farm {
 
     Random rand = new Random();
     private String owner;
-    private Double cash = 150000.00;
+    private Double cash = 15000.00;
 
     private Integer turnCounter = 1;
     //Plants
