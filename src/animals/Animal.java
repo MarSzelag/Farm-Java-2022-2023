@@ -300,7 +300,7 @@ public class Animal {
         if (farm.getCorn().getStoredInKg() >= chickenFoodNeed && farm.getTotalNumberOfChicken() > 0) {
             System.out.println("Kury zjadły " + chickenFoodNeed + "kg kukurydzy.");
             farm.setCorn(farm.getCorn().getStoredInKg() - chickenFoodNeed);
-        } else if (farm.getCorn().getStoredInKg() < chickenFoodNeed) {//TODO ************** skopiować do innych zwierząt.
+        } else if (farm.getCorn().getStoredInKg() < chickenFoodNeed) {
             for (int i = 0; i < chickenList.size(); i++) {
                 if (chickenList.get(i).getWeightInKg() > 0.5) {
                     chickenList.get(i).setWeightInKg(chickenList.get(i).getWeightInKg() - 0.01);
