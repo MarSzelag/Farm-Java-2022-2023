@@ -114,8 +114,8 @@ public class Shop {
         boolean flag = false;
         while (!flag) {
             plantPossession(plant, farm);
-            System.out.println("Cena sprzedaży kukurydzy wynosi " + plant.getSellPricePerKg() + "zł za kilogram.");
-            System.out.println("Posiadasz obecnie " + plant.getStoredInKg() + "kg kukurydzy.");
+            System.out.println("Cena sprzedaży " + plant.getPlantName() + " wynosi " + plant.getSellPricePerKg() + "zł za kilogram.");
+            System.out.println("Posiadasz obecnie " + plant.getStoredInKg() + "kg " + plant.getPlantName() + ".");
             System.out.println("Ile kg chcesz sprzedać? Jeśli nie chcesz dokonać sprzedaży, wciśnij 0.");
 
             try {
