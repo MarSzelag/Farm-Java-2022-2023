@@ -39,7 +39,6 @@ public class Events {
         boolean potatoBeetleFlatGlobal = false;
 
         Random rand = new Random();
-      //  Integer temp;
 
         for(int i = 0; i < farm.getSownList().size(); i++){
             droughtFlag = false;

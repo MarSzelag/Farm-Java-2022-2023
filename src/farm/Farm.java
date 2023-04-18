@@ -2,10 +2,7 @@ package farm;
 
 import animals.*;
 import buildings.*;
-import events.Drought;
-import events.Events;
-import events.Flood;
-import events.PotatoBeetle;
+import events.*;
 import land.Land;
 import plants.*;
 import shop.Shop;

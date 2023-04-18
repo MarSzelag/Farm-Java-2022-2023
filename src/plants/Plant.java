@@ -1,36 +1,25 @@
 package plants;
 
-import farm.Farm;
-
-import java.util.Date;
-import java.util.Scanner;
-
 public class Plant {
 
     private String plantName;
     private Integer neededToSowOneHaInKg;
-    private Integer harvestsFromHaKg; // Wydajność upraw w kg z ha.
+    private Integer harvestsFromHaKg;
 
-    private Integer sowingTimeFromWeek; // Czas obsiewu od. 4 pory roku, 12 miesięcy, czy 52 tygodnie?
-    private Integer sowingTimeToWeek; // Czas obsiewu do.
+    private Integer sowingTimeFromWeek;
+    private Integer sowingTimeToWeek;
     private Integer harvestTimeAfterNoWeeks;
     private Integer noOfWeeksLeftToHavest;
 
-    private Double sellPricePerKg; // Cena sprzedaży kilograma
+    private Double sellPricePerKg;
     private Double buyPricePerKg;
 
     private Double landPreparationCostPerHa;
     private Double protectionAgainstPestsPerHa;
 
-    //private boolean isSownAlready;
-
     private Double storedInKg = 0.00;
 
-    // private Integer growTime; // Czas, jaki potrzebuje roślina do osiągnięcia dojrzałej formy.
-    // private Integer age; // Obecny wiek zasadzonej rośliny.
-
     public Plant() {
-
     }
 
     public Plant(String plantName, Integer neededToSowOneHaInKg, Integer harvestsFromHa, Integer sowingTimeFromWeek, Integer sowingTimeToWeek, Integer harvestTimeAfterNoWeeks, Double sellPricePerKg, Double buyPricePerKg, Double landPreparationCostPerHa, Double protectionAgainstPests) {
@@ -137,14 +126,6 @@ public class Plant {
     public Double getProtectionAgainstPests() {
         return protectionAgainstPestsPerHa;
     }
-/*
-    public boolean isSownAlready() {
-        return isSownAlready;
-    }
-
-    public void setSownAlready(boolean sownAlready) {
-        isSownAlready = sownAlready;
-    }*/
 
     public void setProtectionAgainstPests(Double protectionAgainstPests) {
         this.protectionAgainstPestsPerHa = protectionAgainstPests;
