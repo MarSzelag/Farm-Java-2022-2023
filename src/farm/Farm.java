@@ -49,8 +49,8 @@ public class Farm {
     private List<Sheep> sheepList = new LinkedList<>();
     private List<Turkey> turkeyList = new LinkedList<>();
 
-    private Integer totalNumberOfChicken, totalNumberOfCow, totalNumberOfGoat, totalNumberOfGoose, totalNumberOfPig, totalNumberOfSheep, totalNumberOfTurkey;
-    private Integer totalNumberOfAdultChicken, totalNumberOfAdultCow, totalNumberOfAdultGoat, totalNumberOfAdultGoose, totalNumberOfAdultPig, totalNumberOfAdultSheep, totalNumberOfAdultTurkey;
+    private Integer totalNumberOfChicken = 0, totalNumberOfCow = 0, totalNumberOfGoat = 0, totalNumberOfGoose = 0, totalNumberOfPig = 0, totalNumberOfSheep = 0, totalNumberOfTurkey = 0;
+    private Integer totalNumberOfAdultChicken = 0, totalNumberOfAdultCow = 0, totalNumberOfAdultGoat = 0, totalNumberOfAdultGoose = 0, totalNumberOfAdultPig = 0, totalNumberOfAdultSheep = 0, totalNumberOfAdultTurkey = 0;
     private List<Sown> sownList = new LinkedList<>();
     private Drought drought = new Drought();
     private Flood flood = new Flood();
@@ -653,44 +653,43 @@ public class Farm {
 
     public void checkNumberOfAdultChicken(List<Chicken> chickenList) {
         if (chickenList.isEmpty()) {
-            totalNumberOfChicken = 0;
-        } else totalNumberOfChicken = getChickenList().get(0).howManyChickenInList(chickenList);
+            totalNumberOfAdultChicken = 0;
+        } else totalNumberOfAdultChicken = chickenList.get(0).howManyAdultChickenInList(chickenList);
     }
-
     public void checkNumberOfAdultCows(List<Cow> cowList) {
         if (cowList.isEmpty()) {
-            totalNumberOfCow = 0;
-        } else totalNumberOfCow = getCowList().get(0).howManyCowInList(cowList);
+            totalNumberOfAdultCow = 0;
+        } else totalNumberOfAdultCow = cowList.get(0).howManyAdultCowInList(cowList);
     }
 
     public void checkNumberOfAdultGoat(List<Goat> goatList) {
         if (goatList.isEmpty()) {
-            totalNumberOfGoat = 0;
-        } else totalNumberOfGoat = goatList.get(0).howManyGoatInList(goatList);
+            totalNumberOfAdultGoat = 0;
+        } else totalNumberOfAdultGoat = goatList.get(0).howManyAdultGoatInList(goatList);
     }
 
     public void checkNumberOfAdultGoose(List<Goose> gooseList) {
         if (gooseList.isEmpty()) {
-            totalNumberOfGoose = 0;
-        } else totalNumberOfGoose = gooseList.get(0).howManyGooseInList(gooseList);
+            totalNumberOfAdultGoose = 0;
+        } else totalNumberOfAdultGoose = gooseList.get(0).howManyAdultGooseInList(gooseList);
     }
 
     public void checkNumberOfAdultPig(List<Pig> pigList) {
         if (pigList.isEmpty()) {
-            totalNumberOfPig = 0;
-        } else totalNumberOfPig = pigList.get(0).howManyPigInList(pigList);
+            totalNumberOfAdultPig = 0;
+        } else totalNumberOfAdultPig = pigList.get(0).howManyAdultPigInList(pigList);
     }
 
     public void checkNumberOfAdultSheep(List<Sheep> sheepList) {
         if (sheepList.isEmpty()) {
-            totalNumberOfSheep = 0;
-        } else totalNumberOfSheep = sheepList.get(0).howManySheepInList(sheepList);
+            totalNumberOfAdultSheep = 0;
+        } else totalNumberOfAdultSheep = sheepList.get(0).howManyAdultSheepInList(sheepList);
     }
 
     public void checkNumberOfAdultTurkey(List<Turkey> turkeyList) {
         if (turkeyList.isEmpty()) {
-            totalNumberOfTurkey = 0;
-        } else totalNumberOfTurkey = turkeyList.get(0).howManyTurkeyInList(turkeyList);
+            totalNumberOfAdultTurkey = 0;
+        } else totalNumberOfAdultTurkey = turkeyList.get(0).howManyAdultTurkeyInList(turkeyList);
     }
 
     public void checkNumberOfAnimals(List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
