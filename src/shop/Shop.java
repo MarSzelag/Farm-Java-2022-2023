@@ -75,7 +75,11 @@ public class Shop {
         boolean flag = false;
         while (!flag) {
             plantPossession(plant, farm);
-            System.out.println("Cena kupna kukurydzy wynosi " + plant.getBuyPricePerKg() + "zł za kilogram.");
+            System.out.println("Cena kupna " + plant.getPlantName() + " wynosi " + plant.getBuyPricePerKg() + "zł za kilogram.");
+            if(((farm.getBarn().getCapacityOfOneBuilding() * farm.getBarn().getQuantityOfThisBuildingType()) - farm.getBarn().kgOfPlantsStoredInBarn(farm)) < 0) {
+                System.out.println("W stodole masz jeszcze miejsce na " + ((farm.getBarn().getCapacityOfOneBuilding() * farm.getBarn().getQuantityOfThisBuildingType()) - farm.getBarn().kgOfPlantsStoredInBarn(farm)) + "kg roślin.");
+            }else
+                System.out.println("Nie masz już miejsca w stodole. Musisz dokupić nowe budynki, aby powiększyć ich pojemnosć.");
             System.out.printf("Masz gotówkę na zakup maksymalnie %.0f kg %s.%n", (farm.getCash() / plant.getBuyPricePerKg()), plant.getPlantName());
             System.out.println("Ile kg chcesz kupić? Jeśli nie chcesz dokonać zakupu, wciśnij 0.");
 
@@ -88,7 +92,9 @@ public class Shop {
                     System.out.println("Nie można kupić ujemnej ilości " + plant.getPlantName());
                 } else if (farm.getCash() < (quantity * plant.getBuyPricePerKg())) {
                     System.out.println("Nie masz wystarczającej ilości pieniędzy, żeby kupić " + plant.getPlantName() + " w ilości " + quantity + "kg.");
-                } else {
+                } else if((farm.getBarn().getCapacityOfOneBuilding() * farm.getBarn().getQuantityOfThisBuildingType()) < farm.getBarn().kgOfPlantsStoredInBarn(farm) + quantity){
+                    System.out.println("Nie możesz kupić " + plant.getPlantName() + ". Nie masz wystarczającej ilości stodół.");
+                }else {
                     plant.setStoredInKg(plant.getStoredInKg() + quantity);
                     farm.setCash(farm.getCash() - (quantity * plant.getBuyPricePerKg()));
                     System.out.println("Dokonałeś zakupu " + quantity + "kg " + plant.getPlantName() + " za kwotę " + (quantity * plant.getBuyPricePerKg()) + "zł.");

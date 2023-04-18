@@ -18,7 +18,7 @@ public class Farm {
 
     Random rand = new Random();
     private String owner;
-    private Double cash = 15000.00;
+    private Double cash = 15000000.00;
 
     private Integer turnCounter = 1;
     //Plants
@@ -300,6 +300,7 @@ public class Farm {
         this.turkeyCoop = turkeyCoop;
     }
 
+
     public void setTurnCounter(Integer turnCounter) {
         this.turnCounter = turnCounter;
     }
@@ -448,7 +449,8 @@ public class Farm {
     public void setPotatoBeetle(PotatoBeetle potatoBeetle) {
         this.potatoBeetle = potatoBeetle;
     }
-    public void possessionsCash(){
+
+    public void possessionsCash() {
         System.out.println("Posiadasz " + this.getCash() + "zł.");
     }
 
@@ -460,39 +462,53 @@ public class Farm {
     public void possessionsPlants() {
         System.out.println("Twoje rośliny:  ");
         System.out.println(this.corn.getStoredInKg() + " kg kukurydzy. Obsiewanie od " + this.corn.getSowingTimeFromWeek() + " do " + this.corn.getSowingTimeToWeek() + " tygodnia roku.");
-        System.out.println(this.latePotato.getStoredInKg() + " kg ziemniaka późnego. Obsiewane od " + this.latePotato.getSowingTimeFromWeek() + " do " + this.latePotato.getSowingTimeToWeek() + " tygodnia roku.");
-        System.out.println(this.lateRape.getStoredInKg() + " kg rzepaka ozimego. Obsiewane od " + this.lateRape.getSowingTimeFromWeek() + " do " + this.lateRape.getSowingTimeToWeek() + " tygodnia roku.");
-        System.out.println(this.lateRye.getStoredInKg() + " kg żyta ozimego. Obsiewane od " + this.lateRye.getSowingTimeFromWeek() + " do " + this.lateRye.getSowingTimeToWeek() + " tygodnia roku.");
-        System.out.println(this.springBarley.getStoredInKg() + " kg jęczmienia jarego. Obsiewane od " + this.springBarley.getSowingTimeFromWeek() + " do " + this.springBarley.getSowingTimeToWeek() + " tygodnia roku.");
-        System.out.println(this.whiteBeet.getStoredInKg() + " kg buraka cukrowego. Obsiewane od " + this.whiteBeet.getSowingTimeFromWeek() + " do " + this.whiteBeet.getSowingTimeToWeek() + " tygodnia roku.");
-        System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej. Obsiewane od " + this.winterWheat.getSowingTimeFromWeek() + " do " + this.winterWheat.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.latePotato.getStoredInKg() + " kg ziemniaka późnego. Obsiewanie od " + this.latePotato.getSowingTimeFromWeek() + " do " + this.latePotato.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.lateRape.getStoredInKg() + " kg rzepaka ozimego. Obsiewanie od " + this.lateRape.getSowingTimeFromWeek() + " do " + this.lateRape.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.lateRye.getStoredInKg() + " kg żyta ozimego. Obsiewanie od " + this.lateRye.getSowingTimeFromWeek() + " do " + this.lateRye.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.springBarley.getStoredInKg() + " kg jęczmienia jarego. Obsiewanie od " + this.springBarley.getSowingTimeFromWeek() + " do " + this.springBarley.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.whiteBeet.getStoredInKg() + " kg buraka cukrowego. Obsiewanie od " + this.whiteBeet.getSowingTimeFromWeek() + " do " + this.whiteBeet.getSowingTimeToWeek() + " tygodnia roku.");
+        System.out.println(this.winterWheat.getStoredInKg() + " kg przenicy ozimej. Obsiewanie od " + this.winterWheat.getSowingTimeFromWeek() + " do " + this.winterWheat.getSowingTimeToWeek() + " tygodnia roku.");
     }
 
     public void possessionsAnimal() {
         System.out.println("Twoje zwierzęta:  ");
-        System.out.println(this.getChickenList().size() + " kór.");
-        System.out.println(this.getCowList().size() + " krów.");
-        System.out.println(this.getGoatList().size() + " kóz.");
-        System.out.println(this.getGooseList().size() + " gęsi.");
-        System.out.println(this.getPigList().size() + " świń.");
-        System.out.println(this.getSheepList().size() + " owiec.");
-        System.out.println(this.getTurkeyList().size() + " indyków.");
+        if (this.getTotalNumberOfChicken() != null) {
+            System.out.println(this.getTotalNumberOfChicken() + " kur. W tym " + this.getTotalNumberOfAdultChicken() + " dorosłych.");
+        } else System.out.println("0 kur.");
+        if (this.getTotalNumberOfCow() != null) {
+            System.out.println(this.getTotalNumberOfCow() + " krów. W tym " + this.getTotalNumberOfAdultCow() + " dorosłych.");
+        } else System.out.println("0 krów.");
+        if (this.getTotalNumberOfGoat() != null) {
+            System.out.println(this.getTotalNumberOfGoat() + " kóz. W tym " + this.getTotalNumberOfAdultGoat() + " dorosłych.");
+        } else System.out.println("0 kóz.");
+        if (this.getTotalNumberOfGoose() != null) {
+            System.out.println(this.getTotalNumberOfGoose() + " gęsi. W tym " + this.getTotalNumberOfAdultGoose() + " dorosłych.");
+        } else System.out.println("0 gęsi.");
+        if (this.getTotalNumberOfPig() != null) {
+            System.out.println(this.getTotalNumberOfPig() + " świń. W tym " + this.getTotalNumberOfAdultPig() + " dorosłych.");
+        } else System.out.println("0 świń.");
+        if (this.getTotalNumberOfSheep() != null) {
+            System.out.println(this.getTotalNumberOfSheep() + " owiec. W tym " + this.getTotalNumberOfAdultSheep() + " dorosłych.");
+        } else System.out.println("0 owiec.");
+        if (this.getTotalNumberOfTurkey() != null) {
+            System.out.println(this.getTotalNumberOfTurkey() + " indyków. W tym " + this.getTotalNumberOfAdultTurkey() + " dorosłych.");
+        } else System.out.println("0 indyków.");
     }
 
     public void possessionsBuilding() {
         System.out.println("Twoje budynki:  ");
-        System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół.");
-        System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników.");
-        System.out.println(this.cowShed.getQuantityOfThisBuildingType() + " obór.");
-        System.out.println(this.goatBarn.getQuantityOfThisBuildingType() + " stodół dla kóz.");
-        System.out.println(this.gooseCoop.getQuantityOfThisBuildingType() + " gęsich kórników.");
-        System.out.println(this.pigsty.getQuantityOfThisBuildingType() + " chlewów.");
-        System.out.println(this.sheepfold.getQuantityOfThisBuildingType() + " owczarń");
-        System.out.println(this.turkeyCoop.getQuantityOfThisBuildingType() + " kórników dla indyków.");
+        System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół o pojemności " + (this.barn.getCapacityOfOneBuilding() * this.barn.getQuantityOfThisBuildingType()) + "kg.");
+        System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników zdolnych pomieścić " + (this.chickenCoop.getCapacityOfOneBuilding() * this.chickenCoop.getQuantityOfThisBuildingType()) + " kur.");
+        System.out.println(this.cowShed.getQuantityOfThisBuildingType() + " obór zdolnych pomieścić " + (this.cowShed.getCapacityOfOneBuilding() * this.cowShed.getQuantityOfThisBuildingType()) + " krów.");
+        System.out.println(this.goatBarn.getQuantityOfThisBuildingType() + " stodół dla kóz zdolnych pomieścić " + (this.goatBarn.getCapacityOfOneBuilding() * this.goatBarn.getQuantityOfThisBuildingType()) + " kóz.");
+        System.out.println(this.gooseCoop.getQuantityOfThisBuildingType() + " gęsich kurników zdolnych pomieścić " + (this.gooseCoop.getCapacityOfOneBuilding() * this.gooseCoop.getQuantityOfThisBuildingType()) + " gęsi.");
+        System.out.println(this.pigsty.getQuantityOfThisBuildingType() + " chlewów zdolnych pomieścić " + (this.pigsty.getCapacityOfOneBuilding() * this.pigsty.getQuantityOfThisBuildingType()) + " świń.");
+        System.out.println(this.sheepfold.getQuantityOfThisBuildingType() + " owczarń zdolnych pomieścić " + (this.sheepfold.getCapacityOfOneBuilding() * this.sheepfold.getQuantityOfThisBuildingType()) + " owiec.");
+        System.out.println(this.turkeyCoop.getQuantityOfThisBuildingType() + " kurników dla indyków zdolnych pomieścić " + (this.turkeyCoop.getCapacityOfOneBuilding() * this.turkeyCoop.getQuantityOfThisBuildingType()) + " indyków.");
 
     }
 
-    public void possessionsSownPlants(){
+    public void possessionsSownPlants() {
         System.out.println("Rośliny, które zostały zasiane: ");
         for (int i = 0; i < this.sownList.size(); i++) {
             System.out.println(sownList.get(i).getName() + ", obsiane " + sownList.get(i).getHaSown() + "ha, pozostało " + sownList.get(i).getWeeksToHarvest() + " tygodni do zbiorów.");
@@ -665,7 +681,7 @@ public class Farm {
         if (!moneyFlag)
             System.out.println("0 zł");
     }
-
+/*
     public void reproduction() {
         Random rand = new Random();
         Integer randInt, numberOfBorn = 0;
@@ -780,26 +796,52 @@ public class Farm {
         if (!reproductionFlag)
             System.out.println("Narodziło się 0 zwierząt.");
     }
-
+*/
     public void currentTime() {
         System.out.println("Jest " + calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + ", czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
     }
 
     public void startOfTheTurn() {
+        System.out.println();
         currentTime();
-        checkNumberOfAnimals(chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
+        animalsAgeChange();
         Events.eventCheck(this);
         harvestSown();
-        reproduction();
+        animal.reproduce(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
+        checkNumberOfAnimals(chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
+        animal.eat(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
         moneyEarnOnAnimals();
     }
 
     public void nextTurn() {
-        animal.reproduce(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
-        animal.eat(this, chickenList, cowList, goatList, gooseList, pigList, sheepList, turkeyList);
+
         this.calendar.add(Calendar.DAY_OF_WEEK, 7);
         this.winningConditions();
         this.turnCounter++;
+    }
+
+    public void animalsAgeChange(){
+        for(int i = 0; i < this.chickenList.size(); i++){
+            this.chickenList.get(i).ageChange();
+        }
+        for(int i = 0; i < this.cowList.size(); i++){
+            this.cowList.get(i).ageChange();
+        }
+        for(int i = 0; i < this.goatList.size(); i++){
+            this.goatList.get(i).ageChange();
+        }
+        for(int i = 0; i < this.gooseList.size(); i++){
+            this.gooseList.get(i).ageChange();
+        }
+        for(int i = 0; i < this.pigList.size(); i++){
+            this.pigList.get(i).ageChange();
+        }
+        for(int i = 0; i < this.sheepList.size(); i++){
+            this.sheepList.get(i).ageChange();
+        }
+        for(int i = 0; i < this.turkeyList.size(); i++){
+            this.turkeyList.get(i).ageChange();
+        }
     }
 
     public Integer getWeekOfYear() {
@@ -814,8 +856,8 @@ public class Farm {
     public void addSown(Plant plant) {
         Sown sown = new Sown();
         sown = sown.addToSown(plant, this);
-        if(sown != null)
-        sownList.add(sown);
+        if (sown != null)
+            sownList.add(sown);
 
     }
 
@@ -826,7 +868,7 @@ public class Farm {
         }
         for (int i = 0; i < this.sownList.size(); i++) {
             harvested = sownList.get(i).harvestTime(this);
-            if(harvested){
+            if (harvested) {
                 sownList.remove(i);
                 i--;
             }

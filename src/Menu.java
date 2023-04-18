@@ -369,7 +369,7 @@ public class Menu {
 
     public Integer shopMenuLand(Farm farm) {
         Integer shopMenuLandCounter = 0;
-        while (shopMenuLandCounter != 1 && shopMenuLandCounter != 2) {
+        while (shopMenuLandCounter != 1 && shopMenuLandCounter != 2 && shopMenuLandCounter !=9) {
             System.out.println("Sklep. Dział handlu ziemią.");
             System.out.println("Wybierz, czy chcesz kupić, czy sprzedać ziemię: ");
             System.out.println("1. Kupno ziemi.");
