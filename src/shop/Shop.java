@@ -76,7 +76,7 @@ public class Shop {
         while (!flag) {
             plantPossession(plant, farm);
             System.out.println("Cena kupna " + plant.getPlantName() + " wynosi " + plant.getBuyPricePerKg() + "zł za kilogram.");
-            if(((farm.getBarn().getCapacityOfOneBuilding() * farm.getBarn().getQuantityOfThisBuildingType()) - farm.getBarn().kgOfPlantsStoredInBarn(farm)) < 0) {
+            if(((farm.getBarn().getCapacityOfOneBuilding() * farm.getBarn().getQuantityOfThisBuildingType()) - farm.getBarn().kgOfPlantsStoredInBarn(farm)) > 0) {
                 System.out.println("W stodole masz jeszcze miejsce na " + ((farm.getBarn().getCapacityOfOneBuilding() * farm.getBarn().getQuantityOfThisBuildingType()) - farm.getBarn().kgOfPlantsStoredInBarn(farm)) + "kg roślin.");
             }else
                 System.out.println("Nie masz już miejsca w stodole. Musisz dokupić nowe budynki, aby powiększyć ich pojemnosć.");
@@ -334,6 +334,7 @@ public class Shop {
                     farm.addChicken(farm.getChickenList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * chicken.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + chicken.getRace() + " za kwotę " + (quantity * chicken.getBuyingPrice()) + "zł.");
+                    farm.checkNumberOfChicken(farm.getChickenList());
                     animalPossesionChicken(farm);
                     flag = true;
                 }
@@ -431,6 +432,7 @@ public class Shop {
                     farm.addCow(farm.getCowList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * cow.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + cow.getRace() + " za kwotę " + (quantity * cow.getBuyingPrice()) + "zł.");
+                    farm.checkNumberOfCows(farm.getCowList());
                     animalPossesionCow(farm);
                     flag = true;
                 }
@@ -524,6 +526,7 @@ public class Shop {
                     farm.addGoat(farm.getGoatList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * goat.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + goat.getRace() + " za kwotę " + (quantity * goat.getBuyingPrice()) + "zł.");
+                    farm.checkNumberOfGoat(farm.getGoatList());
                     animalPossesionGoat(farm);
                     flag = true;
                 }
@@ -618,6 +621,7 @@ public class Shop {
                     farm.addGoose(farm.getGooseList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * goose.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + goose.getRace() + " za kwotę " + (quantity * goose.getBuyingPrice()) + "zł.");
+                    farm.checkNumberOfGoose(farm.getGooseList());
                     animalPossesionGoose(farm);
                     flag = true;
                 }
@@ -712,6 +716,7 @@ public class Shop {
                     farm.addPig(farm.getPigList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * pig.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + pig.getRace() + " za kwotę " + (quantity * pig.getBuyingPrice()) + "zł.");
+                    farm.checkNumberOfPig(farm.getPigList());
                     animalPossesionPig(farm);
                     flag = true;
                 }
@@ -806,6 +811,7 @@ public class Shop {
                     farm.addSheep(farm.getSheepList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * sheep.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + sheep.getRace() + " za kwotę " + (quantity * sheep.getBuyingPrice()) + "zł.");
+                    farm.checkNumberOfSheep(farm.getSheepList());
                     animalPossesionSheep(farm);
                     flag = true;
                 }
@@ -900,6 +906,7 @@ public class Shop {
                     farm.addTurkey(farm.getTurkeyList(), quantity);
                     farm.setCash(farm.getCash() - (quantity * turkey.getBuyingPrice()));
                     System.out.println("Dokonałeś zakupu " + quantity + " szt." + turkey.getRace() + " za kwotę " + (quantity * turkey.getBuyingPrice()) + "zł.");
+                    farm.checkNumberOfTurkey(farm.getTurkeyList());
                     animalPossesionTurkey(farm);
                     flag = true;
                 }

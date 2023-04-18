@@ -18,7 +18,7 @@ public class Farm {
 
     Random rand = new Random();
     private String owner;
-    private Double cash = 15000000.00;
+    private Double cash = 1500000.00;
 
     private Integer turnCounter = 1;
     //Plants
@@ -497,14 +497,14 @@ public class Farm {
 
     public void possessionsBuilding() {
         System.out.println("Twoje budynki:  ");
-        System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół o pojemności " + (this.barn.getCapacityOfOneBuilding() * this.barn.getQuantityOfThisBuildingType()) + "kg.");
-        System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników zdolnych pomieścić " + (this.chickenCoop.getCapacityOfOneBuilding() * this.chickenCoop.getQuantityOfThisBuildingType()) + " kur.");
-        System.out.println(this.cowShed.getQuantityOfThisBuildingType() + " obór zdolnych pomieścić " + (this.cowShed.getCapacityOfOneBuilding() * this.cowShed.getQuantityOfThisBuildingType()) + " krów.");
-        System.out.println(this.goatBarn.getQuantityOfThisBuildingType() + " stodół dla kóz zdolnych pomieścić " + (this.goatBarn.getCapacityOfOneBuilding() * this.goatBarn.getQuantityOfThisBuildingType()) + " kóz.");
-        System.out.println(this.gooseCoop.getQuantityOfThisBuildingType() + " gęsich kurników zdolnych pomieścić " + (this.gooseCoop.getCapacityOfOneBuilding() * this.gooseCoop.getQuantityOfThisBuildingType()) + " gęsi.");
-        System.out.println(this.pigsty.getQuantityOfThisBuildingType() + " chlewów zdolnych pomieścić " + (this.pigsty.getCapacityOfOneBuilding() * this.pigsty.getQuantityOfThisBuildingType()) + " świń.");
-        System.out.println(this.sheepfold.getQuantityOfThisBuildingType() + " owczarń zdolnych pomieścić " + (this.sheepfold.getCapacityOfOneBuilding() * this.sheepfold.getQuantityOfThisBuildingType()) + " owiec.");
-        System.out.println(this.turkeyCoop.getQuantityOfThisBuildingType() + " kurników dla indyków zdolnych pomieścić " + (this.turkeyCoop.getCapacityOfOneBuilding() * this.turkeyCoop.getQuantityOfThisBuildingType()) + " indyków.");
+        System.out.println(this.barn.getQuantityOfThisBuildingType() + " stodół o łącznej pojemności " + (this.barn.getCapacityOfOneBuilding() * this.barn.getQuantityOfThisBuildingType()) + "kg.");
+        System.out.println(this.chickenCoop.getQuantityOfThisBuildingType() + " kurników zdolnych łącznie pomieścić " + (this.chickenCoop.getCapacityOfOneBuilding() * this.chickenCoop.getQuantityOfThisBuildingType()) + " kur.");
+        System.out.println(this.cowShed.getQuantityOfThisBuildingType() + " obór zdolnych łącznie pomieścić " + (this.cowShed.getCapacityOfOneBuilding() * this.cowShed.getQuantityOfThisBuildingType()) + " krów.");
+        System.out.println(this.goatBarn.getQuantityOfThisBuildingType() + " stodół dla kóz zdolnych łącznie pomieścić " + (this.goatBarn.getCapacityOfOneBuilding() * this.goatBarn.getQuantityOfThisBuildingType()) + " kóz.");
+        System.out.println(this.gooseCoop.getQuantityOfThisBuildingType() + " gęsich kurników zdolnych łącznie pomieścić " + (this.gooseCoop.getCapacityOfOneBuilding() * this.gooseCoop.getQuantityOfThisBuildingType()) + " gęsi.");
+        System.out.println(this.pigsty.getQuantityOfThisBuildingType() + " chlewów zdolnych łącznie pomieścić " + (this.pigsty.getCapacityOfOneBuilding() * this.pigsty.getQuantityOfThisBuildingType()) + " świń.");
+        System.out.println(this.sheepfold.getQuantityOfThisBuildingType() + " owczarń zdolnych łącznie pomieścić " + (this.sheepfold.getCapacityOfOneBuilding() * this.sheepfold.getQuantityOfThisBuildingType()) + " owiec.");
+        System.out.println(this.turkeyCoop.getQuantityOfThisBuildingType() + " kurników dla indyków zdolnych łącznie pomieścić " + (this.turkeyCoop.getCapacityOfOneBuilding() * this.turkeyCoop.getQuantityOfThisBuildingType()) + " indyków.");
 
     }
 
@@ -591,7 +591,6 @@ public class Farm {
                 farm.springBarley.setStoredInKg(farm.springBarley.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
             }
-            farm.springBarley.setStoredInKg(500.0); //TODO TEST
             if (rand.nextBoolean() && flag < 3) {
                 farm.whiteBeet.setStoredInKg(farm.whiteBeet.getStoredInKg() + rand.nextInt(20) + 100); //100
                 flag++;
@@ -609,8 +608,110 @@ public class Farm {
         return this.getCorn().getStoredInKg() + this.getLatePotato().getStoredInKg() + this.getLateRape().getStoredInKg() + this.getLateRye().getStoredInKg() + this.getSpringBarley().getStoredInKg() + this.getWhiteBeet().getStoredInKg() + this.getWinterWheat().getStoredInKg();
     }
 
-    public void checkNumberOfAnimals(List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
+
+    public void checkNumberOfChicken(List<Chicken> chickenList) {
         if (chickenList.isEmpty()) {
+            totalNumberOfChicken = 0;
+        } else totalNumberOfChicken = getChickenList().get(0).howManyChickenInList(chickenList);
+    }
+
+    public void checkNumberOfCows(List<Cow> cowList) {
+        if (cowList.isEmpty()) {
+            totalNumberOfCow = 0;
+        } else totalNumberOfCow = getCowList().get(0).howManyCowInList(cowList);
+    }
+
+    public void checkNumberOfGoat(List<Goat> goatList) {
+        if (goatList.isEmpty()) {
+            totalNumberOfGoat = 0;
+        } else totalNumberOfGoat = goatList.get(0).howManyGoatInList(goatList);
+    }
+
+    public void checkNumberOfGoose(List<Goose> gooseList) {
+        if (gooseList.isEmpty()) {
+            totalNumberOfGoose = 0;
+        } else totalNumberOfGoose = gooseList.get(0).howManyGooseInList(gooseList);
+    }
+
+    public void checkNumberOfPig(List<Pig> pigList) {
+        if (pigList.isEmpty()) {
+            totalNumberOfPig = 0;
+        } else totalNumberOfPig = pigList.get(0).howManyPigInList(pigList);
+    }
+
+    public void checkNumberOfSheep(List<Sheep> sheepList) {
+        if (sheepList.isEmpty()) {
+            totalNumberOfSheep = 0;
+        } else totalNumberOfSheep = sheepList.get(0).howManySheepInList(sheepList);
+    }
+
+    public void checkNumberOfTurkey(List<Turkey> turkeyList) {
+        if (turkeyList.isEmpty()) {
+            totalNumberOfTurkey = 0;
+        } else totalNumberOfTurkey = turkeyList.get(0).howManyTurkeyInList(turkeyList);
+    }
+
+    public void checkNumberOfAdultChicken(List<Chicken> chickenList) {
+        if (chickenList.isEmpty()) {
+            totalNumberOfChicken = 0;
+        } else totalNumberOfChicken = getChickenList().get(0).howManyChickenInList(chickenList);
+    }
+
+    public void checkNumberOfAdultCows(List<Cow> cowList) {
+        if (cowList.isEmpty()) {
+            totalNumberOfCow = 0;
+        } else totalNumberOfCow = getCowList().get(0).howManyCowInList(cowList);
+    }
+
+    public void checkNumberOfAdultGoat(List<Goat> goatList) {
+        if (goatList.isEmpty()) {
+            totalNumberOfGoat = 0;
+        } else totalNumberOfGoat = goatList.get(0).howManyGoatInList(goatList);
+    }
+
+    public void checkNumberOfAdultGoose(List<Goose> gooseList) {
+        if (gooseList.isEmpty()) {
+            totalNumberOfGoose = 0;
+        } else totalNumberOfGoose = gooseList.get(0).howManyGooseInList(gooseList);
+    }
+
+    public void checkNumberOfAdultPig(List<Pig> pigList) {
+        if (pigList.isEmpty()) {
+            totalNumberOfPig = 0;
+        } else totalNumberOfPig = pigList.get(0).howManyPigInList(pigList);
+    }
+
+    public void checkNumberOfAdultSheep(List<Sheep> sheepList) {
+        if (sheepList.isEmpty()) {
+            totalNumberOfSheep = 0;
+        } else totalNumberOfSheep = sheepList.get(0).howManySheepInList(sheepList);
+    }
+
+    public void checkNumberOfAdultTurkey(List<Turkey> turkeyList) {
+        if (turkeyList.isEmpty()) {
+            totalNumberOfTurkey = 0;
+        } else totalNumberOfTurkey = turkeyList.get(0).howManyTurkeyInList(turkeyList);
+    }
+
+    public void checkNumberOfAnimals(List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
+        checkNumberOfChicken(chickenList);
+        checkNumberOfCows(cowList);
+        checkNumberOfGoat(goatList);
+        checkNumberOfGoose(gooseList);
+        checkNumberOfPig(pigList);
+        checkNumberOfSheep(sheepList);
+        checkNumberOfTurkey(turkeyList);
+
+        checkNumberOfAdultChicken(chickenList);
+        checkNumberOfAdultCows(cowList);
+        checkNumberOfAdultGoat(goatList);
+        checkNumberOfAdultGoose(gooseList);
+        checkNumberOfAdultPig(pigList);
+        checkNumberOfAdultSheep(sheepList);
+        checkNumberOfAdultTurkey(turkeyList);
+
+
+      /*  if (chickenList.isEmpty()) {
             totalNumberOfChicken = 0;
         } else totalNumberOfChicken = getChickenList().get(0).howManyChickenInList(chickenList);
         if (cowList.isEmpty()) {
@@ -651,7 +752,7 @@ public class Farm {
         } else totalNumberOfAdultSheep = sheepList.get(0).howManyAdultSheepInList(sheepList);
         if (turkeyList.isEmpty()) {
             totalNumberOfAdultTurkey = 0;
-        } else totalNumberOfAdultTurkey = turkeyList.get(0).howManyAdultTurkeyInList(turkeyList);
+        } else totalNumberOfAdultTurkey = turkeyList.get(0).howManyAdultTurkeyInList(turkeyList);*/
     }
 
     public void moneyEarnOnAnimals() {
@@ -681,122 +782,123 @@ public class Farm {
         if (!moneyFlag)
             System.out.println("0 zł");
     }
-/*
-    public void reproduction() {
-        Random rand = new Random();
-        Integer randInt, numberOfBorn = 0;
-        boolean reproductionFlag = false;
 
-        if (totalNumberOfAdultChicken > 1) {
-            for (int i = 2; i <= totalNumberOfAdultChicken; i++) {
-                randInt = rand.nextInt(this.getChickenList().get(0).getBreedingChance());
-                if (randInt == 1) {
-                    numberOfBorn++;
-                }
-            }
-            if (numberOfBorn > 0) {
-                System.out.println("Narodziło się: " + numberOfBorn + " młodych kur.");
-                Chicken chicken = new Chicken();
-                chicken.setNumberOfAnimal(numberOfBorn);
-                this.chickenList.add(chicken);
-                reproductionFlag = true;
-            }
-        }
+    /*
+        public void reproduction() {
+            Random rand = new Random();
+            Integer randInt, numberOfBorn = 0;
+            boolean reproductionFlag = false;
 
-        if (totalNumberOfAdultCow > 1) {
-            for (int i = 2; i <= totalNumberOfAdultCow; i++) {
-                randInt = rand.nextInt(this.getCowList().get(0).getBreedingChance());
-                if (randInt == 1) {
-                    numberOfBorn++;
+            if (totalNumberOfAdultChicken > 1) {
+                for (int i = 2; i <= totalNumberOfAdultChicken; i++) {
+                    randInt = rand.nextInt(this.getChickenList().get(0).getBreedingChance());
+                    if (randInt == 1) {
+                        numberOfBorn++;
+                    }
+                }
+                if (numberOfBorn > 0) {
+                    System.out.println("Narodziło się: " + numberOfBorn + " młodych kur.");
+                    Chicken chicken = new Chicken();
+                    chicken.setNumberOfAnimal(numberOfBorn);
+                    this.chickenList.add(chicken);
+                    reproductionFlag = true;
                 }
             }
-            if (numberOfBorn > 0) {
-                System.out.println("Narodziło się: " + numberOfBorn + " młodych krów.");
-                Cow cow = new Cow();
-                cow.setNumberOfAnimal(numberOfBorn);
-                this.cowList.add(cow);
-                reproductionFlag = true;
-            }
-        }
-        if (totalNumberOfAdultGoat > 1) {
-            for (int i = 2; i <= totalNumberOfAdultGoat; i++) {
-                randInt = rand.nextInt(this.getGoatList().get(0).getBreedingChance());
-                if (randInt == 1) {
-                    numberOfBorn++;
+
+            if (totalNumberOfAdultCow > 1) {
+                for (int i = 2; i <= totalNumberOfAdultCow; i++) {
+                    randInt = rand.nextInt(this.getCowList().get(0).getBreedingChance());
+                    if (randInt == 1) {
+                        numberOfBorn++;
+                    }
+                }
+                if (numberOfBorn > 0) {
+                    System.out.println("Narodziło się: " + numberOfBorn + " młodych krów.");
+                    Cow cow = new Cow();
+                    cow.setNumberOfAnimal(numberOfBorn);
+                    this.cowList.add(cow);
+                    reproductionFlag = true;
                 }
             }
-            if (numberOfBorn > 0) {
-                System.out.println("Narodziło się: " + numberOfBorn + " młodych kóz.");
-                Goat goat = new Goat();
-                goat.setNumberOfAnimal(numberOfBorn);
-                this.goatList.add(goat);
-                reproductionFlag = true;
-            }
-        }
-        if (totalNumberOfAdultGoose > 1) {
-            for (int i = 2; i <= totalNumberOfAdultGoose; i++) {
-                randInt = rand.nextInt(this.getGooseList().get(0).getBreedingChance());
-                if (randInt == 1) {
-                    numberOfBorn++;
+            if (totalNumberOfAdultGoat > 1) {
+                for (int i = 2; i <= totalNumberOfAdultGoat; i++) {
+                    randInt = rand.nextInt(this.getGoatList().get(0).getBreedingChance());
+                    if (randInt == 1) {
+                        numberOfBorn++;
+                    }
+                }
+                if (numberOfBorn > 0) {
+                    System.out.println("Narodziło się: " + numberOfBorn + " młodych kóz.");
+                    Goat goat = new Goat();
+                    goat.setNumberOfAnimal(numberOfBorn);
+                    this.goatList.add(goat);
+                    reproductionFlag = true;
                 }
             }
-            if (numberOfBorn > 0) {
-                System.out.println("Narodziło się: " + numberOfBorn + " młodych gęsi.");
-                Goose goose = new Goose();
-                goose.setNumberOfAnimal(numberOfBorn);
-                this.gooseList.add(goose);
-                reproductionFlag = true;
-            }
-        }
-        if (totalNumberOfAdultPig > 1) {
-            for (int i = 2; i <= totalNumberOfAdultPig; i++) {
-                randInt = rand.nextInt(this.getPigList().get(0).getBreedingChance());
-                if (randInt == 1) {
-                    numberOfBorn++;
+            if (totalNumberOfAdultGoose > 1) {
+                for (int i = 2; i <= totalNumberOfAdultGoose; i++) {
+                    randInt = rand.nextInt(this.getGooseList().get(0).getBreedingChance());
+                    if (randInt == 1) {
+                        numberOfBorn++;
+                    }
+                }
+                if (numberOfBorn > 0) {
+                    System.out.println("Narodziło się: " + numberOfBorn + " młodych gęsi.");
+                    Goose goose = new Goose();
+                    goose.setNumberOfAnimal(numberOfBorn);
+                    this.gooseList.add(goose);
+                    reproductionFlag = true;
                 }
             }
-            if (numberOfBorn > 0) {
-                System.out.println("Narodziło się: " + numberOfBorn + " młodych świń.");
-                Pig pig = new Pig();
-                pig.setNumberOfAnimal(numberOfBorn);
-                this.pigList.add(pig);
-                reproductionFlag = true;
-            }
-        }
-        if (totalNumberOfAdultSheep > 1) {
-            for (int i = 2; i <= totalNumberOfAdultSheep; i++) {
-                randInt = rand.nextInt(this.getSheepList().get(0).getBreedingChance());
-                if (randInt == 1) {
-                    numberOfBorn++;
+            if (totalNumberOfAdultPig > 1) {
+                for (int i = 2; i <= totalNumberOfAdultPig; i++) {
+                    randInt = rand.nextInt(this.getPigList().get(0).getBreedingChance());
+                    if (randInt == 1) {
+                        numberOfBorn++;
+                    }
+                }
+                if (numberOfBorn > 0) {
+                    System.out.println("Narodziło się: " + numberOfBorn + " młodych świń.");
+                    Pig pig = new Pig();
+                    pig.setNumberOfAnimal(numberOfBorn);
+                    this.pigList.add(pig);
+                    reproductionFlag = true;
                 }
             }
-            if (numberOfBorn > 0) {
-                System.out.println("Narodziło się: " + numberOfBorn + " młodych owiec.");
-                Sheep sheep = new Sheep();
-                sheep.setNumberOfAnimal(numberOfBorn);
-                this.sheepList.add(sheep);
-                reproductionFlag = true;
-            }
-        }
-        if (totalNumberOfAdultTurkey > 1) {
-            for (int i = 2; i <= totalNumberOfAdultTurkey; i++) {
-                randInt = rand.nextInt(this.getTurkeyList().get(0).getBreedingChance());
-                if (randInt == 1) {
-                    numberOfBorn++;
+            if (totalNumberOfAdultSheep > 1) {
+                for (int i = 2; i <= totalNumberOfAdultSheep; i++) {
+                    randInt = rand.nextInt(this.getSheepList().get(0).getBreedingChance());
+                    if (randInt == 1) {
+                        numberOfBorn++;
+                    }
+                }
+                if (numberOfBorn > 0) {
+                    System.out.println("Narodziło się: " + numberOfBorn + " młodych owiec.");
+                    Sheep sheep = new Sheep();
+                    sheep.setNumberOfAnimal(numberOfBorn);
+                    this.sheepList.add(sheep);
+                    reproductionFlag = true;
                 }
             }
-            if (numberOfBorn > 0) {
-                System.out.println("Narodziło się: " + numberOfBorn + " młodych kur.");
-                Turkey turkey = new Turkey();
-                turkey.setNumberOfAnimal(numberOfBorn);
-                this.turkeyList.add(turkey);
-                reproductionFlag = true;
+            if (totalNumberOfAdultTurkey > 1) {
+                for (int i = 2; i <= totalNumberOfAdultTurkey; i++) {
+                    randInt = rand.nextInt(this.getTurkeyList().get(0).getBreedingChance());
+                    if (randInt == 1) {
+                        numberOfBorn++;
+                    }
+                }
+                if (numberOfBorn > 0) {
+                    System.out.println("Narodziło się: " + numberOfBorn + " młodych kur.");
+                    Turkey turkey = new Turkey();
+                    turkey.setNumberOfAnimal(numberOfBorn);
+                    this.turkeyList.add(turkey);
+                    reproductionFlag = true;
+                }
             }
+            if (!reproductionFlag)
+                System.out.println("Narodziło się 0 zwierząt.");
         }
-        if (!reproductionFlag)
-            System.out.println("Narodziło się 0 zwierząt.");
-    }
-*/
+    */
     public void currentTime() {
         System.out.println("Jest " + calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + ", czyli " + getWeekOfYear() + " tydzień roku. " + turnCounter + " tura.");
     }
@@ -820,26 +922,26 @@ public class Farm {
         this.turnCounter++;
     }
 
-    public void animalsAgeChange(){
-        for(int i = 0; i < this.chickenList.size(); i++){
+    public void animalsAgeChange() {
+        for (int i = 0; i < this.chickenList.size(); i++) {
             this.chickenList.get(i).ageChange();
         }
-        for(int i = 0; i < this.cowList.size(); i++){
+        for (int i = 0; i < this.cowList.size(); i++) {
             this.cowList.get(i).ageChange();
         }
-        for(int i = 0; i < this.goatList.size(); i++){
+        for (int i = 0; i < this.goatList.size(); i++) {
             this.goatList.get(i).ageChange();
         }
-        for(int i = 0; i < this.gooseList.size(); i++){
+        for (int i = 0; i < this.gooseList.size(); i++) {
             this.gooseList.get(i).ageChange();
         }
-        for(int i = 0; i < this.pigList.size(); i++){
+        for (int i = 0; i < this.pigList.size(); i++) {
             this.pigList.get(i).ageChange();
         }
-        for(int i = 0; i < this.sheepList.size(); i++){
+        for (int i = 0; i < this.sheepList.size(); i++) {
             this.sheepList.get(i).ageChange();
         }
-        for(int i = 0; i < this.turkeyList.size(); i++){
+        for (int i = 0; i < this.turkeyList.size(); i++) {
             this.turkeyList.get(i).ageChange();
         }
     }
