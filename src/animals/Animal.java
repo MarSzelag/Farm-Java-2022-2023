@@ -267,10 +267,8 @@ public class Animal {
                 turkey.setNumberOfAnimal(newbornTemp);
                 turkeyList.add(turkey);
                 System.out.println("Narodziło się " + newbornTemp + " nowych indyków.");
-                newbornTemp = 0;
             }
         }
-
     }
 
     public void eat(Farm farm, List<Chicken> chickenList, List<Cow> cowList, List<Goat> goatList, List<Goose> gooseList, List<Pig> pigList, List<Sheep> sheepList, List<Turkey> turkeyList) {
@@ -313,7 +311,7 @@ public class Animal {
         if (farm.getWinterWheat().getStoredInKg() >= cowFoodNeed && farm.getTotalNumberOfCow() > 0) {
             System.out.println("Krowy zjadły " + cowFoodNeed + "kg pszenicy ozimej.");
             farm.setWinterWheat(farm.getWinterWheat().getStoredInKg() - cowFoodNeed);
-        } else if(farm.getWinterWheat().getStoredInKg() < cowFoodNeed){
+        } else if (farm.getWinterWheat().getStoredInKg() < cowFoodNeed) {
             for (int i = 0; i < cowList.size(); i++) {
                 if (cowList.get(i).getWeightInKg() > 45.0) {
                     cowList.get(i).setWeightInKg(cowList.get(i).getWeightInKg() - 0.05);
@@ -327,7 +325,7 @@ public class Animal {
         if (farm.getSpringBarley().getStoredInKg() >= goatFoodNeed + gooseFoodNeed + sheepFoodNeed + turkeyFoodNeed && farm.getTotalNumberOfGoat() + farm.getTotalNumberOfGoose() + farm.getTotalNumberOfSheep() + farm.getTotalNumberOfTurkey() > 0) {
             System.out.println("Kozy, gęsi, owce i indyki zjadły razem " + sumFoodNeed + "kg jęczmienia jarego.");
             farm.setSpringBarley(farm.getSpringBarley().getStoredInKg() - (sumFoodNeed));
-        } else if(farm.getSpringBarley().getStoredInKg() < sumFoodNeed){
+        } else if (farm.getSpringBarley().getStoredInKg() < sumFoodNeed) {
             for (int i = 0; i < goatList.size(); i++) {
                 if (goatList.get(i).getWeightInKg() > 34.0) {
                     goatList.get(i).setWeightInKg(goatList.get(i).getWeightInKg() - 0.03);
@@ -361,7 +359,7 @@ public class Animal {
         if (farm.getLatePotato().getStoredInKg() >= pigFoodNeed && farm.getTotalNumberOfPig() > 0) {
             System.out.println("Świnie zjadły " + pigFoodNeed + "kg późnych ziemniaków.");
             farm.setLatePotato(farm.getLatePotato().getStoredInKg() - pigFoodNeed);
-        } else if(farm.getLatePotato().getStoredInKg() < pigFoodNeed){
+        } else if (farm.getLatePotato().getStoredInKg() < pigFoodNeed) {
             for (int i = 0; i < chickenList.size(); i++) {
                 if (chickenList.get(i).getWeightInKg() > 16.0) {
                     chickenList.get(i).setWeightInKg(chickenList.get(i).getWeightInKg() - 0.02);
@@ -498,7 +496,6 @@ public class Animal {
         }
         return numberOfAdultAnimals;
     }
-
 
 }
 

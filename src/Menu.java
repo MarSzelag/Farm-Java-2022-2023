@@ -5,17 +5,6 @@ import java.util.Scanner;
 public class Menu {
     Scanner scan = new Scanner(System.in);
     private Integer mainMenuCounter = 0;
-    String name;
-
-
-    public Integer getMainMenuCounter() {
-        return mainMenuCounter;
-    }
-
-    public void setMainMenuCounter(Integer mainMenuCounter) {
-        this.mainMenuCounter = mainMenuCounter;
-    }
-
 
     public void mainMenuShow() {
         System.out.println("Witamy na farmie. Posługując się poniższym menu wybierz, co chcesz zrobić.");
